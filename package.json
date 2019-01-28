@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open --config webpack/webpack.config.dev.js"
   },
   "repository": {
-    "type": "git",
+    "type": "git"
   },
   "keywords": [
     "webpack",
