@@ -1,5 +1,30 @@
+/* 
+  Style Variables
+*/
 $body-color: blue;
 
-body {
+
+/* 
+	General Breakpoint (Further Review)
+*/
+
+/* Mobile (320px and down) */
+@media only screen and (max-width: 320px) {
+}
+
+/*
+	General styles
+*/
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
   color: $body-color;
+}
+
+section {
+  height: 400px;
 }
