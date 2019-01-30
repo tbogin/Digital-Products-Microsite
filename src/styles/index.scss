@@ -1,3 +1,5 @@
+@import '/_base';
+ 
 /* 
   Style Variables
 */
@@ -23,6 +25,13 @@ body, html {
 
 h1 {
   color: $body-color;
+}
+
+.title {
+  color: $color-brand-primary;
+  font-family: graphik;
+  font-weight: $font-weight-thin;
+  font-style: italic;
 }
 
 section {
