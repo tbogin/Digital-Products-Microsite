@@ -1,0 +1,61 @@
+#banner {
+  box-sizing: content-box;
+  width: 470px;
+  height: 100vh;
+  padding-left: 128px;
+  margin-top: 120px;
+  font-family: Graphik, Arial, Helvetica, sans-serif;
+
+  h4 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #001532;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 96px;
+    font-weight: 600;
+    color: #0146f5;
+    line-height: 1;
+    margin: 24px 0;
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 400;
+    color: #455563;
+    line-height: 1.67;
+    width: 440px;
+    margin-bottom: 64px;
+  }
+
+  h5 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #001532;
+    margin: 0 auto 16px;
+    height: 32px;
+    line-height: normal;
+  }
+
+  a {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0146f5;
+    margin-bottom: 8px;
+  }
+
+  .col {
+    width: 225px;
+    padding: 0;
+  }
+
+  .row .col:first-child {
+    margin-right: 20px;
+  }
+}
+
