@@ -44,14 +44,11 @@ $font-size-xxx-large: 3.5rem;     // 56px
 $font-size-xxxx-large: 6rem;      // 96px
 
 // Line Height
-$line-height-a: 1;
-$line-height-b: 1.14;
-$line-height-c: 1.25;
-$line-height-d: 1.33;
-$line-height-e: 1.5;
-$line-height-f: 1.67;
-$line-height-g: 2;
-$line-height-h: 2.25;
+$line-height-small: 1;
+$line-height-medium: 1.25;
+$line-height-large: 1.5;
+$line-height-x-large: 2;
+$line-height-xx-large: 2.25;
 
 /* Box Shadow Token */
 $card-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
