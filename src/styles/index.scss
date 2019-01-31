@@ -40,9 +40,11 @@ section {
   height: 25rem;
   margin: 0.625rem 0;
 
-  &:first-child {
-    margin-top: 3.75rem;
-  }
+  @include respond-to(mobile) { padding-top: 3.75rem !important; }
+  // &:first-child {
+   
+    
+  // }
 }
 
 
@@ -109,6 +111,7 @@ section {
   width: 375px;
   height: 56px;
   top: 0;
+  background-color: $color-white;
   @include respond-to(desktop) { display: none; }
   @include respond-to(tablet) { display: none; }
 }
@@ -119,7 +122,15 @@ section {
   height: 24px;
 }
 
-nav .nav-wrapper {
-  display: flex !important;
-  align-items: center !important;
+nav {
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.05) !important;
+
+  .nav-wrapper {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  a {
+    color: $color-brand-primary !important;
+  }
 }
