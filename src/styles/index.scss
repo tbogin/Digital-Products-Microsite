@@ -1,23 +1,5 @@
 @import '/_base';
  
-/* 
-  Style Variables
-*/
-$body-color: blue;
-
-
-/* 
-	General Breakpoint (Further Review)
-*/
-
-/* Mobile (320px and down) */
-@media only screen and (max-width: 320px) {
-}
-
-/*
-	General styles
-*/
-
 body, html {
   scroll-behavior: smooth;
   height: 100%;
@@ -25,7 +7,7 @@ body, html {
 }
 
 h1 {
-  color: $body-color;
+  color: $color-brand-primary;
   margin: 0 !important;
 }
 
@@ -41,10 +23,6 @@ section {
   margin: 0.625rem 0;
 
   @include respond-to(mobile) { padding-top: 3.75rem !important; }
-  // &:first-child {
-   
-    
-  // }
 }
 
 
@@ -93,7 +71,7 @@ section {
 
 .dp_logo { 
   background-image: url("../assets/nav_logo.svg");
-  width: 3.125rem;
+  width: 3.25rem;
   height: 3.25rem;
   margin: 0.625rem; 
   transform: rotate(-90deg);
