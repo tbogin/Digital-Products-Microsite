@@ -86,8 +86,7 @@ section {
 .mobile_nav {
   position: fixed;
   overflow: hidden;
-  width: 375px;
-  height: 56px;
+  width: 100%;
   top: 0;
   background-color: $color-white;
   @include respond-to(desktop) { display: none; }
@@ -101,7 +100,7 @@ section {
 }
 
 nav {
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: $nav-shadow !important;
 
   .nav-wrapper {
     display: flex !important;
