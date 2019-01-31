@@ -56,3 +56,22 @@ $button-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
 
 /* Border token */
 $border-radius: 4px;
+
+// Media Queries
+
+$break-mobile: 375px;
+$break-tablet: 1024px;
+$break-large: 1440px;
+
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-mobile) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-mobile) and (max-width: $break-large) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}

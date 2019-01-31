@@ -3,6 +3,7 @@ import '../../node_modules/materialize-css/dist/css/materialize.min.css';
 
 console.log('webpack starterkit');
 
+// Desktop NavBar
 let mainLink = document.querySelectorAll("div ul li a");
 
 window.addEventListener("scroll", event => {
@@ -20,4 +21,9 @@ window.addEventListener("scroll", event => {
       link.classList.remove("active");
     }
   });
+});
+
+// Mobile NavBar
+document.addEventListener('DOMContentLoaded', function() {
+  M.AutoInit();
 });
