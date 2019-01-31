@@ -1,6 +1,7 @@
-import '../styles/banner.scss';
+import '../styles/_banner.scss';
 import '../styles/index.scss';
 import '../../node_modules/materialize-css/dist/css/materialize.min.css';
+import './bannerAnimation.js';
 
 console.log('webpack starterkit');
 
