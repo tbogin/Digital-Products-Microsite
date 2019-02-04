@@ -1,21 +1,16 @@
 @import '/_base';
 
-/* 
-  Navigation Style Start (Desktop & Mobile)
-*/
-
 // Desktop Navigation
-.dp_nav {
+.dp-nav {
   color: black;
   position: fixed;
-  top: -1rem;
-  left: 2rem;
+  top: -3rem;
   font-family: 'Graphik';
   z-index: 100;
   @include respond-to(mobile) { display: none; }
 
   ul li {
-    margin: 4rem 1rem;
+    // margin: 4rem 1rem;
     display: flex;
     justify-content: space-evenly;
 
@@ -24,6 +19,7 @@
       width: 100%;
       height: 100%;
       text-decoration: none;
+      margin: 2rem 1rem;
       font-size: $font-size-medium;
       color: $color-gray;
       transform: rotate(-90deg);
@@ -33,8 +29,8 @@
       -o-transform: rotate(-90deg);   /* Opera */
     }
 
-    .nav_center {
-      padding-left: 1px;
+    .nav-center {
+      margin: -5px 0px 54px 0;
     }
 
     a.active, a:hover {
@@ -43,7 +39,7 @@
   }
 }
 
-.dp_logo { 
+.dp-logo { 
   background-image: url("../assets/nav_logo.svg");
   width: 3rem;
   height: 3.25rem;
@@ -57,7 +53,7 @@
 
 
 // Mobile Navigation
-.mobile_nav {
+.mobile-nav {
   position: fixed;
   overflow: hidden;
   width: 100%;
@@ -67,7 +63,7 @@
   @include respond-to(tablet) { display: none; }
 }
 
-.dp_mobile_logo {
+.dp-mobile-logo {
   background-image: url("../assets/mobile_logo.svg");
   width: 87.5px;
   height: 24px;
@@ -123,7 +119,3 @@ nav {
     color: $color-brand-primary;
   }
 }
-
-/* 
-  Navigation Style End (Desktop & Mobile)
-*/
