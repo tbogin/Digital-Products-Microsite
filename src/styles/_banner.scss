@@ -1,9 +1,16 @@
 @import '/_base';
 
+// Materialize css overwrite
+.row .col {
+  padding: 0;
+}
+
+// Banner specified style
 #banner {
   box-sizing: border-box;
   width: 29.38rem;
   height: 100vh;
+  max-height: 820px;
   padding-left: 8rem;
   margin-top: 7.5rem;
   font-family: graphik, Arial, Helvetica, sans-serif;
@@ -14,7 +21,7 @@
     color: $color-brand-primary-dark;
     line-height: $line-height-medium;
     letter-spacing: -0.3px;
-    margin: 0;
+    margin: 0 0 1.25rem;
   }
 
   .dp-headline {
@@ -46,8 +53,6 @@
 
   .dp-sub-link {
     display: block;
-    font-size: $font-size-medium;
-    font-weight: $font-weight-semibold;
     color: $color-brand-primary;
     margin-bottom: 0.5rem;
   }
@@ -58,6 +63,7 @@
 
   .row {
     width: 29.38rem;
+    margin: 0;
   }
 
   .col {
