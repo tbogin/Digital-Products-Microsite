@@ -1,29 +1,12 @@
-import '../styles/index.scss';
+// Styles import
 import '../../node_modules/materialize-css/dist/css/materialize.min.css';
+import '../styles/index.scss';
+import '../styles/_nav.scss';
+import '../styles/_banner.scss';
+
+// JS imports
+import './nav.js';
+import './banner.js';
 
 console.log('webpack starterkit');
 
-// Desktop NavBar
-let mainLink = document.querySelectorAll("div ul li a");
-
-window.addEventListener("scroll", event => {
-  let fromTop = window.scrollY;
-
-  mainLink.forEach(link => {
-    let section = document.querySelector(link.hash);
-
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight >= fromTop 
-    ) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
-});
-
-// Mobile NavBar
-document.addEventListener('DOMContentLoaded', function() {
-  M.AutoInit();
-});

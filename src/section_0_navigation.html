@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>DP Microsite</title>
+  </head>
+  <body>
+    <div class="row">
+      <div id="navigation" class="col s12 l1">
+        <!-- Mobile Nav -->
+        <nav class="mobile_nav">
+          <div class="nav-wrapper">
+            <a href="#banner" class="brand-logo"
+              ><div class="dp_mobile_logo"></div
+            ></a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+              <i class="material-icons">menu</i>
+            </a>
+          </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-nav">
+          <li><div>X</div></li>
+          <li><a href="#banner" class="sidenav-close">BANNER</a></li>
+          <li>
+            <a href="#capabilities" class="sidenav-close">Capabilities</a>
+          </li>
+          <li><a href="#process" class="sidenav-close">Process</a></li>
+          <li><a href="#work" class="sidenav-close">Work</a></li>
+          <li><a href="#services" class="sidenav-close">Services</a></li>
+          <li><a href="#contacts" class="sidenav-close">Contact</a></li>
+        </ul>
+
+        <!-- Desktop Nav -->
+        <div class="dp_nav">
+          <ul>
+            <li>
+              <a href="#banner"><div class="dp_logo"></div></a>
+            </li>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#work" class="nav_center">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contacts">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <main class="col s12 l11"></main>
+    </div>
+
+    <!-- jQuery for now -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <!-- <script src="../node_modules/animejs/lib/anime.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.0/lib/anime.min.js"></script> -->
+  </body>
+</html>
