@@ -1,5 +1,9 @@
 @import '/_base';
 
+/* 
+  Navigation Style Start (Desktop & Mobile)
+*/
+
 // Desktop Navigation
 .dp_nav {
   color: black;
@@ -81,3 +85,45 @@ nav {
     color: $color-brand-primary !important;
   }
 }
+
+.sidenav {
+  li {
+    &:nth-child(2) {
+      margin-top: 2.1875rem;
+    }
+      a  {
+        color: $color-brand-primary;
+        font-family: Graphik;
+        line-height: $line-height-medium !important;
+        text-align: center;
+        letter-spacing: -0.3px !important;
+        font-size: $font-size-x-large !important;
+        font-weight: $font-weight-regular !important;
+
+        &:active {
+          font-weight: $font-weight-semibold !important;
+        }
+      }
+      a:hover {
+        color: $color-brand-primary;
+        background-color: white !important;
+      }
+      a.active {
+        color: $color-brand-primary;
+      }
+  }
+}
+
+.mobil-icon {
+  margin-left: 24px;
+  cursor: pointer;
+  font-size: $font-size-large;
+
+  &:hover {
+    color: $color-brand-primary;
+  }
+}
+
+/* 
+  Navigation Style End (Desktop & Mobile)
+*/
