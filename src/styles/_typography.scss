@@ -1,0 +1,105 @@
+@import '/_base';
+
+/* Font Family */
+.heading-1, 
+.heading-2, 
+.heading-3, 
+.heading-4, 
+.heading-5, 
+.body-text-1, 
+.body-text-2, 
+.link, 
+.caption {
+  font-family: 'Graphik';
+}
+
+/* Font Weight */
+.heading-1, 
+.heading-2, 
+.heading-3, 
+.heading-4, 
+.heading-5, 
+.link.active, 
+.link:hover,
+.caption {
+  font-weight: $font-weight-semibold;
+}
+
+.body-text-1, 
+.body-text-2, 
+.link {
+  font-weight: $font-weight-regular;
+}
+
+/* Colors */
+.heading-2, 
+.heading-3, 
+.heading-4, 
+.heading-5 {
+  color: $color-brand-primary-dark;
+}
+
+.body-text-1, 
+.body-text-2, 
+.link {
+  color: $color-gray-dark;
+}
+
+.heading-1, 
+.link.active, 
+.link:hover, 
+.caption, 
+.highlight {
+  color: $color-brand-primary;
+}
+
+/* Text Transform */
+.caption {
+  text-transform: uppercase;
+}
+
+/* Sizes */
+.heading-1 {
+  font-size: $font-size-xxxx-large;
+  @include respond-to(mobile) { 
+    font-size: $font-size-xxx-large; 
+  }
+}
+
+.heading-2 {
+  font-size: $font-size-xxx-large;
+  @include respond-to(mobile) {
+    font-size: 2.25rem; // 36px
+  }
+}
+
+.heading-3 {
+  font-size: 3rem; // 48px
+  @include respond-to(mobile) {
+    font-size: $font-size-large;
+  }
+}
+
+.heading-4 {
+  font-size: $font-size-x-large;
+  @include respond-to(mobile) {
+    font-size: $font-size-large;
+  }
+}
+
+.heading-5 {
+  font-size: $font-size-large;
+}
+
+.body-text-1 {
+  font-size: $font-size-large;
+}
+
+.body-text-2, 
+.link {
+  font-size: $font-size-medium;
+}
+
+.caption {
+  font-size: $font-size-x-small;
+}
