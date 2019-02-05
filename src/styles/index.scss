@@ -11,14 +11,6 @@ h1 {
   margin: 0 !important;
 }
 
-main {
-  margin-left: 250px;
-
-  @include respond-to(mobile) { 
-    margin: 0;
-  }
-}
-
 section {
   height: 25rem;
 
