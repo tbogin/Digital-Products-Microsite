@@ -2,6 +2,7 @@
 
 // Brand Colors
 $color-brand-primary: #0146f5;
+$color-brand-primary-mid: #002c9b;
 $color-brand-primary-dark: #001532;
 
 // Neutral Colors
@@ -9,6 +10,7 @@ $color-gray: #8B96A4;
 $color-gray-light: #AFB4BE;
 $color-gray-dark: #455563;
 $color-white: #FFFFFF;
+$color-gray-super-light: #FCFCFC;
 
 
 /* Typography Tokens */
@@ -20,6 +22,16 @@ $color-white: #FFFFFF;
   font-style: normal;
   font-stretch: normal;
 }
+
+@font-face {
+  font-family: 'Graphik-Semibold';
+  src: url(../../public/graphik_font/Graphik-Semibold.ttf) format('truetype');
+  font-style: normal;
+  font-stretch: normal;
+}
+
+$font-base: 'Graphik';
+$font-base-semibold: 'Graphik-Semibold';
 
 // Font Weight
 $font-weight-thin: 100;
@@ -72,5 +84,11 @@ $break-large: 1440px;
   }
   @else if $media == desktop {
     @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+.hidden-mobile {
+  @include respond-to(mobile) {
+    display: none;
   }
 }
