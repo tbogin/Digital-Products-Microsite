@@ -7,6 +7,7 @@
   background-color: #ffffff;  
   position: relative;
   display: flex;
+  cursor: pointer;
   &:hover,
   &:focus,
   &.active {
@@ -21,7 +22,7 @@
     justify-content: center;
   }
 
-  @media (min-width: $break-mobile + 1) {
+  @include respond-to(not-mobile) {
     padding: 20px 16px;
     &.active:after {
       content: '';

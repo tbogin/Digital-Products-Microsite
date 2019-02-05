@@ -4,9 +4,11 @@ $main-text-col-width: 320px;
 
 .capabilities-section {
   background: $color-gray-super-light;
+  height: auto;
 
-  @media (min-width: $break-mobile + 1) {
-    height: 820px;
+  @include respond-to(not-mobile) {
+    height: 820px;    // somewhat arbitrary. update as needed.
+    padding-left: 100px;    // should be width of side-nav
   }
 
   .caption:first-of-type {
@@ -29,7 +31,7 @@ $main-text-col-width: 320px;
   }
 
   .two-thirds-desktop {
-    @media (min-width: $break-mobile + 1) {
+    @include respond-to(not-mobile) {
       height: 100%;
       width: calc(100% / 3 * 2);
       float: left;
@@ -38,7 +40,7 @@ $main-text-col-width: 320px;
 
   .one-third-desktop {
     min-height: 400px;
-    @media (min-width: $break-mobile + 1) {
+    @include respond-to(not-mobile) {
       height: 100%;
       width: calc(100% / 3);
       float: right;
@@ -67,7 +69,7 @@ $main-text-col-width: 320px;
   .capabilities-main-text-col {
     width: $main-text-col-width;
     padding: 80px 0;
-    margin-left: 86px;
+    margin-left: 10%;   // somewhat arbitrary. update as needed
     @include respond-to(mobile) {
       width: 100%;
       padding: 40px;
@@ -94,7 +96,7 @@ $main-text-col-width: 320px;
         margin-right: 16px;
       }
     }
-    @media (min-width: $break-mobile + 1) {
+    @include respond-to(not-mobile) {
       width: 307px;
       &:first-of-type {
         margin-bottom: 16px;
