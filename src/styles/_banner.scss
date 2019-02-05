@@ -1,18 +1,12 @@
 @import '/_base';
 
-// Materialize css overwrite
-.row .col {
-  padding: 0;
-}
-
 // Banner specified style
 #banner {
   box-sizing: border-box;
   width: 29.38rem;
   height: 100vh;
   max-height: 820px;
-  padding-left: 8rem;
-  margin-top: 7.5rem;
+  padding-top: 7.5rem;
   font-family: graphik, Arial, Helvetica, sans-serif;
 
   .dp-title {
@@ -74,12 +68,14 @@
   .row .col:first-child {
     margin-right: 20px;
   }
+
+  .acn-title {
+    font-weight: $font-weight-semibold;
+  }
 }
 
 @media only screen and (max-width: 767px) {
   #banner {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
     width: 100%;
     height: 100%;
 
@@ -106,10 +102,6 @@
 
     .row {
       width: 100%;
-    }
-    
-    .acn-title {
-      font-weight: $font-weight-semibold;
     }
   }
 }

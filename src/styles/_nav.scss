@@ -60,6 +60,7 @@
   width: 100%;
   top: 0;
   background-color: $color-white;
+  z-index: 999;
   @include respond-to(desktop) { display: none; }
   @include respond-to(tablet) { display: none; }
 }
@@ -76,6 +77,10 @@ nav {
   .nav-wrapper {
     display: flex !important;
     align-items: center !important;
+
+    .sidenav-trigger {
+      margin: 0 24px;
+    }
   }
 
   a {
