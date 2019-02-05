@@ -1,25 +1,29 @@
 @import '/_base';
 
 // Desktop Navigation
-.dp_nav {
+.dp-nav {
   color: black;
   position: fixed;
-  top: -1rem;
-  left: 2rem;
+  top: -3rem;
   font-family: 'Graphik';
   z-index: 100;
   @include respond-to(mobile) { display: none; }
 
+  .nav-center {
+    margin: -16px 0px -13px 0;
+  }
+
+
   ul li {
-    margin: 4rem 1rem;
+    // margin: 4rem 1rem;
     display: flex;
     justify-content: space-evenly;
 
     a {
       display: block;
-      width: 100%;
       height: 100%;
       text-decoration: none;
+      margin: 2.5rem 1rem;
       font-size: $font-size-medium;
       color: $color-gray;
       transform: rotate(-90deg);
@@ -29,9 +33,6 @@
       -o-transform: rotate(-90deg);   /* Opera */
     }
 
-    .nav_center {
-      padding-left: 1px;
-    }
 
     a.active, a:hover {
       color: $color-brand-primary;
@@ -39,11 +40,11 @@
   }
 }
 
-.dp_logo { 
+.dp-logo { 
   background-image: url("../assets/nav_logo.svg");
-  width: 3.25rem;
+  width: 3rem;
   height: 3.25rem;
-  margin: 0.625rem; 
+  margin: 0.635rem -2rem 0 -2.5rem;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari and Chrome */
   -moz-transform: rotate(-90deg);   /* Firefox */
@@ -53,7 +54,7 @@
 
 
 // Mobile Navigation
-.mobile_nav {
+.mobile-nav {
   position: fixed;
   overflow: hidden;
   width: 100%;
@@ -63,7 +64,7 @@
   @include respond-to(tablet) { display: none; }
 }
 
-.dp_mobile_logo {
+.dp-mobile-logo {
   background-image: url("../assets/mobile_logo.svg");
   width: 87.5px;
   height: 24px;
@@ -79,5 +80,43 @@ nav {
 
   a {
     color: $color-brand-primary !important;
+  }
+}
+
+.sidenav {
+  li {
+    &:nth-child(2) {
+      margin-top: 2.1875rem;
+    }
+      a  {
+        // color: $color-brand-primary;
+        font-family: Graphik;
+        line-height: $line-height-medium !important;
+        text-align: center;
+        letter-spacing: -0.3px !important;
+        font-size: $font-size-x-large !important;
+        font-weight: $font-weight-regular !important;
+
+        &:active {
+          font-weight: $font-weight-semibold !important;
+        }
+      }
+      a:hover {
+        color: $color-brand-primary;
+        background-color: white !important;
+      }
+      a.active {
+        color: $color-brand-primary;
+      }
+  }
+}
+
+.mobile-icon {
+  margin-left: 24px;
+  cursor: pointer;
+  font-size: $font-size-large;
+
+  &:hover {
+    color: $color-brand-primary;
   }
 }
