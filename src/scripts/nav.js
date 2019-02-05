@@ -5,7 +5,7 @@ var _contentScript = {
 
     // Desktop Scroll State Navigation
     window.addEventListener("scroll", event => {
-      let mainLink = document.querySelectorAll(".dp_nav ul li a");
+      let mainLink = document.querySelectorAll(".dp-nav ul li a");
       let fromTop = window.scrollY;
 
       mainLink.forEach(link => {
