@@ -1,7 +1,14 @@
 @import '/_base';
-  .art-possible-container {
-    width: 100%;
+  .art-possible {
+    &-container {
+      width: 100%;
+    }
+    &-body {
+      // width: 50%;
+      // text-align: center;
+    }
   }
+
 .dp-icon {
   font-family: Graphik;
   font-size: $font-size-x-large;
@@ -12,13 +19,3 @@
   color: $color-brand-primary-dark;
 }
 
-.art-possible {
-  // width: 570px;
-  // height: 128px;
-  .heading-2 {
-    display: flex;
-    justify-content: center;
-    // text-align: center;
-  }
-
-}
