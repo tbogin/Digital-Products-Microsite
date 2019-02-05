@@ -1,0 +1,105 @@
+@import '/_base';
+
+$main-text-col-width: 320px;
+
+.capabilities-section {
+  background: $color-gray-super-light;
+
+  @media (min-width: $break-mobile + 1) {
+    height: 820px;
+  }
+
+  .caption:first-of-type {
+    margin-bottom: 0;
+  }
+
+  .heading-2 {
+    margin-top: 26px;
+    @include respond-to(mobile) {
+      margin-top: 14px;
+    }
+  }
+
+  .body-text-2 {
+    line-height: 2;
+    margin-bottom: 40px;
+    @include respond-to(mobile) {
+      margin-bottom: 32px;
+    }
+  }
+
+  .two-thirds-desktop {
+    @media (min-width: $break-mobile + 1) {
+      height: 100%;
+      width: calc(100% / 3 * 2);
+      float: left;
+    }
+  }
+
+  .one-third-desktop {
+    min-height: 400px;
+    @media (min-width: $break-mobile + 1) {
+      height: 100%;
+      width: calc(100% / 3);
+      float: right;
+    }
+  }
+
+  .capabilities-background-image {
+    @include respond-to(mobile) {
+      background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
+                        url(../assets/capabilities.jpg);
+    }
+    @include respond-to(tablet) {
+      background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
+                        url(../assets/capabilities@2x.jpg);
+    }
+    @include respond-to(desktop) {
+      background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
+                        url(../assets/capabilities@3x.jpg);
+    }
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: $color-brand-primary;   // fallback
+  }
+
+  .capabilities-main-text-col {
+    width: $main-text-col-width;
+    padding: 80px 0;
+    margin-left: 86px;
+    @include respond-to(mobile) {
+      width: 100%;
+      padding: 40px;
+      margin-left: 0;
+    }
+  }
+
+  /* Any button styles specific to this section go here.
+    Everything else is inherited from global .button-inset, 
+    .button-inset-full, and .button-inset-mobile styles. */
+     
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    @include respond-to(mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .button-inset {
+    @include respond-to(mobile) {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+    @media (min-width: $break-mobile + 1) {
+      width: 307px;
+      &:first-of-type {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+}
