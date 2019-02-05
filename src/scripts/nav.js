@@ -1,4 +1,3 @@
-console.log('inside nav');
 var _contentScript = {
   init: function() {
     "use strict";
