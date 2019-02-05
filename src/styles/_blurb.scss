@@ -1,2 +1,11 @@
 @import '/_base';
 
+.dp-icon {
+  font-family: Graphik;
+  font-size: $font-size-x-large;
+  font-weight: $font-weight-semibold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: $line-height-medium;
+  color: $color-brand-primary-dark;
+}
