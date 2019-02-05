@@ -1,13 +1,41 @@
 @import '/_base';
-  .art-possible {
-    &-container {
-      width: 100%;
-    }
-    &-body {
-      // width: 50%;
-      // text-align: center;
+.art-possible-section {
+  margin: 0 auto;
+  height: 800px;
+  background-color:$color-brand-primary-dark;
+  display: flex;
+  align-items: center;
+}
+
+.art-possible {
+
+  &-container {
+    width: 100%;
+  }
+
+  &-header {
+    margin: 0 auto;
+    width: 37.5rem;
+    padding-top: 1.5rem;
+
+    .heading-2 {
+      color: $color-white
     }
   }
+
+  &-body {
+    margin: 0 auto;
+    width: 37.5rem;
+    padding-top: 1rem;
+
+    .body-text-2 {
+      color: $color-white;
+      line-height: 2;
+    }
+  }
+
+
+}
 
 .dp-icon {
   font-family: Graphik;
@@ -16,6 +44,6 @@
   font-style: normal;
   font-stretch: normal;
   line-height: $line-height-medium;
-  color: $color-brand-primary-dark;
+  color: $color-white;
 }
 

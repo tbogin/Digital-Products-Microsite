@@ -3,7 +3,6 @@
 body, html {
   scroll-behavior: smooth;
   height: 100%;
-  width: 100%;
   font-size: 16px !important;
 }
 
@@ -14,9 +13,19 @@ h1 {
 
 section {
   height: 25rem;
-  margin: 0.625rem 0;
 
-  @include respond-to(mobile) { padding-top: 3.75rem !important; }
+  @include respond-to(mobile) { padding: 3.75rem 2.5rem 0 !important; }
 }
 
+.main-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 
+// TODO: Remove this when all sections are finished
+.title {
+  color: $color-brand-primary;
+  font-family: graphik;
+  font-weight: $font-weight-thin;
+  font-style: italic;
+}

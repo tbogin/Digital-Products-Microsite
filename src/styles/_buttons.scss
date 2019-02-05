@@ -1,0 +1,39 @@
+@import '/_base';
+
+.button-inset {
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;  
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  &:hover,
+  &:focus,
+  &.active {
+    background-color: #ffffff;
+    color: $color-brand-primary;
+    font-family: $font-base-semibold;
+  }
+
+  @include respond-to(mobile) {
+    padding: 12px;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  @include respond-to(not-mobile) {
+    padding: 20px 16px;
+    &.active:after {
+      content: '';
+      background: url('../assets/arrow-right.svg');
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+    }
+  }
+
+
+}

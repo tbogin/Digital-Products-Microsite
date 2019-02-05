@@ -1,19 +1,6 @@
 @import '/_base';
 
-/* Font Family */
-.heading-1, 
-.heading-2, 
-.heading-3, 
-.heading-4, 
-.heading-5, 
-.body-text-1, 
-.body-text-2, 
-.link, 
-.caption {
-  font-family: 'Graphik';
-}
-
-/* Font Weight */
+/* Font Family & Weight */
 .heading-1, 
 .heading-2, 
 .heading-3, 
@@ -22,12 +9,14 @@
 .link.active, 
 .link:hover,
 .caption {
+  font-family: $font-base-semibold;
   font-weight: $font-weight-semibold;
 }
 
 .body-text-1, 
 .body-text-2, 
 .link {
+  font-family: $font-base;
   font-weight: $font-weight-regular;
 }
 
