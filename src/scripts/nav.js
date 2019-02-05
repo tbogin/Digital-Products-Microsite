@@ -19,6 +19,12 @@ var _contentScript = {
         } else {
           link.classList.remove("active");
         }
+
+        // Section-specific animations
+        if (section.id === 'capabilities') {
+          capabilitiesSection.animateSection();
+        }
+
       });
     });
 
@@ -40,3 +46,22 @@ $(document).ready(function(){
     $(this).addClass("active");
   });
 });
+
+
+// Capabilities Section animations that should run when the section scrolls into view
+let capabilitiesSection = {
+  mainTextAnimatedAlready: false,
+  animateMainText: function() {
+    $('.capabilities-section .capabilities-main-text-col .caption').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .heading-2').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .body-text-2').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
+    this.mainTextAnimatedAlready = true;
+  },
+  animateSection: function() {
+    if (!this.mainTextAnimatedAlready) {
+      this.animateMainText();
+    }
+  }
+};

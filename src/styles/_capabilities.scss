@@ -1,8 +1,11 @@
 @import '/_base';
 
-$main-text-col-width: 320px;
+
 
 .capabilities-section {
+
+  $main-text-col-width: 320px;
+
   background: $color-gray-super-light;
   height: auto;
 
@@ -106,6 +109,34 @@ $main-text-col-width: 320px;
         margin-bottom: 16px;
       }
     }
+  }
+
+  @keyframes fade-in {
+    from  { opacity: 0; }
+    to    { opacity: 1; }
+  }
+  
+  @mixin fade-in-on-delay($delay) {
+    opacity: 0;
+    animation: fade-in 1.5s ease-in-out $delay forwards;
+  }
+
+  $delay-multiplier: 0.1s;
+
+  .fade-in-elem.caption:first-of-type {
+    @include fade-in-on-delay(1 * $delay-multiplier);
+  }
+  .fade-in-elem.heading-2 {
+    @include fade-in-on-delay(2 * $delay-multiplier);
+  }
+  .fade-in-elem.body-text-2 {
+    @include fade-in-on-delay(3 * $delay-multiplier);
+  }
+  .fade-in-elem.button-inset:first-of-type {
+    @include fade-in-on-delay(4 * $delay-multiplier);
+  }
+  .fade-in-elem.button-inset:nth-of-type(2) {
+    @include fade-in-on-delay(5 * $delay-multiplier);
   }
 
 }
