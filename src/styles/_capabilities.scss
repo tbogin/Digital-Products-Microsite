@@ -8,7 +8,11 @@ $main-text-col-width: 320px;
 
   @include respond-to(not-mobile) {
     height: 820px;    // somewhat arbitrary. update as needed.
-    padding-left: 100px;    // should be width of side-nav
+    padding-left: 120px;    // should be width of side-nav
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 !important;
   }
 
   .caption:first-of-type {
@@ -69,7 +73,7 @@ $main-text-col-width: 320px;
   .capabilities-main-text-col {
     width: $main-text-col-width;
     padding: 80px 0;
-    margin-left: 10%;   // somewhat arbitrary. update as needed
+    margin-left: 120px;
     @include respond-to(mobile) {
       width: 100%;
       padding: 40px;
