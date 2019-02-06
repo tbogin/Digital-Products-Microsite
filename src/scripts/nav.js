@@ -1,3 +1,5 @@
+import capabilitiesSection from './capabilities';
+
 var _contentScript = {
   init: function() {
     "use strict";
@@ -46,22 +48,3 @@ $(document).ready(function(){
     $(this).addClass("active");
   });
 });
-
-
-// Capabilities Section animations that should run when the section scrolls into view
-let capabilitiesSection = {
-  mainTextAnimatedAlready: false,
-  animateMainText: function() {
-    $('.capabilities-section .capabilities-main-text-col .caption').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .heading-2').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .body-text-2').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
-    this.mainTextAnimatedAlready = true;
-  },
-  animateSection: function() {
-    if (!this.mainTextAnimatedAlready) {
-      this.animateMainText();
-    }
-  }
-};
