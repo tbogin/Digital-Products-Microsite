@@ -6,6 +6,8 @@ $main-text-col-width: 320px;
   background: $color-gray-super-light;
   height: auto;
 
+  position: relative;
+
   @include respond-to(not-mobile) {
     height: 820px;    // somewhat arbitrary. update as needed.
     padding-left: 100px;    // should be width of side-nav
@@ -104,4 +106,48 @@ $main-text-col-width: 320px;
     }
   }
 
+
+  /* Scrollable card items style */
+  .capabilities-card-container {
+    position: absolute;
+    top: 8.925rem; // temp value
+    left: 624px; // temp value
+  }
+
+  .card {
+    border-radius: 4px;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+    width: 17.31rem;  // temp value
+    height: 326px; // temp value
+    z-index: 200;
+
+    .card-title {
+      color: $color-brand-primary-dark;
+      height: 100%;
+    }
+  }
+
+  .design-card-2 {
+    position: absolute;
+    top: -40px;  // temp value
+    left: 302px; // temp value
+  }
+
+  .design-card-4 {
+    position: absolute;
+    top: 300px;
+    left: 302px;
+  }
+
+  .dev-card-2 {
+    position: absolute;
+    top: 638px; // temp value
+    left: 302px;
+  }
+
+  .dev-card-4 {
+    position: absolute;
+    top: 980px;
+    left: 302px;
+  }
 }

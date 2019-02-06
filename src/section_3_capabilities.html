@@ -1,97 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>DP Microsite</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <title>DP Microsite</title>
-</head>
-
-<body>
-  <div class="row">
-    <div id="navigation" class="col s12 l1">
-      <!-- Mobile Nav -->
-      <nav class="mobile_nav">
-        <div class="nav-wrapper">
-          <a href="#banner" class="brand-logo">
-            <div class="dp_mobile_logo"></div>
-          </a>
-          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
-            <i class="material-icons">menu</i>
-          </a>
-        </div>
-      </nav>
-
-      <ul class="sidenav" id="mobile-nav">
-        <li>
-          <div>X</div>
-        </li>
-        <li><a href="#banner" class="sidenav-close">BANNER</a></li>
-        <li>
-          <a href="#capabilities" class="sidenav-close">Capabilities</a>
-        </li>
-        <li><a href="#process" class="sidenav-close">Process</a></li>
-        <li><a href="#work" class="sidenav-close">Work</a></li>
-        <li><a href="#services" class="sidenav-close">Services</a></li>
-        <li><a href="#contacts" class="sidenav-close">Contact</a></li>
-      </ul>
-
-      <!-- Desktop Nav -->
-      <div class="dp_nav">
-        <ul>
-          <li>
-            <a href="#banner">
-              <div class="dp_logo"></div>
+  <body>
+    <div class="row">
+      <div id="navigation" class="col s12 l1">
+        <!-- Mobile Nav -->
+        <nav class="mobile_nav">
+          <div class="nav-wrapper">
+            <a href="#banner" class="brand-logo">
+              <div class="dp_mobile_logo"></div>
             </a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+              <i class="material-icons">menu</i>
+            </a>
+          </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-nav">
+          <li>
+            <div>X</div>
           </li>
-          <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#work" class="nav_center">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contacts">Contact</a></li>
+          <li><a href="#banner" class="sidenav-close">BANNER</a></li>
+          <li>
+            <a href="#capabilities" class="sidenav-close">Capabilities</a>
+          </li>
+          <li><a href="#process" class="sidenav-close">Process</a></li>
+          <li><a href="#work" class="sidenav-close">Work</a></li>
+          <li><a href="#services" class="sidenav-close">Services</a></li>
+          <li><a href="#contacts" class="sidenav-close">Contact</a></li>
         </ul>
+
+        <!-- Desktop Nav -->
+        <div class="dp_nav">
+          <ul>
+            <li>
+              <a href="#banner">
+                <div class="dp_logo"></div>
+              </a>
+            </li>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#work" class="nav_center">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contacts">Contact</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <main class="col s12 l11">
-
-
-
-      <!-- Section Three - Capabilities -->
-      <section id="capabilities" class="capabilities-section">
-        <div class="two-thirds-desktop">
-          <div class="capabilities-main-text-col">
-            <h2 class="caption">>_Our Capabilities</h2>
-            <h2 class="heading-2">What <span class="highlight">we do</span></h2>
-            <p class="body-text-2">
-              Lorem ipsum dolor amet blue bottle coloring book migas pug synth etsy.
-              Locavore neutra beard helvetica 8-bit hammock.
-            </p>
-            <div class="buttons">
-              <button type="button" class="link button-inset active" id="button-design-capabilities">
-                Design
-                <span class="hidden-mobile">&nbsp;Capabilities</span>
-              </button>
-              <button type="button" class="link button-inset" id="button-development-capabilities">
-                Development
-                <span class="hidden-mobile">&nbsp;Capabilities</span>
-              </button>
+      <main class="col s12 l11">
+        <!-- Section Three - Capabilities -->
+        <section id="capabilities" class="capabilities-section">
+          <div class="two-thirds-desktop">
+            <div class="capabilities-main-text-col">
+              <h2 class="caption">>_Our Capabilities</h2>
+              <h2 class="heading-2">
+                What <span class="highlight">we do</span>
+              </h2>
+              <p class="body-text-2">
+                Lorem ipsum dolor amet blue bottle coloring book migas pug synth
+                etsy. Locavore neutra beard helvetica 8-bit hammock.
+              </p>
+              <div class="buttons">
+                <button
+                  type="button"
+                  class="link button-inset active"
+                  id="button-design-capabilities"
+                >
+                  Design
+                  <span class="hidden-mobile">&nbsp;Capabilities</span>
+                </button>
+                <button
+                  type="button"
+                  class="link button-inset"
+                  id="button-development-capabilities"
+                >
+                  Development
+                  <span class="hidden-mobile">&nbsp;Capabilities</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="one-third-desktop capabilities-background-image"></div>
-      </section>
+          <div class="one-third-desktop capabilities-background-image"></div>
 
+          <!-- Scrollable card item -->
+          <div class="capabilities-card-container">
+            <div class="capabilities-design-card-container">
+              <div class="card design-card-1">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 1</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end design card 1 -->
+              <div class="card design-card-2">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 2</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end design card 2 -->
+              <div class="card design-card-3">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 3</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end design card 3 -->
+              <div class="card design-card-4">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 4</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end design card 4 -->
+            </div>
+            <div class="capabilities-dev-card-container">
+              <div class="card dev-card-1">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 1 - dev</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end dev card 1 -->
+              <div class="card dev-card-2">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 2 - dev</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end dev card 2 -->
+              <div class="card dev-card-3">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 3 - dev</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end dev card 3 -->
+              <div class="card dev-card-4">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 4 - dev</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end dev card 4 -->
+              <div class="card dev-card-5">
+                <div class="card-content">
+                  <h5 class="card-title">Card Title 5 - dev</h5>
+                  <ul>
+                    <li>_Look & feel</li>
+                    <li>_Interaction design</li>
+                    <li>_User research</li>
+                    <li>_Information architecture</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- end dev card 5 -->
+            </div>
+          </div>
+          <!-- End scrollable card item -->
+        </section>
+      </main>
+    </div>
 
-    </main>
-  </div>
-
-  <!-- jQuery for now -->
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
-  <!-- <script src="../node_modules/animejs/lib/anime.min.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.0/lib/anime.min.js"></script> -->
-</body>
-
+    <!-- jQuery for now -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <!-- <script src="../node_modules/animejs/lib/anime.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.0/lib/anime.min.js"></script> -->
+  </body>
 </html>
