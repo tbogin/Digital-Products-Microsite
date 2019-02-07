@@ -1,0 +1,100 @@
+@import '/_base';
+
+.art-possible-section {
+  height: 44rem;
+  width: 100%;
+  background-color: $color-brand-primary-dark;
+  display: flex;
+  justify-content: center;
+  @include respond-to(mobile) {
+    height: 30.75rem;
+  }
+
+
+
+  #possible {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.art-possible {
+  &-container {
+    width: 100%;
+    padding: 76px; //custom padding for MagicScroll
+    @include respond-to(mobile) {
+      padding: 0;
+    }
+  
+
+    .body-text-1 {
+      color: $color-white;
+      line-height: $line-height-x-large;
+      padding-top: 1.5rem;
+      letter-spacing: normal;
+      @include respond-to(mobile) {
+        padding: 0 40px;
+      }
+
+      
+    }
+  }
+
+  &-header {
+    margin: 0 auto;
+    max-width: 37.5rem;
+    padding: 1.25rem 0;
+
+    .heading-2 {
+      color: $color-white;
+      line-height: 1.25;
+      @include respond-to(mobile) {
+        font-family: $font-base;
+        font-size: 2.25rem;
+        padding: 0 4.375rem;
+      }
+      
+    }
+  }
+}
+
+.dp-icon {
+  font-family: Graphik;
+  font-size: $font-size-x-large;
+  font-weight: $font-weight-semibold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: $line-height-medium;
+  color: $color-white;
+  @include respond-to(mobile) {
+    font-size: $font-size-large;
+  }
+
+  .icon-character {
+    display: inline-block;
+  }
+}
+
+#possible {
+  .body-text-1 {
+    max-width: 633px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+}
+
+// custom divs for Animation/ScrollMagic
+.art-scroll {
+  height: 50px;
+}
+
+.heading-word,
+.text-phase,
+.art-scroll {
+  display: inline-block;
+}
+
+.blocker-div {
+  height: 50px;
+}
