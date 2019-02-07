@@ -103,7 +103,6 @@ const blurbScene1 = new ScrollMagic.Scene({
   triggerHook: 0.9
 })
   .addTo(controller)
-  .addIndicators()
   .on('progress', event => {
     animation.play();
   });
@@ -115,7 +114,6 @@ const blurbScene2 = new ScrollMagic.Scene({
   triggerHook: 0
 })
   .addTo(controller)
-  .addIndicators()
   .on('progress', event => {
     animation.play();
   });
