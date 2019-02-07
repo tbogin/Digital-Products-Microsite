@@ -78,7 +78,7 @@
 
 .dp-mobile-logo {
   background-image: url("../assets/mobile_logo.svg");
-  width: 87.5px;
+  width: 86.5px;
   height: 24px;
 }
 
@@ -103,18 +103,23 @@ nav {
 // Mobile Nav Open State 
 .sidenav {
   width: 375px;
-  height: 667px;
+  height: 100%;;
   padding: 0;
   background-color: rgba(255, 255, 255, 0.95);
   display: flex;
   justify-content: center;
   flex-direction: column;
 
+  &-overlay{
+    background-color: unset;
+  }
+
   &.pattern {
-    background-image: url("../assets/pattern.png");
+    background-image: url("../assets/pattern.svg");
     background-position: 0 100%;
     background-size: 100%;
     background-repeat: no-repeat;
+    width: 100%;
   }
 
   li {
