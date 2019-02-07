@@ -113,6 +113,14 @@
     }
   }
 
+  .caption,
+  .heading-2,
+  .body-text-2,
+  .button-inset,
+  .card {
+    opacity: 0;
+  }
+
 
   /* Scrollable card items style */
   .capabilities-card-container {
@@ -123,7 +131,15 @@
     height: 100%;
     padding-top: 120px;
     width: 580px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0;
+      display: none;
+    }
+  }
+
+  .scrollable {
+    overflow-y: scroll
   }
 
   .card {
@@ -154,30 +170,6 @@
   .dev-card-4 {
     margin-top: -60px;
   }
-
-  // .design-card-2 {
-  //   position: absolute;
-  //   top: -40px;  // temp value
-  //   left: 302px; // temp value
-  // }
-
-  // .design-card-4 {
-  //   position: absolute;
-  //   top: 300px;
-  //   left: 302px;
-  // }
-
-  // .dev-card-2 {
-  //   position: absolute;
-  //   top: 638px; // temp value
-  //   left: 302px;
-  // }
-
-  // .dev-card-4 {
-  //   position: absolute;
-  //   top: 980px;
-  //   left: 302px;
-  // }
 
 
 
