@@ -136,6 +136,9 @@
       width: 0;
       display: none;
     }
+    @include respond-to(mobile) {
+      display: none;
+    }
   }
 
   .scrollable {
