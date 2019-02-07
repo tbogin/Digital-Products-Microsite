@@ -1,40 +1,41 @@
 @import '/_base';
+
 .art-possible-section {
-  margin: 0 auto;
-  height: 800px;
-  background-color:$color-brand-primary-dark;
+  height: 44rem;
+  background-color: $color-brand-primary-dark;
   display: flex;
-  align-items: center;
+  justify-content: center;
+
+  #possible {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .art-possible {
-
   &-container {
     width: 100%;
+    padding: 76px; //custom padding for MagicScroll
+
+    .body-text-1 {
+      color: $color-white;
+      line-height: $line-height-x-large;
+      padding-top: 1.5rem;
+      letter-spacing: normal;
+    }
   }
 
   &-header {
     margin: 0 auto;
     width: 37.5rem;
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
 
     .heading-2 {
-      color: $color-white
-    }
-  }
-
-  &-body {
-    margin: 0 auto;
-    width: 37.5rem;
-    padding-top: 1rem;
-
-    .body-text-2 {
       color: $color-white;
-      line-height: 2;
+      line-height: 1.25;
     }
   }
-
-
 }
 
 .dp-icon {
@@ -45,5 +46,31 @@
   font-stretch: normal;
   line-height: $line-height-medium;
   color: $color-white;
+
+  .icon-character {
+    display: inline-block;
+  }
 }
 
+#possible {
+  .body-text-1 {
+    max-width: 633px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+}
+
+// custom divs for Animation/ScrollMagic
+.art-scroll {
+  height: 50px;
+}
+
+.heading-word,
+.text-phase,
+.art-scroll {
+  display: inline-block;
+}
+
+.blocker-div {
+  height: 50px;
+}
