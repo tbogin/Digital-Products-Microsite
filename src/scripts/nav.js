@@ -23,9 +23,9 @@ var _contentScript = {
         }
 
         // Section-specific animations
-        if (section.id === 'capabilities') {
-          capabilitiesSection.animateSection();
-        }
+        // if (section.id === 'capabilities') {
+        //   capabilitiesSection.animateMainText();
+        // }
 
       });
     });

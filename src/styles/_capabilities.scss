@@ -9,6 +9,8 @@
   background: $color-gray-super-light;
   height: auto;
 
+  position: relative;
+
   @include respond-to(not-mobile) {
     height: 820px;    // somewhat arbitrary. update as needed.
     padding-left: 120px;    // should be width of side-nav
@@ -111,6 +113,67 @@
     }
   }
 
+  .caption,
+  .heading-2,
+  .body-text-2,
+  .button-inset,
+  .card {
+    opacity: 0;
+  }
+
+
+  /* Scrollable card items style */
+  .capabilities-card-container {
+    position: absolute;
+    // top: 8.925rem; // temp value
+    left: 624px; // temp value
+    top: 0;
+    height: 100%;
+    padding-top: 120px;
+    width: 580px;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+      width: 0;
+      display: none;
+    }
+  }
+
+  .scrollable {
+    overflow-y: scroll
+  }
+
+  .card {
+    border-radius: 4px;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+    width: 17.31rem;  // temp value
+    height: 326px; // temp value
+    z-index: 200;
+
+    .card-title {
+      color: $color-brand-primary-dark;
+      height: 100%;
+    }
+  }
+
+
+  .capabilities-design-card-container,
+  .capabilities-dev-card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .design-card-2,
+  .design-card-4,
+  .dev-card-2,
+  .dev-card-4 {
+    margin-top: -60px;
+  }
+
+
+
+  /* Main Text Animation */
   @keyframes fade-in {
     from  { opacity: 0; }
     to    { opacity: 1; }
@@ -138,5 +201,72 @@
   .fade-in-elem.button-inset:nth-of-type(2) {
     @include fade-in-on-delay(5 * $delay-multiplier);
   }
+  /* End Main Text Animation */
 
+
+  /* Cards Animation */
+  @keyframes fade-in-slide-up {
+    from {
+      opacity: 0;
+      margin-top: 28px;
+    }
+    to {
+      opacity: 1;
+      margin-top: 8px;
+    }
+  }
+
+  @keyframes fade-in-slide-up-higher {
+    from {
+      opacity: 0;
+      margin-top: -20px;
+    }
+    to {
+      opacity: 1;
+      margin-top: -40px;
+    }
+  }
+
+  $card-animation-duration: 1s;
+
+  @mixin fade-in-slide-up-on-delay($delay) {
+    opacity: 0;
+    animation: fade-in-slide-up $card-animation-duration ease-in-out $delay forwards;
+  }
+
+  @mixin fade-in-slide-up-higher-on-delay($delay) {
+    opacity: 0;
+    animation: fade-in-slide-up-higher $card-animation-duration ease-in-out $delay forwards;
+  }
+
+  $card-delay-multiplier: 0.1s;
+
+  .design-card-1.first-animation {
+    @include fade-in-slide-up-on-delay(1 * $card-delay-multiplier);
+  }
+  .design-card-2.first-animation {
+    @include fade-in-slide-up-higher-on-delay(2 * $card-delay-multiplier);
+  }
+  .design-card-3.first-animation {
+    @include fade-in-slide-up-on-delay(3 * $card-delay-multiplier);
+  }
+  .design-card-4.first-animation {
+    @include fade-in-slide-up-higher-on-delay(4 * $card-delay-multiplier);
+  }
+  .dev-card-1.first-animation {
+    @include fade-in-slide-up-on-delay(5 * $card-delay-multiplier);
+  }
+  .dev-card-2.first-animation {
+    @include fade-in-slide-up-higher-on-delay(6 * $card-delay-multiplier);
+  }
+  .dev-card-3.first-animation {
+    @include fade-in-slide-up-on-delay(7 * $card-delay-multiplier);
+  }
+  .dev-card-4.first-animation {
+    @include fade-in-slide-up-higher-on-delay(8 * $card-delay-multiplier);
+  }
+  .dev-card-5.first-animation {
+    @include fade-in-slide-up-on-delay(9 * $card-delay-multiplier);
+  }
+  /* End Cards Animation */
 }
