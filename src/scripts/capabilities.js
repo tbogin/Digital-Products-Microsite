@@ -21,3 +21,29 @@ $(document).ready(function() {
   });
 
 });
+
+let capabilitiesSection = {
+  mainTextAnimatedAlready: false,
+  initialTilesAnimationDone: false,
+  animateMainText: function() {
+    $('.capabilities-section .capabilities-main-text-col .caption').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .heading-2').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .body-text-2').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
+    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
+    this.mainTextAnimatedAlready = true;
+  },
+  animateTilesOnFirstScroll: function() {
+    $('.capabilities-card-container .card').addClass('first-animation');
+    this.initialTilesAnimationDone = true;
+  },
+  animateSection: function() {
+    if (!this.mainTextAnimatedAlready) {
+      this.animateMainText();
+    }
+    if (!this.initialTilesAnimationDone) {
+      this.animateTilesOnFirstScroll();
+    }
+  }
+};
+export default capabilitiesSection;
