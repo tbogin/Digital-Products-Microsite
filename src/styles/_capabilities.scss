@@ -131,7 +131,7 @@
     height: 100%;
     padding-top: 120px;
     width: 580px;
-    // overflow-y: scroll;
+    overflow-y: hidden;
     &::-webkit-scrollbar {
       width: 0;
       display: none;
