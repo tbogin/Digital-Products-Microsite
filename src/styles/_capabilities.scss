@@ -1,8 +1,11 @@
 @import '/_base';
 
-$main-text-col-width: 320px;
+
 
 .capabilities-section {
+
+  $main-text-col-width: 320px;
+
   background: $color-gray-super-light;
   height: auto;
 
@@ -10,7 +13,11 @@ $main-text-col-width: 320px;
 
   @include respond-to(not-mobile) {
     height: 820px;    // somewhat arbitrary. update as needed.
-    padding-left: 100px;    // should be width of side-nav
+    padding-left: 120px;    // should be width of side-nav
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 !important;
   }
 
   .caption:first-of-type {
@@ -71,7 +78,7 @@ $main-text-col-width: 320px;
   .capabilities-main-text-col {
     width: $main-text-col-width;
     padding: 80px 0;
-    margin-left: 10%;   // somewhat arbitrary. update as needed
+    margin-left: 120px;
     @include respond-to(mobile) {
       width: 100%;
       padding: 40px;
@@ -110,8 +117,13 @@ $main-text-col-width: 320px;
   /* Scrollable card items style */
   .capabilities-card-container {
     position: absolute;
-    top: 8.925rem; // temp value
+    // top: 8.925rem; // temp value
     left: 624px; // temp value
+    top: 0;
+    height: 100%;
+    padding-top: 120px;
+    width: 580px;
+    overflow-y: scroll;
   }
 
   .card {
@@ -127,27 +139,142 @@ $main-text-col-width: 320px;
     }
   }
 
-  .design-card-2 {
-    position: absolute;
-    top: -40px;  // temp value
-    left: 302px; // temp value
+
+  .capabilities-design-card-container,
+  .capabilities-dev-card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .design-card-4 {
-    position: absolute;
-    top: 300px;
-    left: 302px;
-  }
-
-  .dev-card-2 {
-    position: absolute;
-    top: 638px; // temp value
-    left: 302px;
-  }
-
+  .design-card-2,
+  .design-card-4,
+  .dev-card-2,
   .dev-card-4 {
-    position: absolute;
-    top: 980px;
-    left: 302px;
+    margin-top: -60px;
   }
+
+  // .design-card-2 {
+  //   position: absolute;
+  //   top: -40px;  // temp value
+  //   left: 302px; // temp value
+  // }
+
+  // .design-card-4 {
+  //   position: absolute;
+  //   top: 300px;
+  //   left: 302px;
+  // }
+
+  // .dev-card-2 {
+  //   position: absolute;
+  //   top: 638px; // temp value
+  //   left: 302px;
+  // }
+
+  // .dev-card-4 {
+  //   position: absolute;
+  //   top: 980px;
+  //   left: 302px;
+  // }
+
+
+
+  /* Main Text Animation */
+  @keyframes fade-in {
+    from  { opacity: 0; }
+    to    { opacity: 1; }
+  }
+  
+  @mixin fade-in-on-delay($delay) {
+    opacity: 0;
+    animation: fade-in 1.5s ease-in-out $delay forwards;
+  }
+
+  $delay-multiplier: 0.1s;
+
+  .fade-in-elem.caption:first-of-type {
+    @include fade-in-on-delay(1 * $delay-multiplier);
+  }
+  .fade-in-elem.heading-2 {
+    @include fade-in-on-delay(2 * $delay-multiplier);
+  }
+  .fade-in-elem.body-text-2 {
+    @include fade-in-on-delay(3 * $delay-multiplier);
+  }
+  .fade-in-elem.button-inset:first-of-type {
+    @include fade-in-on-delay(4 * $delay-multiplier);
+  }
+  .fade-in-elem.button-inset:nth-of-type(2) {
+    @include fade-in-on-delay(5 * $delay-multiplier);
+  }
+  /* End Main Text Animation */
+
+
+  /* Cards Animation */
+  @keyframes fade-in-slide-up {
+    from {
+      opacity: 0;
+      margin-top: 28px;
+    }
+    to {
+      opacity: 1;
+      margin-top: 8px;
+    }
+  }
+
+  @keyframes fade-in-slide-up-higher {
+    from {
+      opacity: 0;
+      margin-top: -20px;
+    }
+    to {
+      opacity: 1;
+      margin-top: -40px;
+    }
+  }
+
+  $card-animation-duration: 1s;
+
+  @mixin fade-in-slide-up-on-delay($delay) {
+    opacity: 0;
+    animation: fade-in-slide-up $card-animation-duration ease-in-out $delay forwards;
+  }
+
+  @mixin fade-in-slide-up-higher-on-delay($delay) {
+    opacity: 0;
+    animation: fade-in-slide-up-higher $card-animation-duration ease-in-out $delay forwards;
+  }
+
+  $card-delay-multiplier: 0.1s;
+
+  .design-card-1.first-animation {
+    @include fade-in-slide-up-on-delay(1 * $card-delay-multiplier);
+  }
+  .design-card-2.first-animation {
+    @include fade-in-slide-up-higher-on-delay(2 * $card-delay-multiplier);
+  }
+  .design-card-3.first-animation {
+    @include fade-in-slide-up-on-delay(3 * $card-delay-multiplier);
+  }
+  .design-card-4.first-animation {
+    @include fade-in-slide-up-higher-on-delay(4 * $card-delay-multiplier);
+  }
+  .dev-card-1.first-animation {
+    @include fade-in-slide-up-on-delay(5 * $card-delay-multiplier);
+  }
+  .dev-card-2.first-animation {
+    @include fade-in-slide-up-higher-on-delay(6 * $card-delay-multiplier);
+  }
+  .dev-card-3.first-animation {
+    @include fade-in-slide-up-on-delay(7 * $card-delay-multiplier);
+  }
+  .dev-card-4.first-animation {
+    @include fade-in-slide-up-higher-on-delay(8 * $card-delay-multiplier);
+  }
+  .dev-card-5.first-animation {
+    @include fade-in-slide-up-on-delay(9 * $card-delay-multiplier);
+  }
+  /* End Cards Animation */
 }
