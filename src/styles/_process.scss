@@ -9,7 +9,7 @@
   }
   @include respond-to(mobile) {
     height: auto;
-    min-height: 1320px;
+    min-height: 1340px;
   }
 
   .process-intro-text {
@@ -49,6 +49,7 @@
     left: 0;
     width: 100%;
     background: #f1f1f1;
+    z-index: -1;
     @include respond-to(not-mobile) {
       height: 296px;
     }
@@ -56,4 +57,64 @@
       height: calc(100% / 3 * 2);
     }
   }
+
+  .process-cards-container {
+    z-index: 1;
+    @include respond-to(not-mobile) {
+      // width: calc(100% / 3 * 2);   // alternative responsive approach. preserves left/right whitespace but makes cards appear too narrow at many viewport sizes. 
+      $ideal-width: 960px;
+      width: $ideal-width;
+      @media screen and (max-width: $ideal-width) {
+        width: 100%;
+      }
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+    @include respond-to(mobile) {
+      width: 100%;
+      max-width: 307px;
+      margin: auto;
+    }
+  }
+
+  .process-card {
+    padding: 48px 40px;
+    background: $color-white;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+    @include respond-to(not-mobile) {
+      width: calc((100% - 40px) / 3);
+      margin: 0 20px 0 0;
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+    @include respond-to(mobile) {
+      width: 100%;
+      margin: 0 0 20px 0;
+      &:last-of-type {
+        margin: 0;
+      }
+      padding-left: 24px;
+      padding-right: 48px;
+    }
+    .process-card-title {
+      font-size: $font-size-x-large;
+      line-height: 1.25;
+      overflow-wrap: break-word;
+      margin: 0;
+    }
+    .horizontal-divider {
+      width: 72px;
+      height: 2px;
+      background: $color-brand-primary;
+      margin: 24px 0;
+    }
+    .process-card-body-text {
+      line-height: 2;
+      margin: 0;
+    }
+  }
+
 }
