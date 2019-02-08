@@ -14,5 +14,5 @@ import './banner.js';
 import './blurb.js';
 import './capabilities.js';
 
-console.log('webpack starterkit');
+// console.log('webpack starterkit');
 
