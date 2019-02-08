@@ -7,6 +7,7 @@ import '../styles/_blurb.scss';
 import '../styles/_typography.scss';
 import '../styles/_capabilities.scss';
 import '../styles/_buttons.scss';
+import '../styles/_process.scss';
 
 // JS imports
 import './nav.js';
