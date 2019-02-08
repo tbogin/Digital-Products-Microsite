@@ -113,24 +113,32 @@
     }
   }
 
-  .caption,
-  .heading-2,
-  .body-text-2,
-  .button-inset,
-  .card {
+  .main-text-col {
+    .caption,
+    .heading-2,
+    .body-text-2,
+    .button-inset {
+      opacity: 0;
+    }
+  }
+  .dp-card {
     opacity: 0;
   }
 
-
+  $default-card-width: 280px;
+  $card-container-padding: 16px;
+  
   /* Scrollable card items style */
   .capabilities-card-container {
     position: absolute;
-    // top: 8.925rem; // temp value
     left: 624px; // temp value
     top: 0;
     height: 100%;
     padding-top: 120px;
-    width: 580px;
+    padding-left: $card-container-padding;
+    padding-right: $card-container-padding;
+    width: calc(2 * $default-card-width + 2 * $card-container-padding + 20px);  
+    width: 612px; // should equal the result of the calc above... which for some reason keeps coming up as invalid...
     overflow-y: hidden;
     &::-webkit-scrollbar {
       width: 0;
@@ -145,16 +153,14 @@
     overflow-y: scroll
   }
 
-  .card {
-    border-radius: 4px;
-    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
-    width: 17.31rem;  // temp value
-    height: 326px; // temp value
-    z-index: 200;
+  .dp-card {
+    width: $default-card-width;
+    z-index: 1;
+    padding: 40px 60px 40px 40px;
+    margin-bottom: 20px;
 
-    .card-title {
-      color: $color-brand-primary-dark;
-      height: 100%;
+    .dp-card-title {
+      font-size: $font-size-large;
     }
   }
 
@@ -165,13 +171,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: stretch;
   }
 
+  // alter relative positioning of right-hand cards
   .design-card-2,
   .design-card-4,
   .dev-card-2,
   .dev-card-4 {
     margin-top: -60px;
+    margin-bottom: 68px;
   }
 
 
