@@ -7,6 +7,7 @@ import '../styles/_blurb.scss';
 import '../styles/_typography.scss';
 import '../styles/_capabilities.scss';
 import '../styles/_buttons.scss';
+import '../styles/_process.scss';
 
 // JS imports
 import './nav.js';
@@ -14,5 +15,5 @@ import './banner.js';
 import './blurb.js';
 import './capabilities.js';
 
-console.log('webpack starterkit');
+// console.log('webpack starterkit');
 
