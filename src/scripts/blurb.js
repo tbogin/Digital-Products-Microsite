@@ -40,7 +40,7 @@ $('.art-possible-container .body-text-1').each(function() {
     .text()
     .split(' ');
   const wordSpan = [];
-  console.log('wordArray', wordArray);
+  // console.log('wordArray', wordArray);
   $.each(wordArray, (index, word) => {
       wordSpan.push(`<span class='text-phase'>${word}&#160;</span>`);
   });

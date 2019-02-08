@@ -137,14 +137,14 @@ nav {
 
       &:active {
         font-weight: $font-weight-semibold;
-        color: $color-brand-primary;
+        color: $color-brand-primary-mid;
       }
     }
     a:hover {
       background-color: transparent;
     }
     a.active {
-      color: $color-gray-dark;
+      color: $color-brand-primary;
     }
   }
 }
