@@ -52,7 +52,7 @@ let capabilitiesSection = {
     $('.capabilities-section .capabilities-main-text-col .heading-2').addClass('fade-in-elem');
     $('.capabilities-section .capabilities-main-text-col .body-text-2').addClass('fade-in-elem');
     $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
-    $('.capabilities-card-container .card').addClass('first-animation');
+    $('.capabilities-card-container .dp-card').addClass('first-animation');
     // this.mainTextAnimatedAlready = true;
   },
 
@@ -65,7 +65,7 @@ let capabilitiesSection = {
 
   // animateTilesOnFirstScroll: function() {
   //   console.log('animateTilesOnFirstScroll is called');
-  //   $('.capabilities-card-container .card').addClass('first-animation');
+  //   $('.capabilities-card-container .dp-card').addClass('first-animation');
   //   this.initialTilesAnimationDone = true;
   // },
   // animateSection: function() {
