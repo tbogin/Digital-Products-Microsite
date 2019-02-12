@@ -6,6 +6,7 @@ import '../styles/_banner.scss';
 import '../styles/_blurb.scss';
 import '../styles/_typography.scss';
 import '../styles/_capabilities.scss';
+import '../styles/_work.scss';
 import '../styles/_buttons.scss';
 import '../styles/_process.scss';
 import '../styles/_cards.scss';
