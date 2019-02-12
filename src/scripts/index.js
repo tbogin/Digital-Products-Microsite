@@ -8,6 +8,7 @@ import '../styles/_capabilities.scss';
 import '../styles/_buttons.scss';
 import '../styles/_process.scss';
 import '../styles/_cards.scss';
+import '../styles/_services.scss';
 
 // JS imports
 import './nav.js';
