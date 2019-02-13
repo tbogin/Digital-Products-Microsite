@@ -16,6 +16,7 @@ import './nav.js';
 import './banner.js';
 import './blurb.js';
 import './capabilities.js';
+import './work.js';
 
 // console.log('webpack starterkit');
 
