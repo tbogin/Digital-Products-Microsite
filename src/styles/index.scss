@@ -12,6 +12,7 @@ h1 {
 }
 
 section {
+  clear: both;
   height: 25rem;
   @include respond-to(not-mobile) {
     height: 820px;

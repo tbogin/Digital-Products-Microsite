@@ -6,7 +6,6 @@
 
   $main-text-col-width: 320px;
 
-  background: $color-gray-super-light;
   height: auto;
 
   position: relative;
@@ -40,6 +39,7 @@
   }
 
   .two-thirds-desktop {
+    background: $color-gray-super-light;  
     @include respond-to(not-mobile) {
       height: 100%;
       width: calc(100% / 3 * 2);

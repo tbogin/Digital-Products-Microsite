@@ -1,0 +1,38 @@
+.capabilities-section {
+  position: relative;
+  height: 2400px;
+  .parallax-background-wrapper {
+    height: 1200px;  // this should be 1/2 the total desired height, since this element appears twice on the page
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    &.first {
+      top: 0;
+    }
+    &.second {
+      top: 1200px;
+    }
+  }
+  .parallax-background {
+    background-attachment: fixed;
+    height: 100%;
+  }
+  .capabilities-main-text-col {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  .capabilities-card-container {
+    display: none;
+  }
+  .mock-card-container {
+    background: #c0ffee;
+    height: 2240px;
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    width: calc(100%/3);
+    padding: 40px;
+  }
+}
