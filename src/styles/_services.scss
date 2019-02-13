@@ -1,0 +1,51 @@
+@import './_base';
+
+.services-section {
+
+  position: relative;
+  background-color: $color-brand-primary-dark;
+
+  @include respond-to(mobile) {
+    height: auto;
+    min-height: 100vh;
+    padding: 64px 64px 0 40px;
+  }
+  
+  @include respond-to(not-mobile) {
+    height: 820px;    // fixed height based on zeplin designs, for now
+    padding: 80px 168px 68px 20px;
+    .lower-portion-background-desktop {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 42%;
+      background-color: $color-gray-super-light;
+    }  
+  }
+
+  .services-intro-text {
+    margin-bottom: 48px;
+    @include respond-to(not-mobile) {
+      padding-left: 100px;
+    }
+    .caption,
+    .heading-2 {
+      color: $color-white;
+    }
+    .caption {
+      margin: 0;
+    }
+    .heading-2 {
+      @include respond-to(not-mobile) {
+        margin: 20px 0 0 0;
+      }
+      @include respond-to(mobile) {
+        font-size: $font-size-x-large;
+        margin: 16px 0 0 0;
+      }
+    }
+  }
+  
+  
+}
