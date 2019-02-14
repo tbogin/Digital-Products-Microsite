@@ -1,18 +1,12 @@
-@import '/_base';
-
-
+@import './_base';
 
 .capabilities-section {
 
   $main-text-col-width: 320px;
-
   background: $color-gray-super-light;
-  height: auto;
-
   position: relative;
 
   @include respond-to(not-mobile) {
-    height: 820px;    // somewhat arbitrary. update as needed.
     padding-left: 120px;    // should be width of side-nav
   }
 
@@ -39,18 +33,27 @@
     }
   }
 
+  $lower-section-mobile-height: 36vh;   // subject to change, but this is my best guess at a decent responsive height based on zeplin mockups
+
   .two-thirds-desktop {
     @include respond-to(not-mobile) {
       height: 100%;
+      min-height: $full-panel-height;
       width: calc(100% / 3 * 2);
       float: left;
+    }
+    @include respond-to(mobile) {
+      // min-height: TBD but will most likely need to be decfind to allow for proper breathing room above the cards
+      height: $full-panel-height - $lower-section-mobile-height;
     }
   }
 
   .one-third-desktop {
-    min-height: 400px;
+    height: $lower-section-mobile-height;
+    min-height: 400px; // subject to change but will be necessary to allow for proper breathing room below the cards
     @include respond-to(not-mobile) {
       height: 100%;
+      min-height: $full-panel-height;
       width: calc(100% / 3);
       float: right;
     }
@@ -137,8 +140,7 @@
     padding-top: 120px;
     padding-left: $card-container-padding;
     padding-right: $card-container-padding;
-    width: calc(2 * $default-card-width + 2 * $card-container-padding + 20px);  
-    width: 612px; // should equal the result of the calc above... which for some reason keeps coming up as invalid...
+    width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
     overflow-y: hidden;
     &::-webkit-scrollbar {
       width: 0;
