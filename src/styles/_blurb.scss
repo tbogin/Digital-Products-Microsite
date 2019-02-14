@@ -1,21 +1,22 @@
 @import '/_base';
 
 .art-possible-section {
-  height: 44rem;
+  height: auto;
+  min-height: 75vh;
   width: 100%;
   background-color: $color-brand-primary-dark;
   display: flex;
   justify-content: center;
-  @include respond-to(mobile) {
-    height: 30.75rem;
-  }
 
-
-
-  #possible {
+  .art-possible-inner {
     position: relative;
     display: flex;
     align-items: center;
+    .body-text-1 {
+      max-width: 633px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
   }
 }
 
@@ -27,7 +28,6 @@
       padding: 0;
     }
   
-
     .body-text-1 {
       color: $color-white;
       line-height: $line-height-x-large;
@@ -37,7 +37,6 @@
         padding: 0 40px;
       }
 
-      
     }
   }
 
@@ -76,13 +75,6 @@
   }
 }
 
-#possible {
-  .body-text-1 {
-    max-width: 633px;
-    margin: 0 auto;
-    font-size: 16px;
-  }
-}
 
 // custom divs for Animation/ScrollMagic
 .art-scroll {
