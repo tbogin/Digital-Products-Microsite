@@ -5,7 +5,7 @@
   color: black;
   position: fixed;
   top: -3rem;
-  font-family: 'Graphik';
+  font-family: $font-base;
   z-index: 100;
   @include respond-to(mobile) { display: none; }
 
@@ -125,7 +125,7 @@ nav {
   li {
     a {
       height: 3.25rem;
-      font-family: Graphik;
+      font-family: $font-base;
       line-height: $line-height-x-large;
       text-align: center;
       letter-spacing: -0.3px;
