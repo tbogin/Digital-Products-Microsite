@@ -2,50 +2,28 @@
 
 .banner-section {
   box-sizing: border-box;
-  width: 29.38rem;
-  padding-top: 7.5rem;
-  font-family: $font-base;
-  padding-left: 15rem;
+  
+  @include section-standard-padding;
 
-  .dp-title {
-    font-size: $font-size-x-large;
-    font-weight: $font-weight-semibold;
-    color: $color-brand-primary-dark;
-    line-height: $line-height-medium;
-    letter-spacing: -0.3px;
-    margin: 0 0 1.25rem;
+  @include respond-to(not-mobile) {
+    padding-top: calc(100vh / 12);
+    .banner-main-text {
+      width: calc(100vw / 3);
+      min-width: 500px;
+    }
   }
 
   .dp-headline {
-    margin: 1.5rem 0;
-    display: inline-block;
-    font-size: $font-size-xxxx-large;
-    font-weight: $font-weight-semibold;
-    color: $color-brand-primary;
-    line-height: $line-height-small;
+    line-height: 1;
+    .first-line {
+      margin-bottom: 1.5rem;
+    }
   }
-
-  .dp-intro {
-    font-size: $font-size-large;
-    font-weight: $font-weight-regular;
-    color: $color-gray-dark;
-    line-height: 1.67;
-    width: 27.5rem;
-    margin-bottom: 4rem;
-  }
-
-  .dp-sub-title {
-    font-size: $font-size-large;
-    font-weight: $font-weight-semibold;
-    color: $color-brand-primary-dark;
-    margin: 0 auto 1rem;
-    height: 2rem;
-    line-height: normal;
-  }
-
+  
   .dp-sub-link {
     display: block;
     color: $color-brand-primary;
+    font-family: $font-base-semibold;
     margin-bottom: 0.5rem;
   }
 
@@ -53,52 +31,41 @@
     display: inline-block;
   }
 
-  .row {
-    width: 29.38rem;
-    margin: 0;
+  .link-section {
+    margin: 2.5rem 0 0 0;
   }
 
-  .col {
-    padding-left: 0;
-    width: 14.06rem;
-  }
-
-  .row .col:first-child {
-    margin-right: 20px;
-  }
-
-  .acn-title {
-    font-weight: $font-weight-semibold;
+  .link-subsection {
+    // padding-left: 0;
+    width: 50%;
+    float: left;
   }
 }
 
 @include respond-to(mobile) {
   .banner-section {
     width: 100%;
-
-    .dp-title {
-      font-size: $font-size-large;
-      letter-spacing: normal;
-      line-height: $line-height-xx-large;
-    }
-
-    .dp-headline {
-      font-size: $font-size-xxx-large;
-      word-spacing: 600px;
-      margin: 0.5rem 0;
-    }
-
-    .dp-intro {
-      width: 18.44rem;
-    }
-
-    .dp-sub-link,
-    .col {
-      margin-bottom: 0.75rem;
-    }
-
-    .row {
+    
+    .link-section,
+    .link-subsection {
       width: 100%;
+    }
+
+    .link-section {
+      margin-top: 3.5rem;
+    }
+
+    .link-subsection {
+      margin-top: 0.75rem;
+    }
+
+    .heading-5 {
+      margin-top: 0;
+    }
+
+    .link-subsection,
+    .dp-sub-link {
+      margin-bottom: 0.75rem;
     }
   }
 }

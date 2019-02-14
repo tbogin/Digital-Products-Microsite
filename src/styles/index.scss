@@ -6,10 +6,10 @@ body, html {
   font-size: 16px !important;
 }
 
-h1 {
-  color: $color-brand-primary;
-  margin: 0 !important;
-}
+// h1 {
+//   color: $color-brand-primary;
+//   margin: 0 !important;
+// }
 
 section {
   height: auto;
@@ -18,12 +18,4 @@ section {
   @include respond-to(mobile) { 
     padding: 3.75rem 2.5rem 0 !important; 
   }
-}
-
-// TODO: Remove this when all sections are finished
-.title {
-  color: $color-brand-primary;
-  font-family: graphik;
-  font-weight: $font-weight-thin;
-  font-style: italic;
 }
