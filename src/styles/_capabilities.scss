@@ -3,19 +3,37 @@
 .capabilities-section {
 
   $main-text-col-width: 21rem;  // = 336px. 20rem (320px) should be sufficient; 21rem makes sure there's a buffer just in case.
-  background: $color-gray-super-light;
-  position: relative;
+  $card-container-height: 1990px;   // hard-coded... for now, at least
+  $section-top-bottom-padding: 80px;
+  $section-height: $card-container-height - 40px + 2 * $section-top-bottom-padding;
 
-  @include respond-to(not-mobile) {
-    height: $full-panel-height;
-  }
+  height: $section-height;
+  position: relative;
 
   @include respond-to(mobile) {
     padding: 0 !important;
   }
 
+  .parallax-background-wrapper {
+    height: $section-height / 2;  // this should be 1/2 the total desired height, since this element appears twice on the page
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    &.first {
+      top: 0;
+    }
+    &.second {
+      top: $section-height / 2; // this should be 1/2 the total desired height, since this element should begin just where the first one ends
+    }
+  }
+  .parallax-background {
+    background-attachment: fixed;
+    height: 100%;
+  }
+
   .caption:first-of-type {
-    margin-bottom: 0;
+    margin: 0;
   }
 
   .heading-2 {
@@ -81,6 +99,14 @@
 
   .capabilities-main-text-col {
     width: $main-text-col-width;
+    padding-top: $section-top-bottom-padding;
+    padding-bottom: $section-top-bottom-padding + 6px;  // not 100% sure why, but this value seems to be just right
+    margin-left: $section-default-padding-lr;
+    @include respond-to(not-mobile) {
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
     @include respond-to(mobile) {
       width: 100%;
       padding: 40px;
@@ -115,7 +141,7 @@
     }
   }
 
-  .main-text-col {
+  .capabilities-main-text-col {
     .caption,
     .heading-2,
     .body-text-2,
@@ -130,21 +156,13 @@
   $default-card-width: 280px;
   $card-container-padding: 16px;
   
-  /* Scrollable card items style */
   .capabilities-card-container {
     position: absolute;
-    top: 0;
     right: $section-default-padding-lr;
-    height: 100%;
-    padding-top: 120px;
-    padding-left: $card-container-padding;
-    padding-right: $card-container-padding;
     width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
-    overflow-y: hidden;
-    &::-webkit-scrollbar {
-      width: 0;
-      display: none;
-    }
+    height: $card-container-height;
+    top: $section-top-bottom-padding + $card-container-padding;
+    padding: $card-container-padding;
     @include respond-to(mobile) {
       display: none;
     }

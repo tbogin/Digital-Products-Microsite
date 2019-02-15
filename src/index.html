@@ -100,31 +100,36 @@
 
     <!-- Section Three - Capabilities -->
     <section id="capabilities" class="capabilities-section">
-      <div class="two-thirds-desktop">
-        <div class="capabilities-main-text-col">
-          <h2 class="caption">&gt;_Our Capabilities</h2>
-          <h2 class="heading-2">
-            What <span class="highlight">we do</span>
-          </h2>
-          <p class="body-text-2">
-            Lorem ipsum dolor amet blue bottle coloring book migas pug synth
-            etsy. Locavore neutra beard helvetica 8-bit hammock.
-          </p>
-          <div class="buttons">
-            <button type="button" class="link button-inset active" id="button-design-capabilities">
-              Design
-              <span class="hidden-mobile">&nbsp;Capabilities</span>
-            </button>
-            <button type="button" class="link button-inset" id="button-development-capabilities">
-              Development
-              <span class="hidden-mobile">&nbsp;Capabilities</span>
-            </button>
-          </div>
+      <!-- Floating text & buttons -->
+      <div class="capabilities-main-text-col">
+        <h2 class="caption">>_Our Capabilities</h2>
+        <h2 class="heading-2">
+          What <span class="highlight">we do</span>
+        </h2>
+        <p class="body-text-2">
+          Lorem ipsum dolor amet blue bottle coloring book migas pug synth
+          etsy. Locavore neutra beard helvetica 8-bit hammock.
+        </p>
+        <div class="buttons">
+          <button type="button" class="link button-inset active" id="button-design-capabilities">
+            Design
+            <span class="hidden-mobile">&nbsp;Capabilities</span>
+          </button>
+          <button type="button" class="link button-inset" id="button-development-capabilities">
+            Development
+            <span class="hidden-mobile">&nbsp;Capabilities</span>
+          </button>
         </div>
       </div>
-      <div class="one-third-desktop capabilities-background-image"></div>
-
-      <!-- Scrollable card container -->
+      <!-- End floating text & buttons -->     
+      <!-- First copy of parallax background  -->
+      <div class="parallax-background-wrapper first">
+        <div class="two-thirds-desktop parallax-background">
+        </div>
+        <div class="one-third-desktop capabilities-background-image parallax-background"></div>
+      </div>
+      <!-- End first copy of parallax background  -->
+      <!-- Card container -->
       <div class="capabilities-card-container">
         <div class="capabilities-design-card-container">
           <div class="dp-card design-card-1">
@@ -200,7 +205,7 @@
           </div>
           <!-- end dev card 2 -->
           <div class="dp-card dev-card-3">
-            <h3 class="heading-3 dp-card-title">Micro <br> Services</h3>
+            <h3 class="heading-3 dp-card-title">Micro <br /> Services</h3>
             <div class="dp-card-horizontal-divider"></div>
             <ul class="body-text-2 dp-card-content-list">
               <li>_Node.js</li>
@@ -237,7 +242,13 @@
         </div>
         <!-- end dev cards -->
       </div>
-      <!-- End scrollable card container -->
+      <!-- End card container -->
+      <!-- Second copy of parallax background -->
+      <div class="parallax-background-wrapper second">
+        <div class="two-thirds-desktop parallax-background"></div>
+        <div class="one-third-desktop capabilities-background-image parallax-background"></div>
+      </div>
+      <!-- End second copy of parallax background -->
     </section>
 
     <!-- Section Four - Process -->
