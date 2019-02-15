@@ -10,7 +10,7 @@ const animationIn = anime
       opacity: [0, 1],
       easing: 'easeInOutSine',
       duration: 1000,
-      delay: 600
+      delay: 400
     })
     .add(
     {
@@ -81,4 +81,7 @@ const workScene2 = new ScrollMagic.Scene({
   
 $('.next').on('click', ()=> {
     animationOut.play();
-})
+});
+$('.prev').on('click', ()=> {
+    animationIn.play();
+});
