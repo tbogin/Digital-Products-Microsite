@@ -15,19 +15,19 @@ const animationIn = anime
     .add(
     {
         targets: '.inner-card .buttons',
-        translateY: [60, 0],
+        translateX: [-80, 0],
         opacity: [0, 1],
         easing: 'easeInOutSine',
         duration: 1000,
-    }, '-=800')
+    }, '-=500')
     .add(
     {
         targets: '.feat-img',
-        translateY: [200, 0],
+        translateY: [100, 0],
         opacity: [0, 1],
         easing: 'easeInOutSine',
         duration: 1000,
-    }, '-=800');
+    }, '-=500');
     
 const animationOut = anime
 .timeline({ loop: false })
