@@ -6,34 +6,11 @@ body, html {
   font-size: 16px !important;
 }
 
-h1 {
-  color: $color-brand-primary;
-  margin: 0 !important;
-}
-
 section {
+  height: auto;
+  min-height: $full-panel-height; 
   clear: both;
-  height: 25rem;
-  @include respond-to(not-mobile) {
-    height: 820px;
+  @include respond-to(mobile) { 
+    padding: 3.75rem 2.5rem 0 !important; 
   }
-
-  @include respond-to(mobile) { padding: 3.75rem 2.5rem 0 !important; }
-}
-
-#contacts {
-  height: calc(100vh + 1px);  // temporary, for nav demo only. @TODO: remove this when working on Contact section
-}
-
-.main-container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-// TODO: Remove this when all sections are finished
-.title {
-  color: $color-brand-primary;
-  font-family: graphik;
-  font-weight: $font-weight-thin;
-  font-style: italic;
 }

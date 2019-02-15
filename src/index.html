@@ -1,327 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-    <title>DP Microsite</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <!-- Mobile Nav -->
-      <nav class="mobile-nav">
-        <div class="nav-wrapper">
-          <a href="#banner" class="brand-logo"><div class="dp-mobile-logo"></div></a>
-          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
-            <i class="material-icons">menu</i>
-          </a>
-        </div>
-      </nav>
 
-      <ul class="sidenav pattern" id="mobile-nav">
-        <li>
-          <div class="mobile-nav-header">
-            <div class="mobile-icon sidenav-close"></div>
-          </div>
-        </li>
-        <li><a href="#capabilities" class="sidenav-close">Capabilities</a></li>
-        <li><a href="#process" class="sidenav-close">Process</a></li>
-        <li><a href="#work" class="sidenav-close">Work</a></li>
-        <li><a href="#services" class="sidenav-close">Services</a></li>
-        <li><a href="#contacts" class="sidenav-close">Contact</a></li>
-      </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <!-- Desktop Nav -->
-      <div class="dp-nav">
-        <ul>
-          <li>
-            <a href="#banner"><div class="dp-logo"></div></a>
-          </li>
-          <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#process">Process</a></li>
-          <li class="nav-center"><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contacts">Contact</a></li>
-        </ul>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+  <title>DP Microsite</title>
+</head>
+
+<body>
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav">
+    <div class="nav-wrapper">
+      <a href="#banner" class="brand-logo">
+        <div class="dp-mobile-logo"></div>
+      </a>
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+
+  <ul class="sidenav pattern" id="mobile-nav">
+    <li>
+      <div class="mobile-nav-header">
+        <div class="mobile-icon sidenav-close"></div>
       </div>
+    </li>
+    <li><a href="#capabilities" class="sidenav-close">Capabilities</a></li>
+    <li><a href="#process" class="sidenav-close">Process</a></li>
+    <li><a href="#work" class="sidenav-close">Work</a></li>
+    <li><a href="#services" class="sidenav-close">Services</a></li>
+    <li><a href="#contacts" class="sidenav-close">Contact</a></li>
+  </ul>
 
-      <main>
+  <!-- Desktop Nav -->
+  <div class="dp-nav">
+    <ul>
+      <li>
+        <a href="#banner">
+          <div class="dp-logo"></div>
+        </a>
+      </li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#process">Process</a></li>
+      <li class="nav-center"><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contacts">Contact</a></li>
+    </ul>
+  </div>
 
-        <!-- Section One - Digital Products banner page -->
-        <section id="banner">
-          <h4 class="dp-title">&gt;_We build</h4>
-          <h1 class="dp-headline">digital products</h1>
-          <p class="dp-intro">
-            <span class="phase">Digital Products is a group within</span>
-            <span class="phase"
-              ><span class="acn-title">Accenture Interactive</span> that
-              specializes</span
-            >
-            <span class="phase">in crafting digital products.</span>
-          </p>
-          <div class="row">
-            <div class="col s12 m6">
-              <h5 class="dp-sub-title">Who We Are</h5>
-              <a class="dp-sub-link link" href="#capabilities"
-                >_Our Capabilities</a
-              >
-              <a class="dp-sub-link link" href="#process">_Our Process</a>
-            </div>
-            <div class="col s12 m6">
-              <h5 class="dp-sub-title">How We Work</h5>
-              <a class="dp-sub-link link" href="#work">_Our Work</a>
-              <a class="dp-sub-link link" href="#services">_Our Services</a>
-            </div>
+  <main>
+
+    <!-- Section One - Digital Products banner page -->
+    <section id="banner" class="banner-section">
+      <div class="banner-main-text">
+        <h1 class="heading-1 dp-headline">
+          <span class="heading-4 display-block first-line">&gt;_We build</span>
+          <span class="display-block second-line">digital products</span>
+        </h1>
+        <p class="body-text-1 dp-intro">
+          <span class="phase">Digital Products is a group within</span>
+          <span class="phase"><span class="semibold">Accenture Interactive</span> that
+            specializes</span>
+          <span class="phase">in crafting digital products.</span>
+        </p>
+        <div class="link-section">
+          <div class="link-subsection">
+            <h2 class="heading-5">Who We Are</h2>
+            <a class="dp-sub-link link" href="#capabilities">_Our Capabilities</a>
+            <a class="dp-sub-link link" href="#process">_Our Process</a>
           </div>
-        </section>
-
-        <!-- Section Two - Art of the Possible -->
-        <div class="art-possible-section">
-          <div id="possible">
-            <div class="art-possible-container center">
-              <div class="dp-icon">>_</div>
-              <div class="art-possible-header">
-                <h1 class="heading-2">The art of the possible, realized</h1>
-              </div>
-              <p class="body-text-1">We know ideas are plentiful. We connect the dots – transforming ideas from a brilliant strategy into a polished product.</p>
-              <div class="blocker-div"></div>
-              <div class="upward-trigger-element"></div>
-            </div>
+          <div class="link-subsection">
+            <h2 class="heading-5">How We Work</h2>
+            <a class="dp-sub-link link" href="#work">_Our Work</a>
+            <a class="dp-sub-link link" href="#services">_Our Services</a>
           </div>
         </div>
- 
-        <!-- Section Three - Capabilities - with some old-school parallax -->
-        <section id="capabilities" class="capabilities-section">
+      </div>
+    </section>
 
-          <!-- Floating text & buttons -->
-          <div class="capabilities-main-text-col">
-            <h2 class="caption">>_Our Capabilities</h2>
-            <h2 class="heading-2">
-              What <span class="highlight">we do</span>
-            </h2>
-            <p class="body-text-2">
-              Lorem ipsum dolor amet blue bottle coloring book migas pug synth
-              etsy. Locavore neutra beard helvetica 8-bit hammock.
-            </p>
-            <div class="buttons">
-              <button
-                type="button"
-                class="link button-inset active"
-                id="button-design-capabilities"
-              >
-                Design
-                <span class="hidden-mobile">&nbsp;Capabilities</span>
-              </button>
-              <button
-                type="button"
-                class="link button-inset"
-                id="button-development-capabilities"
-              >
-                Development
-                <span class="hidden-mobile">&nbsp;Capabilities</span>
-              </button>
-            </div>
+    <!-- Section Two - Art of the Possible -->
+    <div class="art-possible-section">
+      <div id="possible" class="art-possible-inner">
+        <div class="art-possible-container center">
+          <div class="dp-icon">&gt;_</div>
+          <div class="art-possible-header">
+            <h2 class="heading-2">The art of the possible, realized</h2>
           </div>
-          <!-- End floating text & buttons -->
-          
-          <!-- First copy of parallax background  -->
-          <div class="parallax-background-wrapper first">
-            <div class="two-thirds-desktop parallax-background">
-            </div>
-            <div class="one-third-desktop capabilities-background-image parallax-background"></div>
-          </div>
-          <!-- End first copy of parallax background  -->
-
-          <!-- Scrollable card container (currently not being rendered) -->
-          <div class="capabilities-card-container">
-            <div class="capabilities-design-card-container">
-              <div class="dp-card design-card-1">
-                <h3 class="heading-3 dp-card-title">User <br /> Experience</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Look & feel</li>
-                  <li>_Interaction design</li>
-                  <li>_User research</li>
-                  <li>_Information architecture</li>
-                </ul>
-              </div>
-              <!-- end design card 1 -->
-              <div class="dp-card design-card-2">
-                <h3 class="heading-3 dp-card-title">Production <br /> Design</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Wireframes</li>
-                  <li>_Visual design</li>
-                  <li>_Asset creation</li>
-                  <li>_Prototyping</li>
-                  <li>_Style guides</li>
-                </ul>
-              </div>
-              <!-- end design card 2 -->
-              <div class="dp-card design-card-3">
-                <h3 class="heading-3 dp-card-title">Product <br /> Management</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Requirement analysis</li>
-                  <li>_Prioritization</li>
-                  <li>_Backlog grooming</li>
-                  <li>_Story & journey mapping</li>
-                </ul>
-              </div>
-              <!-- end design card 3 -->
-              <div class="dp-card design-card-4">
-                <h3 class="heading-3 dp-card-title">Bespoke <br /> Teams</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Scrum</li>
-                  <li>_Roadmapping</li>
-                  <li>_Release management</li>
-                  <li>_SAFe</li>
-                </ul>
-              </div>
-              <!-- end design card 4 -->
-            </div>
-            <!-- end design cards -->
-            <div class="capabilities-dev-card-container">
-              <div class="dp-card dev-card-1">
-                <h3 class="heading-3 dp-card-title">Native <br /> Mobile</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_iOS</li>
-                  <li>_Android</li>
-                  <li>_Swift</li>
-                  <li>_Kotlin</li>
-                  <li>_Java</li>
-                </ul>
-              </div>
-              <!-- end dev card 1 -->
-              <div class="dp-card dev-card-2">
-                <h3 class="heading-3 dp-card-title">Front End <br /> Web</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Angular</li>
-                  <li>_React</li>
-                  <li>_HTML</li>
-                  <li>_CSS</li>
-                  <li>_JavaScript</li>
-                </ul>
-              </div>
-              <!-- end dev card 2 -->
-              <div class="dp-card dev-card-3">
-                <h3 class="heading-3 dp-card-title">Micro <br > Services</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Node.js</li>
-                  <li>_Rails</li>
-                  <li>_Phoenix</li>
-                  <li>_Java</li>
-                  <li>_.NET</li>
-                </ul>
-              </div>
-              <!-- end dev card 3 -->
-              <div class="dp-card dev-card-4">
-                <h3 class="heading-3 dp-card-title">Platform <br /> Customization</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_AEM</li>
-                  <li>_Salesforce</li>
-                  <li>_Hybris</li>
-                  <li>_SAP</li>
-                  <li>_IBM</li>
-                  <li>_Pega</li>
-                </ul>
-              </div>
-              <!-- end dev card 4 -->
-              <div class="dp-card dev-card-5">
-                <h3 class="heading-3 dp-card-title">Testing &amp; <br /> DevOps</h3>
-                <div class="dp-card-horizontal-divider"></div>
-                <ul class="body-text-2 dp-card-content-list">
-                  <li>_Manual testing</li>
-                  <li>_Automated testing</li>
-                  <li>_Continuous integration & development</li>
-                </ul>
-              </div>
-              <!-- end dev card 5 -->
-            </div>
-            <!-- end dev cards -->
-          </div>
-          <!-- End scrollable card container -->
-
-          <!-- Second copy of parallax background  -->
-          <div class="parallax-background-wrapper second">
-            <div class="two-thirds-desktop parallax-background"></div>
-            <div class="one-third-desktop capabilities-background-image parallax-background"></div>
-          </div>
-          <!-- End second copy of parallax background  -->
-
-        </section>
-
-        <!-- Section Four - Process -->
-        <section id="process" class="process-section">
-          <div class="process-intro-text">
-            <h2 class="caption">&gt;_Our Process</h2>
-            <h2 class="heading-2">
-              How <span class="highlight">we work</span>
-            </h2>
-            <p class="body-text-1">
-              We're passionate about delivering high quality and innovative solutions.
-            </p>
-          </div>
-          <div class="solid-background"></div>
-          <div class="process-cards-container">
-            <div class="dp-card">
-              <h3 class="heading-3 dp-card-title">We're Collaborators</h3>
-              <div class="dp-card-horizontal-divider"></div>
-              <p class="body-text-2 dp-card-body-text">We operate in cross-functional teams, eliminating handoffs and silos.</p>
-            </div>
-            <div class="dp-card">
-              <h3 class="heading-3 dp-card-title">Studio Delivery</h3>
-              <div class="dp-card-horizontal-divider"></div>
-              <p class="body-text-2 dp-card-body-text">While we can support travel, most projects are delivered from our studio locations.</p>
-            </div>
-            <div class="dp-card">
-              <h3 class="heading-3 dp-card-title">Bespoke Teams</h3>
-              <div class="dp-card-horizontal-divider"></div>
-              <p class="body-text-2 dp-card-body-text">One size doesn't fit all, so we can identify how we can tailor the solutions for you.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section Five - Work -->
-        <section id="work">
-          <h1>Section - Work</h1>
-          <p>
-            Officia ipsum fugit iure eaque quisquam error tempore earum enim
-            illum, delectus officiis incidunt corrupti aliquid nam quas
-            perspiciatis eveniet doloremque quod labore? Doloremque, ipsum?
-          </p>
-        </section>
-
-        <!-- Section Six - Services -->
-        <section id="services">
-          <h1>Section - Services</h1>
-          <p>
-            Officia ipsum fugit iure eaque quisquam error tempore earum enim
-            illum, delectus officiis incidunt corrupti aliquid nam quas
-            perspiciatis eveniet doloremque quod labore? Doloremque, ipsum?
-          </p>
-        </section>
-
-        <!-- Section Seven - Contacts -->
-        <section id="contacts">
-          <h1>Section - Contact</h1>
-          <p>
-            Officia ipsum fugit iure eaque quisquam error tempore earum enim
-            illum, delectus officiis incidunt corrupti aliquid nam quas
-            perspiciatis eveniet doloremque quod labore? Doloremque, ipsum?
-          </p>
-        </section>
-      </main>
+          <p class="body-text-1">We know ideas are plentiful. We connect the dots – transforming ideas from a brilliant strategy into a polished product.</p>
+          <div class="blocker-div"></div>
+          <div class="upward-trigger-element"></div>
+        </div>
+      </div>
     </div>
 
-    <!-- jQuery for now -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
-  </body>
+    <!-- Section Three - Capabilities -->
+    <section id="capabilities" class="capabilities-section">
+      <div class="two-thirds-desktop">
+        <div class="capabilities-main-text-col">
+          <h2 class="caption">&gt;_Our Capabilities</h2>
+          <h2 class="heading-2">
+            What <span class="highlight">we do</span>
+          </h2>
+          <p class="body-text-2">
+            Lorem ipsum dolor amet blue bottle coloring book migas pug synth
+            etsy. Locavore neutra beard helvetica 8-bit hammock.
+          </p>
+          <div class="buttons">
+            <button type="button" class="link button-inset active" id="button-design-capabilities">
+              Design
+              <span class="hidden-mobile">&nbsp;Capabilities</span>
+            </button>
+            <button type="button" class="link button-inset" id="button-development-capabilities">
+              Development
+              <span class="hidden-mobile">&nbsp;Capabilities</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="one-third-desktop capabilities-background-image"></div>
+
+      <!-- Scrollable card container -->
+      <div class="capabilities-card-container">
+        <div class="capabilities-design-card-container">
+          <div class="dp-card design-card-1">
+            <h3 class="heading-3 dp-card-title">User <br /> Experience</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Look & feel</li>
+              <li>_Interaction design</li>
+              <li>_User research</li>
+              <li>_Information architecture</li>
+            </ul>
+          </div>
+          <!-- end design card 1 -->
+          <div class="dp-card design-card-2">
+            <h3 class="heading-3 dp-card-title">Production <br /> Design</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Wireframes</li>
+              <li>_Visual design</li>
+              <li>_Asset creation</li>
+              <li>_Prototyping</li>
+              <li>_Style guides</li>
+            </ul>
+          </div>
+          <!-- end design card 2 -->
+          <div class="dp-card design-card-3">
+            <h3 class="heading-3 dp-card-title">Product <br /> Management</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Requirement analysis</li>
+              <li>_Prioritization</li>
+              <li>_Backlog grooming</li>
+              <li>_Story & journey mapping</li>
+            </ul>
+          </div>
+          <!-- end design card 3 -->
+          <div class="dp-card design-card-4">
+            <h3 class="heading-3 dp-card-title">Bespoke <br /> Teams</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Scrum</li>
+              <li>_Roadmapping</li>
+              <li>_Release management</li>
+              <li>_SAFe</li>
+            </ul>
+          </div>
+          <!-- end design card 4 -->
+        </div>
+        <!-- end design cards -->
+        <div class="capabilities-dev-card-container">
+          <div class="dp-card dev-card-1">
+            <h3 class="heading-3 dp-card-title">Native <br /> Mobile</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_iOS</li>
+              <li>_Android</li>
+              <li>_Swift</li>
+              <li>_Kotlin</li>
+              <li>_Java</li>
+            </ul>
+          </div>
+          <!-- end dev card 1 -->
+          <div class="dp-card dev-card-2">
+            <h3 class="heading-3 dp-card-title">Front End <br /> Web</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Angular</li>
+              <li>_React</li>
+              <li>_HTML</li>
+              <li>_CSS</li>
+              <li>_JavaScript</li>
+            </ul>
+          </div>
+          <!-- end dev card 2 -->
+          <div class="dp-card dev-card-3">
+            <h3 class="heading-3 dp-card-title">Micro <br> Services</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Node.js</li>
+              <li>_Rails</li>
+              <li>_Phoenix</li>
+              <li>_Java</li>
+              <li>_.NET</li>
+            </ul>
+          </div>
+          <!-- end dev card 3 -->
+          <div class="dp-card dev-card-4">
+            <h3 class="heading-3 dp-card-title">Platform <br /> Customization</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_AEM</li>
+              <li>_Salesforce</li>
+              <li>_Hybris</li>
+              <li>_SAP</li>
+              <li>_IBM</li>
+              <li>_Pega</li>
+            </ul>
+          </div>
+          <!-- end dev card 4 -->
+          <div class="dp-card dev-card-5">
+            <h3 class="heading-3 dp-card-title">Testing &amp; <br /> DevOps</h3>
+            <div class="dp-card-horizontal-divider"></div>
+            <ul class="body-text-2 dp-card-content-list">
+              <li>_Manual testing</li>
+              <li>_Automated testing</li>
+              <li>_Continuous integration & development</li>
+            </ul>
+          </div>
+          <!-- end dev card 5 -->
+        </div>
+        <!-- end dev cards -->
+      </div>
+      <!-- End scrollable card container -->
+    </section>
+
+    <!-- Section Four - Process -->
+    <section id="process" class="process-section">
+      <div class="process-intro-text">
+        <h2 class="caption">&gt;_Our Process</h2>
+        <h2 class="heading-2">
+          How <span class="highlight">we work</span>
+        </h2>
+        <p class="body-text-1">
+          We're passionate about delivering high quality and innovative solutions.
+        </p>
+      </div>
+      <div class="solid-background"></div>
+      <div class="process-cards-container">
+        <div class="dp-card">
+          <h3 class="heading-3 dp-card-title">We're Collaborators</h3>
+          <div class="dp-card-horizontal-divider"></div>
+          <p class="body-text-2 dp-card-body-text">We operate in cross-functional teams, eliminating handoffs and
+            silos.</p>
+        </div>
+        <div class="dp-card">
+          <h3 class="heading-3 dp-card-title">Studio Delivery</h3>
+          <div class="dp-card-horizontal-divider"></div>
+          <p class="body-text-2 dp-card-body-text">While we can support travel, most projects are delivered from our
+            studio locations.</p>
+        </div>
+        <div class="dp-card">
+          <h3 class="heading-3 dp-card-title">Bespoke Teams</h3>
+          <div class="dp-card-horizontal-divider"></div>
+          <p class="body-text-2 dp-card-body-text">One size doesn't fit all, so we can identify how we can tailor the
+            solutions for you.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Section Five - Work -->
+    <section id="work" class="work-section">
+      <div class="one-third-desktop work-background-image"></div>
+      <div class="two-thirds-desktop">
+        <div class="heading-block">
+          <h2 class="caption">&gt;_Our Work</h2>
+          <h2 class="heading-2">
+            What <span class="highlight">we've made</span>
+          </h2>
+        </div>
+        <div class="card-slide">
+          <div class="work-main-text-col">
+            <div class="card">
+              <div class="card-bg">
+                <div class="feat-img laptop"></div>
+                <div class="grid"></div>
+              </div>
+              <div class="inner-card">
+                <h2 class="caption">Products</h2>
+                <h3 class="heading-3 dp-card-title">The one about<br> buying cars in bulk</h3>
+                <p class="body-text-2">Cras maximus congue neque vitae molestie. Morbi placerat, massa a laoreet
+                  tincidunt.</p>
+                <div class="buttons">
+                  <button class="btn pdf">Download Case Study</button>
+                  <button class="btn non-pdf apple"></button>
+                  <button class="btn non-pdf google-play"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-main-text-col">
+            <div class="card">
+              <div class="card-bg">
+                <div class="feat-img cellphone"></div>
+                <div class="grid"></div>
+              </div>
+              <div class="inner-card">
+                <h2 class="caption">Communications, Media & Technology</h2>
+                <h3 class="heading-3 dp-card-title">Wireless Headphones</h3>
+                <p class="body-text-2">Cras maximus congue neque vitae molestie. Morbi placerat, massa a laoreet
+                  tincidunt.</p>
+                <div class="buttons">
+                  <button class="btn pdf">Download Case Study</button>
+                  <button class="btn non-pdf apple"></button>
+                  <button class="btn non-pdf google-play"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-main-text-col">
+            <div class="card">
+              <div class="card-bg">
+                <div class="feat-img laptop"></div>
+                <div class="grid"></div>
+              </div>
+              <div class="inner-card">
+                <h2 class="caption">Health & Public Service</h2>
+                <h3 class="heading-3 dp-card-title">Redefining modern education</h3>
+                <p class="body-text-2">Cras maximus congue neque vitae molestie. Morbi placerat, massa a laoreet
+                  tincidunt.</p>
+                <div class="buttons">
+                  <button class="btn pdf">Download Case Study</button>
+                  <button class="btn non-pdf apple"></button>
+                  <button class="btn non-pdf google-play"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Six - Services -->
+    <section id="services" class="services-section">
+      <div class="services-intro-text">
+        <h2 class="caption">&gt;_Our Services</h2>
+        <h2 class="heading-2">How we can help</h2>
+      </div>
+      <div class="lower-portion-background-desktop hidden-mobile"></div>
+    </section>
+    
+    <!-- Section Seven - Contacts -->
+    <section id="contacts">
+      <h2 class="heading-1">Section - Contact</h2>
+      <p>
+        Officia ipsum fugit iure eaque quisquam error tempore earum enim
+        illum, delectus officiis incidunt corrupti aliquid nam quas
+        perspiciatis eveniet doloremque quod labore? Doloremque, ipsum?
+      </p>
+    </section>
+  </main>
+
+  <!-- jQuery for now -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
 </html>

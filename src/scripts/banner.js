@@ -3,7 +3,7 @@ import anime from 'animejs';
 anime
   .timeline({ loop: false })
   .add({
-    targets: '.dp-title',
+    targets: '.banner-section .dp-headline .first-line',
     translateX: [-100, 0],
     opacity: [0, 1],
     easing: 'easeOutQuart',
@@ -11,7 +11,7 @@ anime
   })
   .add(
     {
-      targets: '.dp-headline',
+      targets: '.banner-section .dp-headline .second-line',
       translateX: [-100, 0],
       opacity: [0, 1],
       easing: 'easeOutQuart',
@@ -21,7 +21,7 @@ anime
   )
   .add(
     {
-      targets: '.dp-intro .phase',
+      targets: '.banner-section .dp-intro .phase',
       translateX: [-50, 0],
       opacity: [0, 1],
       easing: 'easeOutQuart',
@@ -32,7 +32,7 @@ anime
   )
   .add(
     {
-      targets: '#banner .row',
+      targets: '.banner-section .link-section',
       opacity: [0, 1],
       easing: 'linear',
       duration: 750,

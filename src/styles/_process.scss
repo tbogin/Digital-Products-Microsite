@@ -1,15 +1,18 @@
 @import '/_base';
 
 .process-section {
+
+  $lower-section-height-desktop: 36vh;
+
   position: relative;
 
-  @include respond-to(not-mobile) {
-    height: 820px;
-    min-height: 820px;
-  }
   @include respond-to(mobile) {
     height: auto;
     min-height: 1340px;
+  }
+
+  @include respond-to(not-mobile) {
+    padding-top: $section-default-padding-tb;
   }
 
   .process-intro-text {
@@ -23,7 +26,8 @@
     @include respond-to(not-mobile) {
       width: 640px;
       max-width: 640px;
-      padding: 80px 0 108px 0;
+      padding-bottom: 108px;  // padding will almost certainly need to be adjusted but vertical responsive behavior has not yet been defined
+      height: 44vh;   // somewhat arbitrary but seems to work well on most screen heights
     }
     .caption:first-of-type {
       margin: 0;
@@ -51,7 +55,7 @@
     background: #f1f1f1;
     z-index: -1;
     @include respond-to(not-mobile) {
-      height: 296px;
+      height: $lower-section-height-desktop;
     }
     @include respond-to(mobile) {
       height: calc(100% / 3 * 2);
@@ -61,16 +65,21 @@
   .process-cards-container {
     z-index: 1;
     @include respond-to(not-mobile) {
-      // width: calc(100% / 3 * 2);   // alternative responsive approach. preserves left/right whitespace but makes cards appear too narrow at many viewport sizes. 
-      $ideal-width: 960px;
-      width: $ideal-width;
-      @media screen and (max-width: $ideal-width) {
-        width: 100%;
-      }
+      /* fixed width approach. allows cards to maintain width through most viewport sizes. */
+      // $ideal-width: 960px;
+      // width: $ideal-width;
+      // @media screen and (max-width: $ideal-width) {
+      //   width: 100%;
+      // }
+
+      /* relative width approach. preserves left/right whitespace but makes cards appear too narrow at many viewport sizes. */
+      width: calc(100% / 3 * 2);
+
       margin: auto;
       display: flex;
       flex-direction: row;
       align-items: stretch;
+      justify-content: space-between;
     }
     @include respond-to(mobile) {
       width: 100%;
@@ -81,11 +90,15 @@
 
   .dp-card {
     @include respond-to(not-mobile) {
-      width: calc((100% - 40px) / 3);
-      margin: 0 20px 0 0;
-      &:last-of-type {
-        margin: 0;
-      }
+      /* fixed margin approach. keeps space between cards constant at 20px regardless of viewport width. */
+      // width: calc((100% - 40px) / 3);
+      // margin: 0 20px 0 0;
+      // &:last-of-type {
+      //   margin: 0;
+      // }
+
+      /* flexible margin approach. allows space between cards to vary depending on viewport width. */
+      max-width: 307px;
     }
     @include respond-to(mobile) {
       width: 100%;

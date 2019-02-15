@@ -1,0 +1,45 @@
+@import './_base';
+
+.services-section {
+
+  position: relative;
+  background-color: $color-brand-primary-dark;
+
+  @include respond-to(mobile) {
+    padding: 64px 64px 0 40px;
+  }
+  
+  @include respond-to(not-mobile) {
+    @include section-standard-padding;
+    .lower-portion-background-desktop {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 42%;
+      background-color: $color-gray-super-light;
+    }  
+  }
+
+  .services-intro-text {
+    margin-bottom: 48px;
+    .caption,
+    .heading-2 {
+      color: $color-white;
+    }
+    .caption {
+      margin: 0;
+    }
+    .heading-2 {
+      @include respond-to(not-mobile) {
+        margin: 20px 0 0 0;
+      }
+      @include respond-to(mobile) {
+        font-size: $font-size-x-large;
+        margin: 16px 0 0 0;
+      }
+    }
+  }
+  
+  
+}
