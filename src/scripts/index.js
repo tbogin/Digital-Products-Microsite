@@ -9,7 +9,6 @@ import '../styles/_work.scss';
 import '../styles/_buttons.scss';
 import '../styles/_process.scss';
 import '../styles/_cards.scss';
-import '../styles/_parallax.scss';
 import '../styles/_services.scss';
 
 // JS imports
