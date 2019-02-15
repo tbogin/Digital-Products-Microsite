@@ -44,7 +44,10 @@ $(document).ready(function() {
     selectCapabilityGroup('development');
   });
 
+  // ScrollMagic init
   const capabilitiesController = new ScrollMagic.Controller();
+
+  // ScrollMagic scene controlling initial animation of text, buttons, & cards
   const initialAnimationScene = new ScrollMagic.Scene({
     triggerElement: '.capabilities-card-container',
     duration: 0,
@@ -54,19 +57,50 @@ $(document).ready(function() {
       capabilitiesSection.animateSection();
     }
   );
-  // @TODO: scrollmagic scene to toggle selected button states based on scroll position
+
+  let capabilitiesSection = {
+    animateMainText: function() {
+      $('.capabilities-section .capabilities-main-text-col .main-text-item').addClass('fade-in-elem');
+    },
+    animateTiles: function() {
+      $('.capabilities-card-container .dp-card').addClass('first-animation');
+    },
+    animateSection: function() {
+      this.animateMainText();
+      this.animateTiles();
+    }
+  };
+
+  /* 
+     getTriggerHook function, to be used with ScrollMagic buttonSelectionScene (below).
+     triggerHook must be a number between 0 and 1 representing a ratio of the vertical position of the trigger to the height of the viewport.
+     the calculations below set the triggerHook to be level with the top of the "Development Capabilities" button 
+  */
+  function getTriggerHook() {
+    const devButtonOffset = $('.capabilities-main-text-col').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60);
+    const windowHeight = $(window).outerHeight();
+    return devButtonOffset / windowHeight;
+  }
+
+  // ScrollMagic scene to toggle button states (i.e., which button appears to be active) based on scroll position
+  const designCardContainerHeight = $designCardSubcontainer.outerHeight();
+  const buttonSelectionScene = new ScrollMagic.Scene({
+    triggerElement: '.capabilities-design-card-container',
+    offset: -40,    // this aligns the "start" of the scene with the top of the first right-hand card in the .capabilities-design-card-container
+    duration: designCardContainerHeight + 100,    // this aligns the "end" of the scene with the top of the first left-hand card in the .capabilities-dev-card-container
+    triggerHook: getTriggerHook()
+  }).addTo(capabilitiesController)
+    .on('enter', function() {
+      highlightSelectedButton('design');
+    }
+  ).on('leave', function() {
+      highlightSelectedButton('development');
+    }
+  );
+
+  // Reset triggerHook dynamically when the scene "shifts", for example, when the window is resized
+  buttonSelectionScene.on('shift', function(event) {
+    buttonSelectionScene.triggerHook(getTriggerHook());
+  });
 
 });
-
-let capabilitiesSection = {
-  animateMainText: function() {
-    $('.capabilities-section .capabilities-main-text-col .main-text-item').addClass('fade-in-elem');
-  },
-  animateTiles: function() {
-    $('.capabilities-card-container .dp-card').addClass('first-animation');
-  },
-  animateSection: function() {
-    this.animateMainText();
-    this.animateTiles();
-  }
-};
