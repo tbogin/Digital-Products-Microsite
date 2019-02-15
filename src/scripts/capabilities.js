@@ -1,5 +1,4 @@
 import ScrollMagic from 'scrollmagic';
-import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 $(document).ready(function() {
   function selectCapabilityGroup(type) {
@@ -27,56 +26,24 @@ $(document).ready(function() {
     triggerElement: '.capabilities-card-container',
     duration: 0,
     triggerHook: 0.8
-  })
-    .addTo(controller)
+  }).addTo(controller)
     .on('progress', event => {
-      capabilitiesSection.animateMainText();
-    });
-
-  const sectionScene = new ScrollMagic.Scene({
-    triggerElement: '#capabilities',
-    duration: 0,
-    triggerHook: 0
-  })
-    .addTo(controller)
-    .on('progress', event => {
-      capabilitiesSection.changeCardScrollable();
-    });
+      capabilitiesSection.animateSection();
+    }
+  );
 });
 
 let capabilitiesSection = {
-  // mainTextAnimatedAlready: false,
-  // initialTilesAnimationDone: false,
   animateMainText: function() {
-    $('.capabilities-section .capabilities-main-text-col .caption').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .heading-2').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .body-text-2').addClass('fade-in-elem');
-    $('.capabilities-section .capabilities-main-text-col .button-inset').addClass('fade-in-elem');
-    $('.capabilities-card-container .dp-card').addClass('first-animation');
-    // this.mainTextAnimatedAlready = true;
+    $('.capabilities-section .capabilities-main-text-col .main-text-item').addClass('fade-in-elem');
   },
-
-  changeCardScrollable: function() {
-    $('.capabilities-card-container').addClass('scrollable');
+  animateTiles: function() {
+    $('.capabilities-card-container .dp-card').addClass('first-animation');
+  },
+  animateSection: function() {
+    this.animateMainText();
+    this.animateTiles();
   }
-  /*  ScrollMagic take care of animation on first scroll
-      Below two function can be removed if no longer needed elsewhere 
-  */
-
-  // animateTilesOnFirstScroll: function() {
-  //   console.log('animateTilesOnFirstScroll is called');
-  //   $('.capabilities-card-container .dp-card').addClass('first-animation');
-  //   this.initialTilesAnimationDone = true;
-  // },
-  // animateSection: function() {
-  //   // console.log('animateSection is called');
-  //   if (!this.mainTextAnimatedAlready) {
-  //     this.animateMainText();
-  //   }
-  //   if (!this.initialTilesAnimationDone) {
-  //     this.animateTilesOnFirstScroll();
-  //   }
-  // }
 };
 
 export default capabilitiesSection;

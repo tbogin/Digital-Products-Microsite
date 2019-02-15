@@ -22,11 +22,6 @@ var _contentScript = {
           link.classList.remove("active");
         }
 
-        // Section-specific animations
-        // if (section.id === 'capabilities') {
-        //   capabilitiesSection.animateMainText();
-        // }
-
       });
     });
 
