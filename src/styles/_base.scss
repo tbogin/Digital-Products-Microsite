@@ -102,7 +102,7 @@ $full-panel-height: 101vh;  // intentionally set just above 100vh to include a b
 $side-nav-width: 122px;   // to be used where needed
 
 $section-default-padding-lr: 100vw / 6;   // default left/right section padding for consistent & responsive aligntment of main text on left-aligned panels
-$section-default-padding-tb: 5vh;         // default top/bottom section padding
+$section-default-padding-tb: 10vh;         // default top/bottom section padding
 
 @mixin section-standard-padding {
   padding: $section-default-padding-tb $section-default-padding-lr;
