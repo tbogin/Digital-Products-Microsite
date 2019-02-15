@@ -2,12 +2,12 @@
 
 .capabilities-section {
 
-  $main-text-col-width: 320px;
+  $main-text-col-width: 21rem;  // = 336px. 20rem (320px) should be sufficient; 21rem makes sure there's a buffer just in case.
   background: $color-gray-super-light;
   position: relative;
 
   @include respond-to(not-mobile) {
-    padding-left: 120px;    // should be width of side-nav
+    height: $full-panel-height;
   }
 
   @include respond-to(mobile) {
@@ -38,9 +38,9 @@
   .two-thirds-desktop {
     @include respond-to(not-mobile) {
       height: 100%;
-      min-height: $full-panel-height;
       width: calc(100% / 3 * 2);
       float: left;
+      @include section-standard-padding;
     }
     @include respond-to(mobile) {
       // min-height: TBD but will most likely need to be decfind to allow for proper breathing room above the cards
@@ -53,9 +53,9 @@
     min-height: 400px; // subject to change but will be necessary to allow for proper breathing room below the cards
     @include respond-to(not-mobile) {
       height: 100%;
-      min-height: $full-panel-height;
       width: calc(100% / 3);
       float: right;
+      padding-right: $section-default-padding-lr;
     }
   }
 
@@ -80,8 +80,6 @@
 
   .capabilities-main-text-col {
     width: $main-text-col-width;
-    padding: 80px 0;
-    margin-left: 120px;
     @include respond-to(mobile) {
       width: 100%;
       padding: 40px;
@@ -134,8 +132,8 @@
   /* Scrollable card items style */
   .capabilities-card-container {
     position: absolute;
-    left: 624px; // temp value
     top: 0;
+    right: $section-default-padding-lr;
     height: 100%;
     padding-top: 120px;
     padding-left: $card-container-padding;

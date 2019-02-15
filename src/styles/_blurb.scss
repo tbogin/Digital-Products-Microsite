@@ -31,7 +31,6 @@
     .body-text-1 {
       color: $color-white;
       line-height: $line-height-x-large;
-      padding-top: 1.5rem;
       letter-spacing: normal;
       @include respond-to(mobile) {
         padding: 0 40px;
@@ -43,9 +42,13 @@
   &-header {
     margin: 0 auto;
     max-width: 37.5rem;
-    padding: 1.25rem 0;
+    padding: 2rem 0;
+    @include respond-to(mobile) {
+      padding-top: 1rem;
+    }
 
     .heading-2 {
+      margin: 0;
       color: $color-white;
       line-height: 1.25;
       @include respond-to(mobile) {
@@ -59,7 +62,7 @@
 }
 
 .dp-icon {
-  font-family: Graphik;
+  font-family: $font-base;
   font-size: $font-size-x-large;
   font-weight: $font-weight-semibold;
   font-style: normal;

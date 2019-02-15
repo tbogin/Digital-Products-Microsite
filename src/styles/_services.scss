@@ -10,7 +10,7 @@
   }
   
   @include respond-to(not-mobile) {
-    padding: 80px 168px 68px 120px;
+    @include section-standard-padding;
     .lower-portion-background-desktop {
       position: absolute;
       left: 0;
@@ -23,9 +23,6 @@
 
   .services-intro-text {
     margin-bottom: 48px;
-    @include respond-to(not-mobile) {
-      padding-left: 100px;
-    }
     .caption,
     .heading-2 {
       color: $color-white;

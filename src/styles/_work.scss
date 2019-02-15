@@ -12,7 +12,7 @@
   position: relative;
 
   @include respond-to(not-mobile) {
-    height: 820px; // somewhat arbitrary. update as needed.
+    height: $full-panel-height;
     padding-left: $section-indent; // should be width of side-nav
   }
 
