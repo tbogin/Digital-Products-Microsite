@@ -85,6 +85,7 @@
   }
   .work-main-text-col {
     width: $main-text-col-width;
+    margin-left: $section-indent;
     padding: 68px 0;
     float: left;
     position: relative;
@@ -110,7 +111,9 @@
       border-radius: 4px;
       box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.05);
       background-color: #ffffff;
-
+      .dp-card-title {
+        font-size: $font-size-x-large;
+      }
       .inner-card {
         position: relative;
         padding: 80px 0 0 0;
@@ -206,39 +209,29 @@
     }
   }
 
-  .card-slide {
-    @include respond-to(not-mobile) {
-      width: $main-text-col-width;
-      margin-left: $section-indent;
-    }
-    .slick-list {
-      top: -18px;
-      padding-top: 44px;
-    }
-    .slick-prev,
-    .slick-next {
-      display: inline-block;
-      text-indent: -99999999px;
-      position: absolute;
-      top: 33%;
-      right: -48px;
-      width: 48px;
-      height: 48px;
-      background-color: #0146f5;
-      background: #0146f5 url(../assets/chevron.png) 50% no-repeat;
-      cursor: pointer;
-      border: none;
-      z-index: 999;
-    }
-    .slick-prev {
-      right: auto;
-      left: -91px;
-      -moz-transform: scaleX(-1);
-      -o-transform: scaleX(-1);
-      -webkit-transform: scaleX(-1);
-      transform: scaleX(-1);
-      filter: FlipH;
-      -ms-filter: 'FlipH';
-    }
+  .prev,
+  .next {
+    display: inline-block;
+    text-indent: -99999999px;
+    position: absolute;
+    top: 45%;
+    right: -48px;
+    width: 48px;
+    height: 48px;
+    background-color: #0146f5;
+    background: #0146f5 url(../assets/chevron.png) 50% no-repeat;
+    cursor: pointer;
+    border: none;
+    z-index: 999;
+  }
+  .prev {
+    right: auto;
+    left: -91px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: 'FlipH';
   }
 }
