@@ -1,10 +1,15 @@
 @import '/_base';
 
 .button-inset {
+
+  // @TODO: transition from .active to :not.active
+
+  $transition-duration: .4s;
+
   border: none;
   border-radius: 4px;
   box-shadow: $button-shadow;
-  background-color: #ffffff;  
+  background-color: #fdfdfd;  
   position: relative;
   display: flex;
   cursor: pointer;
@@ -13,8 +18,9 @@
   &.active {
     background-color: #ffffff;
     color: $color-brand-primary;
-    font-family: $font-base-semibold;
   }
+  transition: color $transition-duration ease-in-out, 
+              background-color $transition-duration ease-in-out;
 
   @include respond-to(mobile) {
     padding: 12px;
@@ -30,10 +36,21 @@
       width: 24px;
       height: 24px;
       position: absolute;
-      right: 16px;
       top: 16px;
+      right: 26px;
+      opacity: 0;
+      animation: fade-in-slide-right $transition-duration ease-in-out forwards;
     }
   }
 
-
+  @keyframes fade-in-slide-right {
+    from { 
+      opacity: 0;
+      right: 26px;
+    }
+    to {
+      opacity: 1;
+      right: 16px;
+    }
+  }
 }

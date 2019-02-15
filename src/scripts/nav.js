@@ -1,5 +1,3 @@
-import capabilitiesSection from './capabilities';
-
 var _contentScript = {
   init: function() {
     "use strict";

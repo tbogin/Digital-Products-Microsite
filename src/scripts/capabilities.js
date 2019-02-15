@@ -1,17 +1,41 @@
 import ScrollMagic from 'scrollmagic';
 
 $(document).ready(function() {
+
+  const $capabilitiesPanel = $('#capabilities');
+  const $designCardSubcontainer = $('.capabilities-design-card-container');
+
+  function getDesignCardsScrollTop() {
+    return $capabilitiesPanel.offset().top;
+  }
+
+  function getDevCardsScrollTop() {
+    /* the calculation below aligns the top of the first left-hand dev card with the top of the "Development Capabilities" button */
+    return $capabilitiesPanel.offset().top + ($designCardSubcontainer.height() / 2) + 58; 
+  }
+  
   function selectCapabilityGroup(type) {
+    if (type !== 'design' && type !== 'development') {
+      return;
+    }
+    let newScrollTop = (type === 'development') ? getDevCardsScrollTop() : getDesignCardsScrollTop();
+    $(window)
+      .scrollTop(newScrollTop)
+      .promise()
+      .then( highlightSelectedButton(type) );
+  }
+
+  function highlightSelectedButton(type) {
     if (type !== 'design' && type !== 'development') {
       return;
     }
     $('#button-design-capabilities').removeClass('active');
     $('#button-development-capabilities').removeClass('active');
     $(`#button-${type}-capabilities`).addClass('active');
-
-    // Logic for displaying relevant cards will go here
+    $(`#button-${type}-capabilities`).focus();
   }
 
+  // click events on buttons
   $('#button-design-capabilities').on('click', function(event) {
     selectCapabilityGroup('design');
   });
@@ -20,17 +44,18 @@ $(document).ready(function() {
     selectCapabilityGroup('development');
   });
 
-  // Init ScrollMagic
-  const controller = new ScrollMagic.Controller();
-  const cardScene = new ScrollMagic.Scene({
+  const capabilitiesController = new ScrollMagic.Controller();
+  const initialAnimationScene = new ScrollMagic.Scene({
     triggerElement: '.capabilities-card-container',
     duration: 0,
     triggerHook: 0.8
-  }).addTo(controller)
+  }).addTo(capabilitiesController)
     .on('progress', event => {
       capabilitiesSection.animateSection();
     }
   );
+  // @TODO: scrollmagic scene to toggle selected button states based on scroll position
+
 });
 
 let capabilitiesSection = {
@@ -45,5 +70,3 @@ let capabilitiesSection = {
     this.animateTiles();
   }
 };
-
-export default capabilitiesSection;
