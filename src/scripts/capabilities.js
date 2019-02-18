@@ -1,4 +1,6 @@
 import ScrollMagic from 'scrollmagic';
+// import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
+
 
 $(document).ready(function() {
 
@@ -10,8 +12,13 @@ $(document).ready(function() {
   }
 
   function getDevCardsScrollTop() {
-    /* the calculation below aligns the top of the first left-hand dev card with the top of the "Development Capabilities" button */
-    return $capabilitiesPanel.offset().top + ($designCardSubcontainer.height() / 2) + 58; 
+    /* the calculation below aligns the top of the first left-hand dev card with the top of the "Development Capabilities" button
+       (i.e., the same scroll position where the ScrollMagic scene activates the "Development Capabilities" button) */
+    return $capabilitiesPanel.offset().top + $designCardSubcontainer.height() + 156 - getDevButtonOffset();
+  }
+
+  function getDevButtonOffset() {
+    return $('.capabilities-main-text-col').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60);
   }
   
   function selectCapabilityGroup(type) {
@@ -77,9 +84,7 @@ $(document).ready(function() {
      the calculations below set the triggerHook to be level with the top of the "Development Capabilities" button 
   */
   function getTriggerHook() {
-    const devButtonOffset = $('.capabilities-main-text-col').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60);
-    const windowHeight = $(window).outerHeight();
-    return devButtonOffset / windowHeight;
+    return getDevButtonOffset() / $(window).outerHeight();
   }
 
   // ScrollMagic scene to toggle button states (i.e., which button appears to be active) based on scroll position
@@ -93,8 +98,12 @@ $(document).ready(function() {
     .on('enter', function() {
       highlightSelectedButton('design');
     }
-  ).on('leave', function() {
-      highlightSelectedButton('development');
+  ).on('leave', function(event) {
+      // highlight Dev button only if we've left the design cards subsection by scrolling down into the dev cards subsection
+      if (event.state && event.state === 'AFTER') {
+        highlightSelectedButton('development');
+      }
+      // if we've exited the design cards subsection by scrolling up (i.e., above the Capabilities panel itself), nothing changes
     }
   );
 
