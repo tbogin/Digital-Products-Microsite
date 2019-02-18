@@ -1,5 +1,3 @@
-import capabilitiesSection from './capabilities';
-
 var _contentScript = {
   init: function() {
     "use strict";
@@ -21,11 +19,6 @@ var _contentScript = {
         } else {
           link.classList.remove("active");
         }
-
-        // Section-specific animations
-        // if (section.id === 'capabilities') {
-        //   capabilitiesSection.animateMainText();
-        // }
 
       });
     });
