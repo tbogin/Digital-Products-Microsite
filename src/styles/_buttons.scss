@@ -24,6 +24,22 @@
     padding: 12px;
     flex-grow: 1;
     justify-content: center;
+    &.button-tab-mobile {
+      /* styles to make the "button-inset" appear as a tab on mobile */
+      box-shadow: none;
+      border-radius: 0;
+      &.active {
+        background-color: inherit;
+        border-bottom: 4px solid $color-brand-primary;
+        color: $color-brand-primary;
+      }
+      &:hover {
+        background-color: inherit;
+      }
+      transition: color $transition-duration ease-in-out,
+                  border-bottom-width $transition-duration ease-in-out,
+                  border-bottom-color $transition-duration ease-in-out;
+    }
   }
 
   @include respond-to(not-mobile) {
