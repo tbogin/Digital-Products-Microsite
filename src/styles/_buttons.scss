@@ -2,8 +2,6 @@
 
 .button-inset {
 
-  // @TODO: transition from .active to :not.active
-
   $transition-duration: .4s;
 
   border: none;
@@ -30,7 +28,7 @@
 
   @include respond-to(not-mobile) {
     padding: 20px 16px;
-    &.active:after {
+    &:after {
       content: '';
       background: url('../assets/arrow-right.svg');
       width: 24px;
@@ -39,7 +37,11 @@
       top: 16px;
       right: 26px;
       opacity: 0;
+      animation: fade-out-slide-left $transition-duration ease-in-out forwards;
+    }
+    &.active:after {
       animation: fade-in-slide-right $transition-duration ease-in-out forwards;
+
     }
   }
 
@@ -53,4 +55,16 @@
       right: 16px;
     }
   }
+
+  @keyframes fade-out-slide-left {
+    from { 
+      opacity: 1;
+      right: 16px;
+    }
+    to {
+      opacity: 0;
+      right: 26px;
+    }
+  }
+
 }
