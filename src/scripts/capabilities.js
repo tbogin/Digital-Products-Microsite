@@ -1,7 +1,6 @@
 import ScrollMagic from 'scrollmagic';
 // import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
-
 $(document).ready(function() {
 
   const $capabilitiesPanel = $('#capabilities');
@@ -38,8 +37,9 @@ $(document).ready(function() {
     }
     $('#button-design-capabilities').removeClass('active');
     $('#button-development-capabilities').removeClass('active');
+    $('#button-design-capabilities').blur();
+    $('#button-development-capabilities').blur();
     $(`#button-${type}-capabilities`).addClass('active');
-    $(`#button-${type}-capabilities`).focus();
   }
 
   // click events on buttons
