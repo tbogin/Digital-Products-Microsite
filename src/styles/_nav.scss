@@ -136,7 +136,7 @@ nav {
       color: $color-gray-dark;
 
       &:active {
-        font-weight: $font-weight-semibold;
+        font-family: $font-base-semibold;
         color: $color-brand-primary-mid;
       }
     }
@@ -144,6 +144,7 @@ nav {
       background-color: transparent;
     }
     a.active {
+      font-family: $font-base-semibold;
       color: $color-brand-primary;
     }
   }
