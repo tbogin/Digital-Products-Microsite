@@ -28,6 +28,7 @@
       /* styles to make the "button-inset" appear as a tab on mobile */
       box-shadow: none;
       border-radius: 0;
+      background-color: transparent;
       &.active {
         background-color: inherit;
         border-bottom: 4px solid $color-brand-primary;

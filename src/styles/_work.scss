@@ -10,6 +10,7 @@
   height: auto;
 
   position: relative;
+  overflow-x: hidden;
 
   @include respond-to(not-mobile) {
     height: $full-panel-height;
