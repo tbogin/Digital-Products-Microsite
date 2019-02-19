@@ -142,5 +142,11 @@ $(document).ready(function() {
     swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
     variableWidth: true,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
   });
+
+  // Highlight active button based on current slide
+  $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    const cardType = (nextSlide < getFirstDevCardIndex()) ? 'design' : 'development';
+    highlightSelectedButton(cardType);
+  });
   
 });
