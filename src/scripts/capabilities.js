@@ -58,7 +58,7 @@ $(document).ready(function() {
   const initialAnimationScene = new ScrollMagic.Scene({
     triggerElement: '.capabilities-card-container',
     duration: 0,
-    triggerHook: 0.8
+    triggerHook: 0.65
   }).addTo(capabilitiesController)
     .on('progress', event => {
       capabilitiesSection.animateSection();
@@ -112,4 +112,16 @@ $(document).ready(function() {
     buttonSelectionScene.triggerHook(getTriggerHook());
   });
 
+  // Slick Slider for mobile only
+  const $slickContainer = $('.capabilities-card-container-mobile'); 
+  $slickContainer.slick({
+    arrows: false,            // no arrow buttons rendered, making swiping the only navigation option
+    centerMode: true,         // ensures the slider always "lands" with {slidesToShow} slide(s) centered in the viewport
+    infinite: false,
+    slidesToShow: 1,          // other slides may be partially visible but only 1 is guaranteed to be in full view whenever the slider "lands"
+    slidesToScroll: 1,        
+    swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
+    variableWidth: true,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
+  });
+  
 });

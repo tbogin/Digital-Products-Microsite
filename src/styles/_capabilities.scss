@@ -9,9 +9,10 @@
 
   height: $section-height;
   position: relative;
-
+  
   @include respond-to(mobile) {
     padding: 0 !important;
+    overflow-x: hidden;
   }
 
   .parallax-background-wrapper {
@@ -150,23 +151,60 @@
       opacity: 0;
     }
   }
-  .dp-card {
-    opacity: 0;
+  @include respond-to(not-mobile) {
+    .dp-card {
+      opacity: 0;
+    }
   }
 
   $default-card-width: 280px;
+  $default-card-width-mobile: 264px;
+  $default-card-height-mobile: 392px;
+  $space-between-cards-mobile: 20px;
   $card-container-padding: 16px;
   
   .capabilities-card-container {
-    position: absolute;
-    right: $section-default-padding-lr;
-    width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
-    height: $card-container-height;
-    top: $section-top-bottom-padding + $card-container-padding;
-    padding: $card-container-padding;
+    @include respond-to(not-mobile) {
+      display: block;
+      position: absolute;
+      right: $section-default-padding-lr;
+      width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
+      height: $card-container-height;
+      top: $section-top-bottom-padding + $card-container-padding;
+      padding: $card-container-padding;
+    }
     @include respond-to(mobile) {
       display: none;
     }
+  }
+
+  .capabilities-card-container-mobile {
+    @include respond-to(not-mobile) {
+      display: none;
+    }
+    @include respond-to(mobile) {
+      .slick-track {
+        padding: $card-container-padding 0;
+      }
+      &.slick-initialized .slick-slide {
+        width: $default-card-width-mobile + $space-between-cards-mobile !important;
+      }
+      .slick-slide:focus {
+        outline: none;
+      }
+      .dp-card {
+        width: $default-card-width-mobile !important;
+        min-width: $default-card-width-mobile;
+        height: $default-card-height-mobile !important;
+        padding: 40px 47px 40px 40px;
+        margin: 0 auto;
+      }
+    }
+  }
+  
+  .dp-card-mobile-wrapper {
+    min-width: $default-card-width-mobile + $space-between-cards-mobile;
+    height: $default-card-height-mobile !important;
   }
 
   .dp-card {
@@ -180,23 +218,26 @@
     }
   }
 
-
-  .capabilities-design-card-container,
-  .capabilities-dev-card-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
+  @include respond-to(not-mobile) {
+    .capabilities-design-card-container,
+    .capabilities-dev-card-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: stretch;
+    }
   }
 
-  // alter relative positioning of right-hand cards
-  .design-card-2,
-  .design-card-4,
-  .dev-card-2,
-  .dev-card-4 {
-    margin-top: -60px;
-    margin-bottom: 68px;
+  // alter relative positioning of right-hand cards on desktop only
+  @include respond-to(not-mobile) {
+    .design-card-2,
+    .design-card-4,
+    .dev-card-2,
+    .dev-card-4 {
+      margin-top: -60px;
+      margin-bottom: 68px;
+    }
   }
 
 
