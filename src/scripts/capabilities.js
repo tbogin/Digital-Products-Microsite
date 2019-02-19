@@ -1,10 +1,15 @@
 import ScrollMagic from 'scrollmagic';
+import { mobileBreakpoint } from './constants';
 // import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 $(document).ready(function() {
 
   const $capabilitiesPanel = $('#capabilities');
   const $designCardSubcontainer = $('.capabilities-design-card-container');
+
+  function isNotMobile() {
+    return $(window).outerWidth() > mobileBreakpoint;
+  }
 
   function getDesignCardsScrollTop() {
     return $capabilitiesPanel.offset().top;
@@ -19,16 +24,28 @@ $(document).ready(function() {
   function getDevButtonOffset() {
     return $('.capabilities-main-text-col').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60);
   }
+
+  function getFirstDevCardIndex() {
+    return 4; // should equal the 0-based index of the first dev card in the list. if the cards ever change, this number may need to be updated.
+  }
   
   function selectCapabilityGroup(type) {
     if (type !== 'design' && type !== 'development') {
       return;
     }
-    let newScrollTop = (type === 'development') ? getDevCardsScrollTop() : getDesignCardsScrollTop();
-    $(window)
-      .scrollTop(newScrollTop)
-      .promise()
-      .then( highlightSelectedButton(type) );
+    if (isNotMobile()) {
+      let newScrollTop = (type === 'development') ? getDevCardsScrollTop() : getDesignCardsScrollTop();
+      $(window)
+        .scrollTop(newScrollTop)
+        .promise()
+        .then( highlightSelectedButton(type) );
+    } else {
+      let goToIndex = (type === 'development') ? getFirstDevCardIndex() : 0;
+      $slickContainer
+        .slick('slickGoTo', goToIndex)
+        .promise()
+        .then( highlightSelectedButton(type) );
+    }
   }
 
   function highlightSelectedButton(type) {
@@ -96,11 +113,13 @@ $(document).ready(function() {
     triggerHook: getTriggerHook()
   }).addTo(capabilitiesController)
     .on('enter', function() {
-      highlightSelectedButton('design');
+      if (isNotMobile()) {
+        highlightSelectedButton('design');
+      }
     }
   ).on('leave', function(event) {
       // highlight Dev button only if we've left the design cards subsection by scrolling down into the dev cards subsection
-      if (event.state && event.state === 'AFTER') {
+      if (isNotMobile() && event.state && event.state === 'AFTER') {
         highlightSelectedButton('development');
       }
       // if we've exited the design cards subsection by scrolling up (i.e., above the Capabilities panel itself), nothing changes
