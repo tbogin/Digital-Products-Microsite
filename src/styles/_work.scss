@@ -97,7 +97,12 @@
       margin-left: 0;
     }
     .card {
+      display: none;
       position: relative;
+      &.active {
+        display: block;
+      }
+
       @include respond-to(not-mobile) {
         width: 959px;
         height: 456px;
