@@ -4,12 +4,14 @@ import { mobileBreakpoint } from './constants';
 
 $(document).ready(function() {
 
-  const $capabilitiesPanel = $('#capabilities');
-  const $designCardSubcontainer = $('.capabilities-design-card-container');
-
+  /* Helper function to determine whether current viewport width is above or below the global mobile breakpoint */
   function isNotMobile() {
     return $(window).outerWidth() > mobileBreakpoint;
   }
+
+  /* Desktop (not-mobile) constants and utility methods */
+  const $capabilitiesPanel = $('#capabilities');
+  const $designCardSubcontainer = $('.capabilities-design-card-container');
 
   function getDesignCardsScrollTop() {
     return $capabilitiesPanel.offset().top;
@@ -24,11 +26,15 @@ $(document).ready(function() {
   function getDevButtonOffset() {
     return $('.capabilities-main-text-col').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60);
   }
+  /* End desktop (not-mobile) constants and utility methods */
 
+  /* Mobile utility methods */
   function getFirstDevCardIndex() {
     return 4; // should equal the 0-based index of the first dev card in the list. if the cards ever change, this number may need to be updated.
   }
+  /* End mobile utility methods */
   
+  /* Core DOM manipulation methods - all screen sizes */
   function selectCapabilityGroup(type) {
     if (type !== 'design' && type !== 'development') {
       return;
@@ -58,8 +64,9 @@ $(document).ready(function() {
     $('#button-development-capabilities').blur();
     $(`#button-${type}-capabilities`).addClass('active');
   }
+  /* End core DOM manipulation methods */
 
-  // click events on buttons
+  /* Click event handlers on buttons - all screen sizes */
   $('#button-design-capabilities').on('click', function(event) {
     selectCapabilityGroup('design');
   });
@@ -67,8 +74,9 @@ $(document).ready(function() {
   $('#button-development-capabilities').on('click', function() {
     selectCapabilityGroup('development');
   });
+  /* End click event handlers */
 
-  // ScrollMagic init
+  /* ScrollMagic */
   const capabilitiesController = new ScrollMagic.Controller();
 
   // ScrollMagic scene controlling initial animation of text, buttons, & cards
@@ -104,7 +112,7 @@ $(document).ready(function() {
     return getDevButtonOffset() / $(window).outerHeight();
   }
 
-  // ScrollMagic scene to toggle button states (i.e., which button appears to be active) based on scroll position
+  // ScrollMagic scene to toggle button states (i.e., which button appears to be active) based on scroll position  - Desktop (not-mobile) only
   const designCardContainerHeight = $designCardSubcontainer.outerHeight();
   const buttonSelectionScene = new ScrollMagic.Scene({
     triggerElement: '.capabilities-design-card-container',
@@ -130,8 +138,10 @@ $(document).ready(function() {
   buttonSelectionScene.on('shift', function(event) {
     buttonSelectionScene.triggerHook(getTriggerHook());
   });
+  /* End ScrollMagic */
 
-  // Slick Slider for mobile only
+
+  /* Slick Slider - Mobile only */
   const $slickContainer = $('.capabilities-card-container-mobile'); 
   $slickContainer.slick({
     arrows: false,            // no arrow buttons rendered, making swiping the only navigation option
@@ -143,7 +153,7 @@ $(document).ready(function() {
     variableWidth: true,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
   });
 
-  // Highlight active button based on current slide
+  // Highlight active button based on current slide (mobile only)
   $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
     const cardType = (nextSlide < getFirstDevCardIndex()) ? 'design' : 'development';
     highlightSelectedButton(cardType);
