@@ -12,63 +12,41 @@ const animationIn = anime
 })
 .add(
 {
-    targets: '.card.active .caption, .card.active .dp-card-title, .card.active .body-text-2',
-    translateX: [-60, 0],
+    targets: '.card .caption, .card .dp-card-title, .card .body-text-2',
+    translateX: [-35, 0],
     opacity: [0, 1],
     easing: 'easeInOutSine',
-    duration: 1000,
-    delay: 400
+    duration: 500,
+    delay: 800
 })
 .add(
 {
-    targets: '.card.active .buttons',
-    translateX: [-80, 0],
+    targets: '.card .buttons',
     opacity: [0, 1],
     easing: 'easeInOutSine',
-    duration: 1000,
-}, '-=500')
-.add(
-{
-    targets: '.card.active .feat-img',
-    translateY: [100, 0],
-    opacity: [0, 1],
-    easing: 'easeInOutSine',
-    duration: 1000,
-}, '-=500');
-    
-const animationNext = anime
+    duration: 400,
+}, '-=100');
+
+const animationInDevice = anime
 .timeline({ 
     loop: false,
     autoplay: false
 })
 .add(
 {
-    targets: '.card.active .caption, .card.active .dp-card-title, .card.active .body-text-2',
-    translateX: [-60, 0],
+    targets: '.card .feat-img',
+    translateY: [50, 0],
     opacity: [0, 1],
     easing: 'easeInOutSine',
-    duration: 1000,
-    delay: 400,
-})
-.add(
-{
-    targets: '.card.active .buttons',
-    translateX: [-80, 0],
-    opacity: [0, 1],
-    easing: 'easeInOutSine',
-    duration: 1000,
-}, '-=500')
-.add(
-{
-targets: '.card.active .feat-img',
-translateY: [100, 0],
-opacity: [0, 1],
-easing: 'easeInOutSine',
-duration: 1000,
-begin: () => {
-    $nextSlide.addClass('active');
+    duration: 800,
+    delay: 800
+});
+
+function runAnimationIn() {
+    animationIn.play();
+    animationInDevice.play();
 }
-}, '-=500');
+
     
 const animationOut = anime
 .timeline({ 
@@ -77,30 +55,31 @@ const animationOut = anime
 })
 .add(
     {
-        targets: '.card.active .feat-img',
-        translateY: [0, 200],
+        targets: '.card .feat-img',
         opacity: [1, 0],
         easing: 'easeInOutSine',
-        duration: 1000,
-        delay: 100
+        duration: 500,
     })
 .add(
     {
-        targets: '.card.active .caption, .card.active  .dp-card-title, .card.active  .body-text-2',
+        targets: '.card .caption, .card  .dp-card-title, .card  .body-text-2',
         opacity: [1, 0],
         easing: 'easeInOutSine',
-        duration: 1000
-    }, '-=800')
+        duration: 500
+    }, '-=500')
 .add(
 {
-    targets: '.card.active .buttons',
+    targets: '.card .buttons',
     opacity: [1, 0],
     easing: 'easeInOutSine',
-    duration: 1000,
+    duration: 500,
     complete: () => {
-        $currSlide.removeClass('active');        
-    }
-}, '-=800');
+        $currSlide.hide();
+        runAnimationIn(true);
+        $nextSlide.show();
+        
+     }
+}, '-=500');
             
 const controller = new ScrollMagic.Controller();
 
@@ -112,7 +91,7 @@ const workScene1 = new ScrollMagic.Scene({
 })
 .addTo(controller)
 .on('progress', event => {
-    animationIn.play();
+    runAnimationIn();
 });
   
 const workScene2 = new ScrollMagic.Scene({
@@ -126,11 +105,15 @@ const workScene2 = new ScrollMagic.Scene({
 });
   
 $('.next').on('click', (el)=> {
-    $currSlide = $(el.currentTarget).parent().find('.active')
-    $nextSlide = $currSlide.next('.card');
+    $currSlide = $(el.currentTarget).parent().find('.activeCard');
+    $nextSlide = $currSlide.next();
+    $currSlide.removeClass('activeCard');
+    $nextSlide.addClass('activeCard');
     animationOut.play();
-    animationNext.play();
+
 });
-$('.prev').on('click', ()=> {
-    //animationIn.play();
+$('.prev').on('click', (el)=> {
+    $currSlide = $(el.currentTarget).prev('.card');
+    $nextSlide = $currSlide.prev();
+    animationOut.play();
 });
