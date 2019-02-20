@@ -7,15 +7,28 @@
   $section-top-bottom-padding: 80px;
   $section-height: $card-container-height - 40px + 2 * $section-top-bottom-padding;
 
-  height: $section-height;
-  position: relative;
+  $upper-section-mobile-height: 500px;      // hard-coded for now; can be changed if vertical responsiveness is requested
+  $lower-section-mobile-height: 317px;      // hard-coded for now; can be changed if vertical responsiveness is requested
+  $main-text-col-mobile-min-height: 345px;  // allows for proper vertical placement of cards even when there are fewer lines of body text (i.e., when the screen is wider)
 
+  @include respond-to(not-mobile) {
+    height: $section-height;
+  }
+  position: relative;
+  
   @include respond-to(mobile) {
     padding: 0 !important;
+    overflow-x: hidden;
+    min-height: $upper-section-mobile-height + $lower-section-mobile-height;
   }
 
   .parallax-background-wrapper {
-    height: $section-height / 2;  // this should be 1/2 the total desired height, since this element appears twice on the page
+    @include respond-to(not-mobile) {
+      height: $section-height / 2;  // this should be 1/2 the total desired height, since this element appears twice on the page
+    }
+    @include respond-to(mobile) {
+      height: 100%;
+    }
     position: absolute;
     left: 0;
     width: 100%;
@@ -25,10 +38,15 @@
     }
     &.second {
       top: $section-height / 2; // this should be 1/2 the total desired height, since this element should begin just where the first one ends
+      @include respond-to(mobile) {
+        display: none;
+      }
     }
   }
   .parallax-background {
-    background-attachment: fixed;
+    @include respond-to(not-mobile) {
+      background-attachment: fixed;
+    }
     height: 100%;
   }
 
@@ -51,8 +69,6 @@
     }
   }
 
-  $lower-section-mobile-height: 36vh;   // subject to change, but this is my best guess at a decent responsive height based on zeplin mockups
-
   .two-thirds-desktop {
     background: $color-gray-super-light;  
     @include respond-to(not-mobile) {
@@ -62,19 +78,19 @@
       @include section-standard-padding;
     }
     @include respond-to(mobile) {
-      // min-height: TBD but will most likely need to be decfind to allow for proper breathing room above the cards
-      height: $full-panel-height - $lower-section-mobile-height;
+      height: $upper-section-mobile-height;
     }
   }
 
   .one-third-desktop {
-    height: $lower-section-mobile-height;
-    min-height: 400px; // subject to change but will be necessary to allow for proper breathing room below the cards
     @include respond-to(not-mobile) {
       height: 100%;
       width: calc(100% / 3);
       float: right;
       padding-right: $section-default-padding-lr;
+    }
+    @include respond-to(mobile) {
+      height: $lower-section-mobile-height;
     }
   }
 
@@ -104,13 +120,15 @@
     margin-left: $section-default-padding-lr;
     @include respond-to(not-mobile) {
       position: sticky;
+      position: -webkit-sticky;
       top: 0;
       left: 0;
     }
     @include respond-to(mobile) {
       width: 100%;
-      padding: 40px;
+      padding: 40px 40px 24px 40px;
       margin-left: 0;
+      min-height: $main-text-col-mobile-min-height;
     }
   }
 
@@ -149,25 +167,57 @@
       opacity: 0;
     }
   }
-  .dp-card {
-    opacity: 0;
+  @include respond-to(not-mobile) {
+    .dp-card {
+      opacity: 0;
+    }
   }
 
   $default-card-width: 280px;
+  $default-card-width-mobile: 264px;
+  $default-card-height-mobile: 392px;
+  $space-between-cards-mobile: 20px;
   $card-container-padding: 16px;
   
   .capabilities-card-container {
-    position: absolute;
-    right: $section-default-padding-lr;
-    width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
-    height: $card-container-height;
-    top: $section-top-bottom-padding + $card-container-padding;
-    padding: $card-container-padding;
+    @include respond-to(not-mobile) {
+      display: block;
+      position: absolute;
+      right: $section-default-padding-lr;
+      width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
+      height: $card-container-height;
+      top: $section-top-bottom-padding + $card-container-padding;
+      padding: $card-container-padding;
+    }
     @include respond-to(mobile) {
       display: none;
     }
   }
 
+  .capabilities-card-container-mobile {
+    @include respond-to(not-mobile) {
+      display: none;
+    }
+    @include respond-to(mobile) {
+      .slick-track {
+        padding: $card-container-padding 0;
+      }
+      &.slick-initialized .slick-slide {
+        width: $default-card-width-mobile + $space-between-cards-mobile !important;
+      }
+      .slick-slide:focus {
+        outline: none;
+      }
+      .dp-card {
+        width: $default-card-width-mobile !important;
+        min-width: $default-card-width-mobile;
+        height: $default-card-height-mobile !important;
+        padding: 40px 47px 40px 40px;
+        margin: 0 auto;
+      }
+    }
+  }
+  
   .dp-card {
     width: $default-card-width;
     z-index: 1;
@@ -179,23 +229,26 @@
     }
   }
 
-
-  .capabilities-design-card-container,
-  .capabilities-dev-card-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
+  @include respond-to(not-mobile) {
+    .capabilities-design-card-container,
+    .capabilities-dev-card-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: stretch;
+    }
   }
 
-  // alter relative positioning of right-hand cards
-  .design-card-2,
-  .design-card-4,
-  .dev-card-2,
-  .dev-card-4 {
-    margin-top: -60px;
-    margin-bottom: 68px;
+  // alter relative positioning of right-hand cards on desktop only
+  @include respond-to(not-mobile) {
+    .design-card-2,
+    .design-card-4,
+    .dev-card-2,
+    .dev-card-4 {
+      margin-top: -60px;
+      margin-bottom: 68px;
+    }
   }
 
 

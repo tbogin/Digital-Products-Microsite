@@ -115,12 +115,11 @@ $(document).ready(() => {
         easing: 'easeInOutSine',
         duration: 500,
         begin: () => {
+            $('.disabled').removeClass('disabled');
             if ($nextSlide.next('.card').length == 0) {
-                $('.disabled').removeClass('disabled');
                 $nextBtn.addClass('disabled');
             }
             if ($nextSlide.prev('.card').length == 0) {
-                $('.disabled').removeClass('disabled');
                 $prevBtn.addClass('disabled');
             }
         },
@@ -173,6 +172,7 @@ $(document).ready(() => {
             $('.slide-progress').append('<div class="pr-btn"></div>');
         });
         $('.pr-btn:first').addClass('pr-btn-active');
+        $prevBtn.addClass('disabled');
     }
     populateProgressIndicators();
 });

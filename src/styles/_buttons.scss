@@ -1,10 +1,13 @@
 @import '/_base';
 
 .button-inset {
+
+  $transition-duration: .4s;
+
   border: none;
   border-radius: 4px;
   box-shadow: $button-shadow;
-  background-color: #ffffff;  
+  background-color: #fdfdfd;  
   position: relative;
   display: flex;
   cursor: pointer;
@@ -13,27 +16,72 @@
   &.active {
     background-color: #ffffff;
     color: $color-brand-primary;
-    font-family: $font-base-semibold;
   }
+  transition: color $transition-duration ease-in-out, 
+              background-color $transition-duration ease-in-out;
 
   @include respond-to(mobile) {
     padding: 12px;
     flex-grow: 1;
     justify-content: center;
+    &.button-tab-mobile {
+      /* styles to make the "button-inset" appear as a tab on mobile */
+      box-shadow: none;
+      border-radius: 0;
+      background-color: transparent;
+      &.active {
+        background-color: inherit;
+        border-bottom: 4px solid $color-brand-primary;
+        color: $color-brand-primary;
+      }
+      &:hover {
+        background-color: inherit;
+      }
+      transition: color $transition-duration ease-in-out,
+                  border-bottom-width $transition-duration ease-in-out,
+                  border-bottom-color $transition-duration ease-in-out;
+    }
   }
 
   @include respond-to(not-mobile) {
     padding: 20px 16px;
-    &.active:after {
+    &:after {
       content: '';
       background: url('../assets/arrow-right.svg');
       width: 24px;
       height: 24px;
       position: absolute;
-      right: 16px;
       top: 16px;
+      right: 26px;
+      opacity: 0;
+      animation: fade-out-slide-left $transition-duration ease-in-out forwards;
+    }
+    &.active:after {
+      animation: fade-in-slide-right $transition-duration ease-in-out forwards;
+
     }
   }
 
+  @keyframes fade-in-slide-right {
+    from { 
+      opacity: 0;
+      right: 26px;
+    }
+    to {
+      opacity: 1;
+      right: 16px;
+    }
+  }
+
+  @keyframes fade-out-slide-left {
+    from { 
+      opacity: 1;
+      right: 16px;
+    }
+    to {
+      opacity: 0;
+      right: 26px;
+    }
+  }
 
 }
