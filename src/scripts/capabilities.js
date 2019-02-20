@@ -1,8 +1,15 @@
 import ScrollMagic from 'scrollmagic';
+import { mobileBreakpoint } from './constants';
 // import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 
 $(document).ready(function() {
 
+  /* Helper function to determine whether current viewport width is above or below the global mobile breakpoint */
+  function isNotMobile() {
+    return $(window).outerWidth() > mobileBreakpoint;
+  }
+
+  /* Desktop (not-mobile) constants and utility methods */
   const $capabilitiesPanel = $('#capabilities');
   const $designCardSubcontainer = $('.capabilities-design-card-container');
 
@@ -19,16 +26,32 @@ $(document).ready(function() {
   function getDevButtonOffset() {
     return $('.capabilities-main-text-col').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60);
   }
+  /* End desktop (not-mobile) constants and utility methods */
+
+  /* Mobile utility methods */
+  function getFirstDevCardIndex() {
+    return 4; // should equal the 0-based index of the first dev card in the list. if the cards ever change, this number may need to be updated.
+  }
+  /* End mobile utility methods */
   
+  /* Core DOM manipulation methods - all screen sizes */
   function selectCapabilityGroup(type) {
     if (type !== 'design' && type !== 'development') {
       return;
     }
-    let newScrollTop = (type === 'development') ? getDevCardsScrollTop() : getDesignCardsScrollTop();
-    $(window)
-      .scrollTop(newScrollTop)
-      .promise()
-      .then( highlightSelectedButton(type) );
+    if (isNotMobile()) {
+      let newScrollTop = (type === 'development') ? getDevCardsScrollTop() : getDesignCardsScrollTop();
+      $(window)
+        .scrollTop(newScrollTop)
+        .promise()
+        .then( highlightSelectedButton(type) );
+    } else {
+      let goToIndex = (type === 'development') ? getFirstDevCardIndex() : 0;
+      $slickContainer
+        .slick('slickGoTo', goToIndex)
+        .promise()
+        .then( highlightSelectedButton(type) );
+    }
   }
 
   function highlightSelectedButton(type) {
@@ -41,8 +64,9 @@ $(document).ready(function() {
     $('#button-development-capabilities').blur();
     $(`#button-${type}-capabilities`).addClass('active');
   }
+  /* End core DOM manipulation methods */
 
-  // click events on buttons
+  /* Click event handlers on buttons - all screen sizes */
   $('#button-design-capabilities').on('click', function(event) {
     selectCapabilityGroup('design');
   });
@@ -50,15 +74,16 @@ $(document).ready(function() {
   $('#button-development-capabilities').on('click', function() {
     selectCapabilityGroup('development');
   });
+  /* End click event handlers */
 
-  // ScrollMagic init
+  /* ScrollMagic */
   const capabilitiesController = new ScrollMagic.Controller();
 
   // ScrollMagic scene controlling initial animation of text, buttons, & cards
   const initialAnimationScene = new ScrollMagic.Scene({
     triggerElement: '.capabilities-card-container',
     duration: 0,
-    triggerHook: 0.8
+    triggerHook: 0.65
   }).addTo(capabilitiesController)
     .on('progress', event => {
       capabilitiesSection.animateSection();
@@ -87,7 +112,7 @@ $(document).ready(function() {
     return getDevButtonOffset() / $(window).outerHeight();
   }
 
-  // ScrollMagic scene to toggle button states (i.e., which button appears to be active) based on scroll position
+  // ScrollMagic scene to toggle button states (i.e., which button appears to be active) based on scroll position  - Desktop (not-mobile) only
   const designCardContainerHeight = $designCardSubcontainer.outerHeight();
   const buttonSelectionScene = new ScrollMagic.Scene({
     triggerElement: '.capabilities-design-card-container',
@@ -96,11 +121,13 @@ $(document).ready(function() {
     triggerHook: getTriggerHook()
   }).addTo(capabilitiesController)
     .on('enter', function() {
-      highlightSelectedButton('design');
+      if (isNotMobile()) {
+        highlightSelectedButton('design');
+      }
     }
   ).on('leave', function(event) {
       // highlight Dev button only if we've left the design cards subsection by scrolling down into the dev cards subsection
-      if (event.state && event.state === 'AFTER') {
+      if (isNotMobile() && event.state && event.state === 'AFTER') {
         highlightSelectedButton('development');
       }
       // if we've exited the design cards subsection by scrolling up (i.e., above the Capabilities panel itself), nothing changes
@@ -111,5 +138,25 @@ $(document).ready(function() {
   buttonSelectionScene.on('shift', function(event) {
     buttonSelectionScene.triggerHook(getTriggerHook());
   });
+  /* End ScrollMagic */
 
+
+  /* Slick Slider - Mobile only */
+  const $slickContainer = $('.capabilities-card-container-mobile'); 
+  $slickContainer.slick({
+    arrows: false,            // no arrow buttons rendered, making swiping the only navigation option
+    centerMode: true,         // ensures the slider always "lands" with {slidesToShow} slide(s) centered in the viewport
+    infinite: false,
+    slidesToShow: 1,          // other slides may be partially visible but only 1 is guaranteed to be in full view whenever the slider "lands"
+    slidesToScroll: 1,        
+    swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
+    variableWidth: true,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
+  });
+
+  // Highlight active button based on current slide (mobile only)
+  $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    const cardType = (nextSlide < getFirstDevCardIndex()) ? 'design' : 'development';
+    highlightSelectedButton(cardType);
+  });
+  
 });
