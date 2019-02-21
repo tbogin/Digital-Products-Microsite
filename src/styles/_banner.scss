@@ -3,12 +3,10 @@
 .banner-section {
   box-sizing: border-box;
   
-  @include section-standard-padding;
-
   @include respond-to(not-mobile) {
     padding-top: calc(100vh / 12);
     .banner-main-text {
-      width: calc(100vw / 3);
+      width: 50%;
       min-width: 500px;
     }
   }

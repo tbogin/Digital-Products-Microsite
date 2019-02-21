@@ -100,16 +100,18 @@ $break-large: 1440px;
 $full-panel-height: 101vh;  // intentionally set just above 100vh to include a bit of buffer
 
 $side-nav-width: 122px;   // to be used where needed
+$standard-content-width: 960px;   // max-width of section-content for most sections (some exceptions exist)
 
-$section-default-padding-lr: 100vw / 6;   // default left/right section padding for consistent & responsive aligntment of main text on left-aligned panels
-$section-default-padding-tb: 10vh;         // default top/bottom section padding
+$section-default-padding-lr: $side-nav-width + 40px;   // default left/right section padding to ensure content does not overlap side nav
+// $section-default-padding-tb: 10vh;                  // default top/bottom section padding, vertically responsive option
+$section-default-padding-tb: 80px;                     // default top/bottom section padding, standard pixel height based on zeplin
 
 @mixin section-standard-padding {
-  padding: $section-default-padding-tb $section-default-padding-lr;
+  padding: 0 $section-default-padding-lr;
 }
 
 // Misc. helper classes
-.display-block {
+.display-block { 
   display: block;
 }
 .semibold {
