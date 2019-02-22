@@ -9,7 +9,7 @@ $(document).ready(() => {
     let $card = $('.card');
 
 
-    function runFirstAnimationIn() {
+    function runInitialAnimation(){
         const animationFirst = anime
         .timeline({ 
             loop: false,
@@ -26,7 +26,7 @@ $(document).ready(() => {
         })
         .add(
         {
-            targets: '.card .buttons',
+            targets: '.card .buttons, .adv, .slide-progress',
             opacity: [0, 1],
             easing: 'easeInOutSine',
             duration: 400,
@@ -46,8 +46,10 @@ $(document).ready(() => {
             duration: 800,
             delay: 800
         });
+        animationFirst.play();
+        animationFirstDevice.play();
     }
-    function runAnimationIn() {
+    function runSecondaryAnimation() {
         const animationIn = anime
         .timeline({ 
             loop: false,
@@ -86,72 +88,86 @@ $(document).ready(() => {
         animationIn.play();
         animationInDevice.play();
     }
+    function runAnimationOut() {        
+        const animationOut = anime
+        .timeline({ 
+            loop: false,
+            autoplay: false
+        })
+        .add(
+        {
+            targets: '.card .feat-img',
+            opacity: [1, 0],
+            easing: 'easeInOutSine',
+            duration: 500,
+        })
+        .add(
+        {
+            targets: '.card .caption, .card  .dp-card-title, .card  .body-text-2',
+            opacity: [1, 0],
+            easing: 'easeInOutSine',
+            duration: 500
+        }, '-=500')
+        .add(
+        {
+            targets: '.card .buttons',
+            opacity: [1, 0],
+            easing: 'easeInOutSine',
+            duration: 500,
+            begin: () => {
+                $('.disabled').removeClass('disabled');
+                if ($nextSlide.next('.card').length == 0) {
+                    $nextBtn.addClass('disabled');
+                }
+                if ($nextSlide.prev('.card').length == 0) {
+                    $prevBtn.addClass('disabled');
+                }
+            },
+            complete: () => {
+                $currSlide.hide();
+                runSecondaryAnimation(true);
+                $nextSlide.show();        
+            }
+        }, '-=500');
+        animationOut.play();
+    }
+    function triggerScollAnimation() {
+        const controller = new ScrollMagic.Controller();
 
+        // Triggers on 'top of div'
+        const workScene1 = new ScrollMagic.Scene({
+        triggerElement: '.work-section',
+        duration: 0,
+        triggerHook: 0.9
+        })
+        .addTo(controller)
+        .on('progress', event => {
+        runInitialAnimation();
+        });
+    }
+        $nextBtn.on('click', (el)=> {
+            if (!$(el.currentTarget).hasClass('disabled')) {
+                $currSlide = $(el.currentTarget).parent().find('.activeCard');
+                $nextSlide = $currSlide.next('.card');
+                $currSlide.removeClass('activeCard');
+                $nextSlide.addClass('activeCard');
+                $('.pr-btn-active').removeClass('pr-btn-active');
+                $('.pr-btn').eq($nextSlide.index()).addClass('pr-btn-active');
+                runAnimationOut();
+            }
+        });
+        $prevBtn.on('click', (el)=> {
+            if (!$(el.currentTarget).hasClass('disabled')) {
+                $currSlide = $(el.currentTarget).parent().find('.activeCard');
+                $nextSlide = $currSlide.prev('.card');
+                $currSlide.removeClass('activeCard');
+                $nextSlide.addClass('activeCard');
+                $('.pr-btn-active').removeClass('pr-btn-active');
+                $('.pr-btn').eq($nextSlide.index()).addClass('pr-btn-active');
+                runAnimationOut();
+            }
+        });
         
-    const animationOut = anime
-    .timeline({ 
-        loop: false,
-        autoplay: false
-    })
-    .add(
-    {
-        targets: '.card .feat-img',
-        opacity: [1, 0],
-        easing: 'easeInOutSine',
-        duration: 500,
-    })
-    .add(
-    {
-        targets: '.card .caption, .card  .dp-card-title, .card  .body-text-2',
-        opacity: [1, 0],
-        easing: 'easeInOutSine',
-        duration: 500
-    }, '-=500')
-    .add(
-    {
-        targets: '.card .buttons',
-        opacity: [1, 0],
-        easing: 'easeInOutSine',
-        duration: 500,
-        begin: () => {
-            $('.disabled').removeClass('disabled');
-            if ($nextSlide.next('.card').length == 0) {
-                $nextBtn.addClass('disabled');
-            }
-            if ($nextSlide.prev('.card').length == 0) {
-                $prevBtn.addClass('disabled');
-            }
-        },
-        complete: () => {
-            $currSlide.hide();
-            runAnimationIn(true);
-            $nextSlide.show();        
-        }
-    }, '-=500');
-                
-    $nextBtn.on('click', (el)=> {
-        if (!$(el.currentTarget).hasClass('disabled')) {
-            $currSlide = $(el.currentTarget).parent().find('.activeCard');
-            $nextSlide = $currSlide.next('.card');
-            $currSlide.removeClass('activeCard');
-            $nextSlide.addClass('activeCard');
-            $('.pr-btn-active').removeClass('pr-btn-active');
-            $('.pr-btn').eq($nextSlide.index()).addClass('pr-btn-active');
-            animationOut.play();
-        }
-    });
-    $prevBtn.on('click', (el)=> {
-        if (!$(el.currentTarget).hasClass('disabled')) {
-            $currSlide = $(el.currentTarget).parent().find('.activeCard');
-            $nextSlide = $currSlide.prev('.card');
-            $currSlide.removeClass('activeCard');
-            $nextSlide.addClass('activeCard');
-            $('.pr-btn-active').removeClass('pr-btn-active');
-            $('.pr-btn').eq($nextSlide.index()).addClass('pr-btn-active');
-            animationOut.play();
-        }
-    });
-    
     function populateProgressIndicators() {
         $card.each((el, idx) => {
             $('.slide-progress').append('<div class="pr-btn"></div>');
@@ -159,24 +175,8 @@ $(document).ready(() => {
         $('.pr-btn:first').addClass('pr-btn-active');
         $prevBtn.addClass('disabled');
     }
-    function kickOffAnimations() {
-        const controller = new ScrollMagic.Controller();
-
-        // Triggers on 'top of div'
-        const workScene1 = new ScrollMagic.Scene({
-          triggerElement: '.work-section',
-          duration: 0,
-          triggerHook: 0.9
-        })
-        .addTo(controller)
-        .on('progress', event => {
-            runFirstAnimationIn();
-        });
-    
-    
-    }
-    if (window.innerWidth > 768) {
-        kickOffAnimations();
+    if (window.innerWidth > 768){
         populateProgressIndicators();
+        triggerScollAnimation();
     }
 });
