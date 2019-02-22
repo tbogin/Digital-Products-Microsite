@@ -73,9 +73,10 @@
     background: $color-gray-super-light;  
     @include respond-to(not-mobile) {
       height: 100%;
-      width: calc(100% / 3 * 2);
+      // width: calc(100% / 3 * 2);  // keeps gray background at 2/3 screen width. position of edge between background panels (w/ respect to content) is variable.
+      width: calc(50% + (960px / 4));   // keeps edge of blue background static w/ respect to the cards.
       float: left;
-      @include section-standard-padding;
+      padding-left: $section-default-padding-lr;
     }
     @include respond-to(mobile) {
       height: $upper-section-mobile-height;
@@ -85,7 +86,8 @@
   .one-third-desktop {
     @include respond-to(not-mobile) {
       height: 100%;
-      width: calc(100% / 3);
+      // width: calc(100% / 3);  // keeps blue background at 1/3 screen width. position of edge between background panels (w/ respect to content) is variable.
+      width: calc(50% - (960px / 4));   // keeps edge of blue background static w/ respect to the cards.
       float: right;
       padding-right: $section-default-padding-lr;
     }
@@ -117,7 +119,6 @@
     width: $main-text-col-width;
     padding-top: $section-top-bottom-padding;
     padding-bottom: $section-top-bottom-padding + 6px;  // not 100% sure why, but this value seems to be just right
-    margin-left: $section-default-padding-lr;
     @include respond-to(not-mobile) {
       position: sticky;
       position: -webkit-sticky;
@@ -183,11 +184,11 @@
     @include respond-to(not-mobile) {
       display: block;
       position: absolute;
-      right: $section-default-padding-lr;
-      width: 2 * $default-card-width + 2 * $card-container-padding + 20px;  
+      left: $main-text-col-width + 3rem;
+      width: 2 * $default-card-width + 20px;  
       height: $card-container-height;
       top: $section-top-bottom-padding + $card-container-padding;
-      padding: $card-container-padding;
+      padding: $card-container-padding 0;
     }
     @include respond-to(mobile) {
       display: none;

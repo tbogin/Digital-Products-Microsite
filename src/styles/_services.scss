@@ -10,7 +10,11 @@
   }
   
   @include respond-to(not-mobile) {
-    @include section-standard-padding;
+    padding-top: $section-default-padding-tb;
+    padding-bottom: $section-default-padding-tb;
+    .section-content {
+      max-width: 1132px;  // total length of the timeline. this is a section-specific override of the standard max-width for .section-content
+    }
     .lower-portion-background-desktop {
       position: absolute;
       left: 0;
@@ -22,7 +26,8 @@
   }
 
   .services-intro-text {
-    margin-bottom: 48px;
+    max-width: $standard-content-width;   // 960px, or standard content width for most sections. narrower than the timeline element.
+    margin: 0 auto 48px auto;
     .caption,
     .heading-2 {
       color: $color-white;
