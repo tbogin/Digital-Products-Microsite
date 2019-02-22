@@ -1,0 +1,18 @@
+@import './_base';
+
+.contact-section {
+
+  $content-max-width: 1200px;
+  $slider-width: 812px;   // based on zeplin mockups. can be changed if needed.
+
+  @include respond-to(not-mobile) {
+    padding-right: 0;       // section-specific override of standard section padding
+    .section-content {
+      max-width: $content-max-width;    // section-specific override of standard max-width for .section-content
+    }
+    .main-text-col {
+      width: $content-max-width - $slider-width;
+    }
+  }
+
+}

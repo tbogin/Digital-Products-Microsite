@@ -14,7 +14,7 @@
 
   @include respond-to(not-mobile) {
     height: $full-panel-height;
-    padding-left: $section-indent; // should be width of side-nav
+    padding: 0;
   }
 
   @include respond-to(mobile) {
@@ -25,6 +25,7 @@
       height: 100%;
       width: 63%;
       float: left;
+      padding-left: $section-default-padding-lr;
     }
     @include respond-to(mobile) {
       background: $color-gray-super-light;
@@ -39,6 +40,7 @@
       height: 100%;
       width: 37%;
       float: right;
+      padding-right: $section-default-padding-lr;
     }
     @include respond-to(mobile) {
       width: 100%;
