@@ -27,6 +27,7 @@
     margin: 0;
     color: $color-gray;
     & li {
+      font-family: $font-base-medium;
       line-height: 1.5;
       margin-bottom: 12px;
       &:last-child {
