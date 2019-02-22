@@ -9,81 +9,80 @@ $(document).ready(() => {
     let $card = $('.card');
 
 
+    function runFirstAnimationIn() {
+        const animationFirst = anime
+        .timeline({ 
+            loop: false,
+            autoplay: false
+        })
+        .add(
+        {
+            targets: '.card .caption, .card .dp-card-title, .card .body-text-2',
+            translateX: [-35, 0],
+            opacity: [0, 1],
+            easing: 'easeInOutSine',
+            duration: 500,
+            delay: 800
+        })
+        .add(
+        {
+            targets: '.card .buttons',
+            opacity: [0, 1],
+            easing: 'easeInOutSine',
+            duration: 400,
+        }, '-=100');
 
-    const animationFirst = anime
-    .timeline({ 
-        loop: false,
-        autoplay: false
-    })
-    .add(
-    {
-        targets: '.card .caption, .card .dp-card-title, .card .body-text-2',
-        translateX: [-35, 0],
-        opacity: [0, 1],
-        easing: 'easeInOutSine',
-        duration: 500,
-        delay: 800
-    })
-    .add(
-    {
-        targets: '.card .buttons',
-        opacity: [0, 1],
-        easing: 'easeInOutSine',
-        duration: 400,
-    }, '-=100');
-
-    const animationFirstDevice = anime
-    .timeline({ 
-        loop: false,
-        autoplay: false
-    })
-    .add(
-    {
-        targets: '.card .feat-img',
-        translateY: [50, 0],
-        opacity: [0, 1],
-        easing: 'easeInOutSine',
-        duration: 800,
-        delay: 800
-    });
-    const animationIn = anime
-    .timeline({ 
-        loop: false,
-        autoplay: false
-    })
-    .add(
-    {
-        targets: '.card .caption, .card .dp-card-title, .card .body-text-2',
-        translateX: [-35, 0],
-        opacity: [0, 1],
-        easing: 'easeInOutSine',
-        duration: 500,
-        //delay: 800
-    })
-    .add(
-    {
-        targets: '.card .buttons',
-        opacity: [0, 1],
-        easing: 'easeInOutSine',
-        duration: 400,
-    }, '-=100');
-
-    const animationInDevice = anime
-    .timeline({ 
-        loop: false,
-        autoplay: false
-    })
-    .add(
-    {
-        targets: '.card .feat-img',
-        translateY: [50, 0],
-        opacity: [0, 1],
-        easing: 'easeInOutSine',
-        duration: 800,
-        //delay: 800
-    });
-
+        const animationFirstDevice = anime
+        .timeline({ 
+            loop: false,
+            autoplay: false
+        })
+        .add(
+        {
+            targets: '.card .feat-img',
+            translateY: [50, 0],
+            opacity: [0, 1],
+            easing: 'easeInOutSine',
+            duration: 800,
+            delay: 800
+        });
+    }
     function runAnimationIn() {
+        const animationIn = anime
+        .timeline({ 
+            loop: false,
+            autoplay: false
+        })
+        .add(
+        {
+            targets: '.card .caption, .card .dp-card-title, .card .body-text-2',
+            translateX: [-35, 0],
+            opacity: [0, 1],
+            easing: 'easeInOutSine',
+            duration: 500,
+        })
+        .add(
+        {
+            targets: '.card .buttons',
+            opacity: [0, 1],
+            easing: 'easeInOutSine',
+            duration: 400,
+        }, '-=100');
+
+        const animationInDevice = anime
+        .timeline({ 
+            loop: false,
+            autoplay: false
+        })
+        .add(
+        {
+            targets: '.card .feat-img',
+            translateY: [50, 0],
+            opacity: [0, 1],
+            easing: 'easeInOutSine',
+            duration: 800,
+        });
+
         animationIn.play();
         animationInDevice.play();
     }
@@ -130,20 +129,6 @@ $(document).ready(() => {
         }
     }, '-=500');
                 
-    const controller = new ScrollMagic.Controller();
-
-    // Triggers on 'top of div'
-    const workScene1 = new ScrollMagic.Scene({
-      triggerElement: '.work-section',
-      duration: 0,
-      triggerHook: 0.9
-    })
-    .addTo(controller)
-    .on('progress', event => {
-        animationFirst.play();
-        animationFirstDevice.play();
-    });
-
     $nextBtn.on('click', (el)=> {
         if (!$(el.currentTarget).hasClass('disabled')) {
             $currSlide = $(el.currentTarget).parent().find('.activeCard');
@@ -174,5 +159,24 @@ $(document).ready(() => {
         $('.pr-btn:first').addClass('pr-btn-active');
         $prevBtn.addClass('disabled');
     }
-    populateProgressIndicators();
+    function kickOffAnimations() {
+        const controller = new ScrollMagic.Controller();
+
+        // Triggers on 'top of div'
+        const workScene1 = new ScrollMagic.Scene({
+          triggerElement: '.work-section',
+          duration: 0,
+          triggerHook: 0.9
+        })
+        .addTo(controller)
+        .on('progress', event => {
+            runFirstAnimationIn();
+        });
+    
+    
+    }
+    if (window.innerWidth > 768) {
+        kickOffAnimations();
+        populateProgressIndicators();
+    }
 });
