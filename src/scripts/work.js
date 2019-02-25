@@ -115,12 +115,12 @@ $(document).ready(() => {
             easing: 'easeInOutSine',
             duration: 500,
             begin: () => {
-                $('.disabled').removeClass('disabled');
+                $('.hidden').removeClass('hidden');
                 if ($nextSlide.next('.card').length == 0) {
-                    $nextBtn.addClass('disabled');
+                    $nextBtn.addClass('hidden');
                 }
                 if ($nextSlide.prev('.card').length == 0) {
-                    $prevBtn.addClass('disabled');
+                    $prevBtn.addClass('hidden');
                 }
             },
             complete: () => {
@@ -146,7 +146,7 @@ $(document).ready(() => {
         });
     }
         $nextBtn.on('click', (el)=> {
-            if (!$(el.currentTarget).hasClass('disabled')) {
+            if (!$(el.currentTarget).hasClass('hidden')) {
                 $currSlide = $(el.currentTarget).parent().find('.activeCard');
                 $nextSlide = $currSlide.next('.card');
                 $currSlide.removeClass('activeCard');
@@ -157,7 +157,7 @@ $(document).ready(() => {
             }
         });
         $prevBtn.on('click', (el)=> {
-            if (!$(el.currentTarget).hasClass('disabled')) {
+            if (!$(el.currentTarget).hasClass('hidden')) {
                 $currSlide = $(el.currentTarget).parent().find('.activeCard');
                 $nextSlide = $currSlide.prev('.card');
                 $currSlide.removeClass('activeCard');
@@ -173,10 +173,28 @@ $(document).ready(() => {
             $('.slide-progress').append('<div class="pr-btn"></div>');
         });
         $('.pr-btn:first').addClass('pr-btn-active');
-        $prevBtn.addClass('disabled');
+        $prevBtn.addClass('hidden');
     }
     if (window.innerWidth > 768){
         populateProgressIndicators();
         triggerScollAnimation();
+    } else {
+        /* Slick Slider - Mobile only */
+        const $slickContainer = $('.slide-wrap'); 
+        $slickContainer.slick({
+            arrows: false,            // no arrow buttons rendered, making swiping the only navigation option
+            centerMode: false,         // ensures the slider always "lands" with {slidesToShow} slide(s) centered in the viewport
+            infinite: false,
+            slidesToShow: 1,          // other slides may be partially visible but only 1 is guaranteed to be in full view whenever the slider "lands"
+            slidesToScroll: 1,        
+            swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
+            variableWidth: false,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
+        });
+
+        // Highlight active button based on current slide (mobile only)
+        // $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        //     const cardType = (nextSlide < getFirstDevCardIndex()) ? 'design' : 'development';
+        //     highlightSelectedButton(cardType);
+        // });
     }
 });
