@@ -3,11 +3,22 @@
 .banner-section {
   box-sizing: border-box;
   
+  $illustration-width-desktop: 470px;
+
   @include respond-to(not-mobile) {
     padding-top: calc(100vh / 12);
+    .section-content {
+      height: 570px;
+    }
     .banner-main-text {
-      width: 50%;
-      min-width: 500px;
+      width: $standard-content-width - $illustration-width-desktop;
+      height: 100%;
+    }
+    .banner-illustration {
+      width: $illustration-width-desktop;
+      position: absolute;
+      bottom: 0;
+      left: $standard-content-width - $illustration-width-desktop;
     }
   }
 
@@ -63,6 +74,10 @@
     .link-subsection,
     .dp-sub-link {
       margin-bottom: 0.75rem;
+    }
+    
+    .banner-illustration {
+      display: none;
     }
   }
 }
