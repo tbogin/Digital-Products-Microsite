@@ -85,13 +85,13 @@
     }
     .timeline-labels {
       align-items: flex-start;
-      padding-top: 0.75rem;
       .caption,
       .timeline-label {
         color: $color-white !important;
       }
       .caption {
         width: 10%; 
+        padding-top: 0.75rem;
         &:first-child {
           text-align: left;
         }
@@ -102,11 +102,11 @@
       .timeline-label {
         text-align: center;
         width: 20%;   // 4 labels together will take up 80% of the total width, while the 2 captions cover the remaining 20%
-        margin: 0.5rem 0 0 0;
-        padding: 0 1rem;
+        margin: 0;
+        padding: 1.25rem 1rem;
         line-height: 1.6875rem;
         cursor: pointer;
-        &.active {
+        &.current {
           font-family: $font-base-semibold;
           font-size: 1.25rem;
         }
