@@ -19,6 +19,7 @@ import './blurb.js';
 import './capabilities.js';
 import './work.js';
 import './constants.js';
+import './services.js';
 
 // console.log('webpack starterkit');
 

@@ -2,6 +2,8 @@
 
 .services-section {
 
+  $timeline-length: 1132px;
+
   position: relative;
   background-color: $color-brand-primary-dark;
 
@@ -12,8 +14,103 @@
   @include respond-to(not-mobile) {
     padding-top: $section-default-padding-tb;
     padding-bottom: $section-default-padding-tb;
+    overflow-x: hidden;
     .section-content {
-      max-width: 1132px;  // total length of the timeline. this is a section-specific override of the standard max-width for .section-content
+      max-width: $timeline-length;  // total length of the timeline. this is a section-specific override of the standard max-width for .section-content
+    }
+    .timeline,
+    .timeline-labels {
+      width: $timeline-length;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .timeline {
+      align-items: center;
+      position: relative;
+      height: 16px;
+      .line-segment, 
+      .circle {
+        box-sizing: border-box;
+      }
+      .line-segment {
+        height: 0;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        width: calc((100% - 64px) / 5);
+        &.future {
+          border-bottom-color: $color-gray-dark;
+        }
+        &.past {
+          border-bottom-color: $color-brand-primary;
+        }
+      }
+      .circle {
+        width: 16px;
+        height: 16px;
+        background: transparent;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        &.future {
+          border-color: $color-gray-dark;
+        }
+        &.past,
+        &.current {
+          border-color: $color-brand-primary;
+        }
+        &.current {
+          background: $color-brand-primary;
+        }
+      }
+      .arrowhead {
+        height: 0;
+        position: absolute;
+        right: 0;
+        .arrowhead-top,
+        .arrowhead-bottom {
+          height: 0;
+          width: 16px;
+          border-bottom: 2px solid $color-gray-dark;
+        }
+        .arrowhead-top {
+          transform: translateY(-5px) rotate(30deg);;
+        }
+        .arrowhead-bottom {
+          transform: translateY(1px) rotate(-30deg);;
+        }
+      }
+    }
+    .timeline-labels {
+      align-items: flex-start;
+      padding-top: 0.75rem;
+      .caption,
+      .timeline-label {
+        color: $color-white !important;
+      }
+      .caption {
+        width: 10%; 
+        &:first-child {
+          text-align: left;
+        }
+        &:last-child {
+          text-align: right;
+        }
+      }
+      .timeline-label {
+        text-align: center;
+        width: 20%;   // 4 labels together will take up 80% of the total width, while the 2 captions cover the remaining 20%
+        margin: 0.5rem 0 0 0;
+        padding: 0 1rem;
+        line-height: 1.6875rem;
+        cursor: pointer;
+        &.active {
+          font-family: $font-base-semibold;
+          font-size: 1.25rem;
+        }
+      }
     }
     .lower-portion-background-desktop {
       position: absolute;
