@@ -2,11 +2,15 @@ import anime from 'animejs';
 import ScrollMagic from 'scrollmagic';
 
 $(document).ready(() => {
+    const $slickContainer = $('.slide-wrap'); 
+    let slickEngaged = false;
     let $currSlide = null;
     let $nextSlide = null;
     let $nextBtn = $('.next:first');
     let $prevBtn = $('.prev:first');
     let $card = $('.card');
+    let $slideWrap = $('.slide-wrap');
+    let preserveHTML = $slideWrap.html();
 
 
     function runInitialAnimation(){
@@ -175,12 +179,11 @@ $(document).ready(() => {
         $('.pr-btn:first').addClass('pr-btn-active');
         $prevBtn.addClass('hidden');
     }
-    if (window.innerWidth > 768){
-        populateProgressIndicators();
-        triggerScollAnimation();
-    } else {
+    function notMobile() {
+        return window.innerWidth > 768;
+    }
+    function engageMobileCarousel () {
         /* Slick Slider - Mobile only */
-        const $slickContainer = $('.slide-wrap'); 
         $slickContainer.slick({
             arrows: false,            // no arrow buttons rendered, making swiping the only navigation option
             centerMode: false,         // ensures the slider always "lands" with {slidesToShow} slide(s) centered in the viewport
@@ -190,11 +193,32 @@ $(document).ready(() => {
             swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
             variableWidth: false,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
         });
-
-        // Highlight active button based on current slide (mobile only)
-        // $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-        //     const cardType = (nextSlide < getFirstDevCardIndex()) ? 'design' : 'development';
-        //     highlightSelectedButton(cardType);
-        // });
+        slickEngaged = true;
     }
+    function slickEngageCheck() {
+        if(!slickEngaged) {
+            engageMobileCarousel();
+        }
+    }
+
+
+    if (notMobile()){
+        populateProgressIndicators();
+        triggerScollAnimation();
+    } else {
+        slickEngageCheck();
+    }
+
+    $(window).on('resize', () => {
+        if(notMobile()) {
+            if (slickEngaged) {
+                $slickContainer.slick('unslick');
+                $slideWrap.html(preserveHTML);
+                slickEngaged = false;
+            }
+        } else {
+            slickEngageCheck();
+
+        }
+    });
 });

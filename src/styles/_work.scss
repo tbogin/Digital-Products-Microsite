@@ -74,7 +74,15 @@
     @include respond-to(mobile) {
       margin: 0;
       width: 100%;
+      padding: 0 40px 0 31%;
+    }
+    @include respond-to(mobile-small) {
       padding: 0 40px 0 20%;
+    }
+    @include respond-to(mobile-x-small) {
+      margin: 0;
+      width: 100%;
+      padding: 0 40px 0 15%;
     }
 
     .heading-2 {
@@ -130,9 +138,15 @@
         @include respond-to(mobile) {
           max-width: 307px;
           min-width: 307px;
-          margin: 16px 5% 16px 5%;
+          margin: 16px 9.5% 16px 9.5%;
           float: none;
           padding-top: 108px;
+        }
+        @include respond-to(mobile-small) {
+          margin: 16px 5% 16px 5%;
+        }
+        @include respond-to(mobile-x-small) {
+          margin: 16px 2.5% 16px 2.5%;
         }
 
         border-radius: 4px;

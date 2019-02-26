@@ -6,12 +6,11 @@ $color-brand-primary-mid: #002c9b;
 $color-brand-primary-dark: #001532;
 
 // Neutral Colors
-$color-gray: #8B96A4;
-$color-gray-light: #AFB4BE;
+$color-gray: #8b96a4;
+$color-gray-light: #afb4be;
 $color-gray-dark: #455563;
-$color-white: #FFFFFF;
-$color-gray-super-light: #FCFCFC;
-
+$color-white: #ffffff;
+$color-gray-super-light: #fcfcfc;
 
 /* Typography Tokens */
 
@@ -55,13 +54,13 @@ $font-weight-super: 900;
 $font-italic: italic;
 
 // Font Size
-$font-size-x-small: 0.75rem;      // 12px
-$font-size-medium: 1rem;          // 16px
-$font-size-large: 1.5rem;         // 24px
-$font-size-x-large: 2rem;         // 32px
-$font-size-xx-large: 2.875rem;    // 46px
-$font-size-xxx-large: 3.5rem;     // 56px
-$font-size-xxxx-large: 6rem;      // 96px
+$font-size-x-small: 0.75rem; // 12px
+$font-size-medium: 1rem; // 16px
+$font-size-large: 1.5rem; // 24px
+$font-size-x-large: 2rem; // 32px
+$font-size-xx-large: 2.875rem; // 46px
+$font-size-xxx-large: 3.5rem; // 56px
+$font-size-xxxx-large: 6rem; // 96px
 
 // Line Height
 $line-height-small: 1;
@@ -79,22 +78,39 @@ $nav-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.05);
 $border-radius: 4px;
 
 // Media Queries
+$break-mobile-x-small: 490px;
+$break-mobile-small: 575px;
 $break-mobile: 768px;
 $break-tablet: 1024px;
 $break-large: 1440px;
 
 @mixin respond-to($media) {
+  @if $media == mobile-x-small {
+    @media only screen and (max-width: $break-mobile-x-small) {
+      @content;
+    }
+  }
+  @if $media == mobile-small {
+    @media only screen and (max-width: $break-mobile-small) {
+      @content;
+    }
+  }
   @if $media == mobile {
-    @media only screen and (max-width: $break-mobile) { @content; }
-  }
-  @else if $media == tablet {
-    @media only screen and (min-width: $break-mobile + 1) and (max-width: $break-large) { @content; }
-  }
-  @else if $media == desktop {
-    @media only screen and (min-width: $break-large + 1) { @content; }
-  }
-  @else if $media == not-mobile {
-    @media only screen and (min-width: $break-mobile + 1) { @content; }
+    @media only screen and (max-width: $break-mobile) {
+      @content;
+    }
+  } @else if $media == tablet {
+    @media only screen and (min-width: $break-mobile + 1) and (max-width: $break-large) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media only screen and (min-width: $break-large + 1) {
+      @content;
+    }
+  } @else if $media == not-mobile {
+    @media only screen and (min-width: $break-mobile + 1) {
+      @content;
+    }
   }
 }
 
@@ -105,21 +121,21 @@ $break-large: 1440px;
 }
 
 // Layout Utilities
-$full-panel-height: 101vh;  // intentionally set just above 100vh to include a bit of buffer
+$full-panel-height: 101vh; // intentionally set just above 100vh to include a bit of buffer
 
-$side-nav-width: 122px;   // to be used where needed
-$standard-content-width: 960px;   // max-width of section-content for most sections (some exceptions exist)
+$side-nav-width: 122px; // to be used where needed
+$standard-content-width: 960px; // max-width of section-content for most sections (some exceptions exist)
 
-$section-default-padding-lr: $side-nav-width + 40px;   // default left/right section padding to ensure content does not overlap side nav
+$section-default-padding-lr: $side-nav-width + 40px; // default left/right section padding to ensure content does not overlap side nav
 // $section-default-padding-tb: 10vh;                  // default top/bottom section padding, vertically responsive option
-$section-default-padding-tb: 80px;                     // default top/bottom section padding, standard pixel height based on zeplin
+$section-default-padding-tb: 80px; // default top/bottom section padding, standard pixel height based on zeplin
 
 @mixin section-standard-padding {
   padding: 0 $section-default-padding-lr;
 }
 
 // Misc. helper classes
-.display-block { 
+.display-block {
   display: block;
 }
 .semibold {
