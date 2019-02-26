@@ -38,11 +38,15 @@
         border-bottom-style: solid;
         border-bottom-width: 2px;
         width: calc((100% - 64px) / 5);
-        &.future {
-          border-bottom-color: $color-gray-dark;
-        }
-        &.past {
-          border-bottom-color: $color-brand-primary;
+        position: relative;
+        border-bottom-color: $color-gray-dark;
+        .line-segment-highlight {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 0;
+          border-bottom: 2px solid $color-brand-primary;
         }
       }
       .circle {
