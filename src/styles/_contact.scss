@@ -5,6 +5,8 @@
   $content-max-width: 1200px;
   $slider-width: 812px;   // based on zeplin mockups. can be changed if needed.
 
+  padding-left: 230px;
+
   @include respond-to(not-mobile) {
     padding-right: 0;       // section-specific override of standard section padding
     .section-content {
@@ -15,4 +17,30 @@
     }
   }
 
+  .caption {
+    margin-top: 80px;
+  }
+
+  .heading-2 {
+    margin-top: 8px;
+  }
+
+  .contact-detail {
+    vertical-align: middle;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 16px;
+  }
+
+  .contact-detail-header {
+    margin-top: 40px;
+  }
+
+  .contact-icon {
+    height: 24px;
+  }
+
+  .horizontal-align {
+    display: flex;
+  }
 }
