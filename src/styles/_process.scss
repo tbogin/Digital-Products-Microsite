@@ -52,7 +52,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #f1f1f1;
+    background: $color-gray-background-block;
     z-index: -1;
     @include respond-to(not-mobile) {
       height: $lower-section-height-desktop;
