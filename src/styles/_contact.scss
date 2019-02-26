@@ -8,6 +8,7 @@
   padding-left: 230px;
   position: relative;
   padding-top: 80px;
+  background: #fafafa;
 
   @include respond-to(not-mobile) {
     padding-right: 0;       // section-specific override of standard section padding
@@ -23,7 +24,6 @@
       bottom: 0;
       width: 100%;
       height: 50%;
-      z-index: -1;
       background: $color-gray-background-block;
     } 
   }
