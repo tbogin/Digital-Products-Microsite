@@ -66,6 +66,7 @@ $(document).ready(function() {
 
   function animateLineSegmentsAndCircles(animeTimeline, previousIndex, newIndex, diff) {
     const newWidth = (diff > 0) ? '100%' : 0;
+    const oldBorderColor = (diff < 0) ? colors.brandPrimary : colors.grayDark;
     const newBorderColor = (diff < 0) ? colors.grayDark : colors.brandPrimary;
   
     const circlesToModify = getElemsToModify($circles, previousIndex, newIndex, diff);
@@ -84,14 +85,14 @@ $(document).ready(function() {
         });
         animeTimeline.add({
           targets: circle,
-          borderColor: newBorderColor,
+          borderColor: [oldBorderColor, newBorderColor],
           duration,
           easing
         });
       } else {
         animeTimeline.add({
           targets: circle,
-          borderColor: newBorderColor,
+          borderColor: [oldBorderColor, newBorderColor],
           duration,
           easing
         });
@@ -172,7 +173,7 @@ $(document).ready(function() {
   });
 
   // Click event handler on labels
-  $labels.on('click', function() {
+  $labels.on('click', function(event) {
     const newIndex = $labels.index($(event.target));
     if (newIndex > -1) {
       selectTimelineStop(newIndex);
