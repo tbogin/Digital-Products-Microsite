@@ -58,16 +58,8 @@
         border-radius: 100%;
         box-sizing: border-box;
         cursor: pointer;
-        &.future {
-          border-color: $color-gray-dark;
-        }
-        &.past,
-        &.current {
-          border-color: $color-brand-primary;
-        }
-        &.current {
-          background: $color-brand-primary;
-        }
+        background: $color-brand-primary-dark;
+        border-color: $color-gray-dark;
       }
       .arrowhead {
         height: 0;

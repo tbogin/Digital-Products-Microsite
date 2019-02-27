@@ -20,6 +20,7 @@ import './capabilities.js';
 import './work.js';
 import './constants.js';
 import './services.js';
+import './timelineState.js';
 
 // console.log('webpack starterkit');
 
