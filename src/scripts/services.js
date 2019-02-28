@@ -188,7 +188,7 @@ $(document).ready(function() {
 
   // Hover state
   function toggleHoverState(index, startHover) {
-    const hoverStateDuration = 200;
+    const hoverStateDuration = 50;
     const offset = `-=${hoverStateDuration}`;
     const circle = [...$circles][index];
     const label = [...$labels][index];
