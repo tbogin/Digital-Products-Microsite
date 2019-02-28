@@ -11,7 +11,7 @@ $(document).ready(function() {
   const $labels = $('.timeline-labels .timeline-label');
 
   // set default duration & easing
-  const duration = 300;
+  const duration = 100;
   const labelAnimationDuration = 50;
   const easing = 'linear';
   
@@ -188,7 +188,7 @@ $(document).ready(function() {
 
   // Hover state
   function toggleHoverState(index, startHover) {
-    const hoverStateDuration = 50;
+    const hoverStateDuration = 25;
     const offset = `-=${hoverStateDuration}`;
     const circle = [...$circles][index];
     const label = [...$labels][index];
