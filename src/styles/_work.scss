@@ -208,7 +208,7 @@
               height: 464px;
             }
             @include respond-to(mobile) {
-              background: url(http://localhost:8080/src/assets/grid-mobile.png) 0 0 no-repeat;
+              background: url(../assets/grid-mobile.png) 0 0 no-repeat;
               width: 198px;
               height: 198px;
               right: 20%;
