@@ -59,6 +59,9 @@
         cursor: pointer;
         background: $color-brand-primary-dark;
         border-color: $color-gray-dark;
+        &.hover-state {
+          background: $color-white;
+        }
       }
       .arrowhead {
         height: 0;
