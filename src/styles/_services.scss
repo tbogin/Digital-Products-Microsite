@@ -102,6 +102,7 @@
         width: 20%;   // 4 labels together will take up 80% of the total width, while the 2 captions cover the remaining 20%
         margin: 0;
         padding: 1.25rem 1rem;
+        padding-bottom: 0;
         line-height: 1.6875rem;
         cursor: pointer;
         &.current {
