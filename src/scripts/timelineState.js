@@ -7,6 +7,13 @@ export default class TimelineState {
     this.setPreviousIndex = function(newIndex) {
       previousIndex = newIndex;
     };
+    let newIndex = 0;
+    this.getNewIndex = function() {
+      return newIndex;
+    };
+    this.setNewIndex = function(index) {
+      newIndex = index;
+    };
     let animationInProgress = false;
     this.animationIsInProgress = function() {
       return animationInProgress;

@@ -12,6 +12,7 @@ $(document).ready(function() {
 
   // set default duration & easing
   const duration = 300;
+  const labelAnimationDuration = 50;
   const easing = 'linear';
   
   // initialize timeline state
@@ -23,7 +24,7 @@ $(document).ready(function() {
     animeTimeline.add({
       targets: startingLabel,
       fontSize: '1rem',
-      duration,
+      duration: labelAnimationDuration,
       easing,
       complete: () => {
         $(startingLabel).removeClass('current');
@@ -108,25 +109,27 @@ $(document).ready(function() {
 
   function animateEndingCircle(animeTimeline, newIndex) {
     const endingCircle = [...$circles][newIndex];
+    const oldBackgroundColor = $(endingCircle).hasClass('hover-state') ? colors.white : colors.brandPrimaryDark;
     animeTimeline.add({
       targets: endingCircle,
-      background: colors.brandPrimary,
+      background: [oldBackgroundColor, colors.brandPrimary],
       duration,
       easing
     });
   }
 
   function animateEndingLabel(animeTimeline, newIndex) {
+    const offset = 0;   // absolute offset in ms w/ ref to beginning of timeline
     const endingLabel = [...$labels][newIndex];
     animeTimeline.add({
       targets: endingLabel,
       fontSize: '1.25rem',
-      duration,
+      duration: labelAnimationDuration,
       easing,
       complete: () => {
         $(endingLabel).addClass('current');
       }
-    });
+    }, offset);
   }
   /* End partial animation functions */
 
@@ -140,6 +143,9 @@ $(document).ready(function() {
 
     // don't animate anything if we haven't moved to a new stop on the timeline
     if (diff === 0) { return; }
+
+    // set newIndex so that toggleHoverState can reference it
+    timelineState.setNewIndex(newIndex);
 
     timelineState.setAnimationState(true);
 
@@ -179,5 +185,60 @@ $(document).ready(function() {
       selectTimelineStop(newIndex);
     }
   });
+
+  // Hover state
+  function toggleHoverState(index, startHover) {
+    const hoverStateDuration = 200;
+    const offset = `-=${hoverStateDuration}`;
+    const circle = [...$circles][index];
+    const label = [...$labels][index];
+    let oldBackgroundColor, newBackgroundColor, newFontSize;
+    (startHover === true) ? $(circle).addClass('hover-state'): $(circle).removeClass('hover-state');
+    if (startHover === true) {
+      newFontSize = '1.25rem';
+      oldBackgroundColor = colors.brandPrimaryDark;
+      newBackgroundColor = colors.white;
+    } else {
+      newFontSize = '1rem';
+      oldBackgroundColor = colors.white;
+      newBackgroundColor = colors.brandPrimaryDark;
+    }
+    const hoverAnimation = anime.timeline({});
+    hoverAnimation.add({
+      targets: circle,
+      background: [oldBackgroundColor, newBackgroundColor],
+      duration: hoverStateDuration, 
+      easing
+    });
+    hoverAnimation.add({
+      targets: label,
+      fontSize: newFontSize,
+      duration: hoverStateDuration,
+      easing,
+      complete: () => {
+        (startHover === true) ? $(label).addClass('current') : $(label).removeClass('current');
+      }
+    }, offset);
+  }
+
+  function onHover(event) {
+    if (event.type !== 'mouseenter' && event.type !== 'mouseleave') { return; }
+    const startHover = event.type === 'mouseenter' ? true : false;
+    let index = $circles.index($(event.target)); // check circles collection
+    if (index === -1) {
+      index = $labels.index($(event.target)); // if not in circles, check labels
+    }
+    // do not animate if the event target is already selected (previousIndex) or has just been clicked (newIndex)
+    if (index === timelineState.getNewIndex() || index === timelineState.getPreviousIndex()) {
+      return;
+    }
+    if (index > -1) {
+      toggleHoverState(index, startHover);
+    }
+  }
+
+  $circles.on('mouseenter mouseleave', onHover);
+
+  $labels.on('mouseenter mouseleave', onHover);
 
 });

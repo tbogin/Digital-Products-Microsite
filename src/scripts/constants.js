@@ -4,5 +4,6 @@ export const mobileBreakpoint = 768;
 export const colors = {
   brandPrimary: '#0146f5',
   brandPrimaryDark: '#001532',
-  grayDark: '#455563'
+  grayDark: '#455563',
+  white: '#FFFFFF'
 };
