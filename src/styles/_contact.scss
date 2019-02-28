@@ -49,4 +49,22 @@
     display: flex;
     align-items: center;
   } 
+
+  .contact-card-container {
+    // need to figure out the width of the whole container holding the items
+    @include respond-to(not-mobile) {
+      z-index: 2;
+      left: 20rem;
+    }
+  }
+
+  .slick-slide {
+    margin-right: 20px;
+  }
+
+  .image-place-holder {
+    width: 225px;
+    height: 336px;
+    background-image: linear-gradient(214deg, #0146f5, #002c9b);
+  }
 }

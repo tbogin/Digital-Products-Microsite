@@ -21,6 +21,7 @@ import './work.js';
 import './constants.js';
 import './services.js';
 import './timelineState.js';
+import './contacts.js';
 
 // console.log('webpack starterkit');
 
