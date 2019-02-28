@@ -72,7 +72,6 @@
   
   .heading-block {
     @include respond-to(not-mobile) {
-      width: $main-text-col-width;
       padding-left: calc(63% - (1010px - 162px) / 2 + 120px);    // should equal (1/2 (left-background-width - ($main-text-col-width - $section-default-padding-lr)) + $section-indent)
       margin-top: $section-default-padding-tb;
     }
