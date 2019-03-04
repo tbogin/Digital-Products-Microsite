@@ -9,8 +9,10 @@ $(document).ready(function(){
 
   instance.options.draggable = false;  //Disable left-swiping as option to close nav
 
+  document.addEventListener("touchmove", function(){}); //for iOS devices
+
   $('.sidenav-trigger').on('click', () => {
-    $('#mobile-nav').on('touchstart', () => {
+    $('#mobile-nav').on('touchmove', () => {
       disableBodyScroll(nav);
     });
     $('#mobile-nav').on('click touchend', () => {
@@ -18,7 +20,7 @@ $(document).ready(function(){
     });
   });
 
-  $('.sidenav-close').on('click', () => {
+  $('.sidenav-close').on('click touch', () => {
     enableBodyScroll(nav);
   });
 });
