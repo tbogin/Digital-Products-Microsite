@@ -13,7 +13,7 @@ $(document).ready(() => {
     let preserveHTML = $slideWrap.html();
 
 
-    function runInitialAnimation(){
+    function runInitialAnimation(){ 
         const animationFirst = anime
         .timeline({ 
             loop: false,
@@ -92,7 +92,7 @@ $(document).ready(() => {
         animationIn.play();
         animationInDevice.play();
     }
-    function runAnimationOut() {        
+    function runAnimationOut() { 
         const animationOut = anime
         .timeline({ 
             loop: false,
