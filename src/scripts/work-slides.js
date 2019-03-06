@@ -10,11 +10,13 @@ $(document).ready(function() {
 
   //Dynamically populate a tab button for each slide
   $.each($slides, (i, el) => {
-    $($buttonContainer).append(
-      `<button type='button' class='link button-inset button-tab-mobile main-text-item work-btn' id='button-work-${i + 1}'>
-        Case ${i + 1}
-      </button>`
-    );
+    if($slides.length > 1) {
+      $($buttonContainer).append(
+        `<button type='button' class='link button-inset button-tab-mobile main-text-item work-btn' id='button-work-${i + 1}'>
+          Case ${i + 1}
+        </button>`
+      );
+    }
   });
   $('.work-btn:first').addClass('active');
 
@@ -108,5 +110,5 @@ $(document).ready(function() {
     buttonSelectionScene.triggerHook(getTriggerHook());
   });
   /* End ScrollMagic */
-    
+
 });
