@@ -54,7 +54,9 @@
     // need to figure out the width of the whole container holding the items
     @include respond-to(not-mobile) {
       z-index: 2;
-      left: 20rem;
+      // left: 44%;
+      left: 27.5rem;
+      bottom: 10rem;
     }
   }
 
@@ -66,5 +68,33 @@
     width: 225px;
     height: 336px;
     background-image: linear-gradient(214deg, #0146f5, #002c9b);
+  }
+}
+
+.custom-arrow-container {
+  position: fixed;
+  top: 36rem;
+  left: 10.2rem;
+  cursor: pointer;
+  z-index: 100;
+  // right: calc(2% - 60px);
+  // top: 14rem;
+}
+
+.prev-arrow-custom,
+.next-arrow-custom {
+  width: 44px;
+  height: 44px;
+  background: $color-brand-primary;
+  color: $color-white; 
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+  box-shadow: none;
+  &:focus {
+    background: $color-brand-primary;
+  }
+  &:hover {
+    background: $color-white;
+    color: $color-gray-light;
   }
 }
