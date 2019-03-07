@@ -5,6 +5,7 @@ var _contentScript = {
     // Desktop Scroll State Navigation
     window.addEventListener("scroll", event => {
       let mainLink = document.querySelectorAll(".dp-nav ul li a");
+      let mobileLink = document.querySelectorAll('#mobile-nav li a');
       let fromTop = window.scrollY;
 
       mainLink.forEach(link => {
@@ -21,6 +22,19 @@ var _contentScript = {
         }
 
       });
+
+      mobileLink.forEach(link => {
+        let section = document.querySelector(link.hash);
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop 
+        ) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+      
     });
 
     // Mobile NavBar

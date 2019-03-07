@@ -37,6 +37,9 @@
     a.active, a:hover {
       color: $color-brand-primary;
     }
+    a.active {
+      font-family: $font-base-semibold;
+    }
   }
 }
 

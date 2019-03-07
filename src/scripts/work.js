@@ -13,7 +13,7 @@ $(document).ready(() => {
     let preserveHTML = $slideWrap.html();
 
 
-    function runInitialAnimation(){
+    function runInitialAnimation(){ 
         const animationFirst = anime
         .timeline({ 
             loop: false,
@@ -92,7 +92,7 @@ $(document).ready(() => {
         animationIn.play();
         animationInDevice.play();
     }
-    function runAnimationOut() {        
+    function runAnimationOut() { 
         const animationOut = anime
         .timeline({ 
             loop: false,
@@ -196,10 +196,34 @@ $(document).ready(() => {
         slickEngaged = true;
     }
     function slickEngageCheck() {
-        if(!slickEngaged) {
-            engageMobileCarousel();
-        }
+      if(!slickEngaged) {
+          engageMobileCarousel();
+      }
     }
+
+    function highlightSelectedButton(type) {
+      const workButtons = $('.work-btn');
+
+      if (! workButtons.length) {
+        return;
+      }
+  
+      $.each(workButtons, (idx, el) => {
+        $(el).removeClass('active');
+        $(el).blur();
+      });
+  
+      $(`#button-work-${type}`).addClass('active');
+    }
+
+    function getFirstDevCardIndex() {
+      return 0; // should equal the 0-based index of the first dev card in the list
+    }
+
+    $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+      const cardType = (nextSlide < getFirstDevCardIndex()) ? nextSlide : nextSlide + 1;
+      highlightSelectedButton(cardType);
+    });
 
 
     if (notMobile()){

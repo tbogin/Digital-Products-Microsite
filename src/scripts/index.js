@@ -22,6 +22,6 @@ import './constants.js';
 import './services.js';
 import './timelineState.js';
 import './scroll.js';
-
+import './work-slides';
 // console.log('webpack starterkit');
 
