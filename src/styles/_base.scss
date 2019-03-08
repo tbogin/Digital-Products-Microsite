@@ -115,6 +115,11 @@ $break-large: 1440px;
   }
 }
 
+@mixin image-background($asset) {
+  background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
+                    url(#{$asset});
+}
+
 .hidden-mobile {
   @include respond-to(mobile) {
     display: none;
