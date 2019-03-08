@@ -8,27 +8,44 @@
   position: relative;
   padding-top: 80px;
   background: #fafafa;
-
+  overflow: hidden;
+  
   @include respond-to(not-mobile) {
     padding-right: 0;       // section-specific override of standard section padding
+
     .section-content {
       max-width: $content-max-width;    // section-specific override of standard max-width for .section-content
     }
+
     .main-text-col {
       width: $content-max-width - $slider-width;
     }
-    .lower-portion-background-desktop {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 50%;
-      background: $color-gray-background-block;
-    } 
   }
+
+  @include respond-to(mobile) {
+    z-index: 5;
+  }
+
+  .lower-portion-background {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 27.375rem;
+    background: $color-gray-background-block;
+    @include respond-to(not-mobile) {
+      height: 50%;
+    }
+    @include respond-to(mobile) {
+      z-index: -1;
+    }
+  } 
 
   .heading-2 {
     margin-top: 8px;
+    @include respond-to(mobile) {
+      font-size: 2rem;
+    }
   }
 
   .contact-detail {
@@ -49,6 +66,10 @@
     display: flex;
     align-items: center;
   }
+
+  .contact-email {
+    margin-bottom: 64px;
+  }
   
   .custom-arrow-container {
     position: absolute;
@@ -56,6 +77,9 @@
     left: 0.2rem;
     cursor: pointer;
     z-index: 100;
+    @include respond-to(mobile) {
+      display: none;
+    }
   }
   
   .prev-arrow-custom,
@@ -94,15 +118,23 @@
     // need to figure out the width of the whole container holding the items
     @include respond-to(not-mobile) {
       z-index: 2;
-      // left: 44%;
-      // left: 27.5rem;
       left: 31.2rem;
       bottom: 10rem;
     }
   }
 
+  .slick-list {
+    @include respond-to(mobile) {
+      overflow: visible;      
+    }
+  }
+
   .slick-slide {
     margin-right: 20px;
+    @include respond-to(mobile) {
+      width: 216px;
+      margin-bottom: 24px;
+    }
   }
 
   .contact-img {
@@ -112,21 +144,28 @@
   }
   
   .boston {
-    background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
-                      url(../assets/boston.png);
+    @include image-background('../assets/boston.png');
   }
   .new-york {
-    background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
-                      url(../assets/ny.png);  
+    @include image-background('../assets/ny.png'); 
   }
   .houston {
-    background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
-                      url(../assets/houston.png);
+    @include image-background('../assets/houston.png')
   }
 
   .chicago {
-    background-image: linear-gradient(211deg, rgba(1,70,245, 0.8), rgba(0,44,155, 0.8)), 
-                      url(../assets/chicago.jpg);
+    @include image-background('../assets/chicago.jpg')
+  }
+
+  .scroll-bar-mobile {
+    width: 73.5px !important;
+    height: 8px;
+    background: $color-brand-primary;
+    border-radius: 15%;
+    margin-bottom: 64px;
+    @include respond-to(not-mobile) {
+      display: none;
+    }
   }
 
 }
