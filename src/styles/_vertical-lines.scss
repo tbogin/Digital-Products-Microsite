@@ -6,17 +6,25 @@
   left: 0;
   background: transparent;
   z-index: 1;
+
   @include respond-to(mobile) {
     z-index: 0;
+    width: 100%;
+    height: 100%;
+    // background-image: url("../assets/vertical-lines/mobile-vertical-lines-banner.svg");
   }
 }
 
 .vertical-lines-capabilities {
-  background-image: url("../assets/vertical-lines/web-vertical-lines-capabilities-3.png");
   height: 100%;
   width: 100%;
+
+  @include respond-to(not-mobile) {
+    background-image: url("../assets/vertical-lines/web-vertical-lines-capabilities-3.png");
+  }
+
   @include respond-to(mobile) {
-    display: none;
+    background-image: url("../assets/vertical-lines/mobile-vertical-lines-capabilities.svg");
   }
 }
 
