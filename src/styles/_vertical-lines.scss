@@ -1,0 +1,33 @@
+@import './_base';
+
+.vertical-lines-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 1;
+  @include respond-to(mobile) {
+    z-index: 0;
+  }
+}
+
+.vertical-lines-capabilities {
+  background-image: url("../assets/vertical-lines/web-vertical-lines-capabilities-3.png");
+  height: 100%;
+  width: 100%;
+  @include respond-to(mobile) {
+    display: none;
+  }
+}
+
+.vertical-lines-web {
+  @include respond-to(mobile) {
+    display: none;
+  }
+}
+
+.vertical-lines-mobile {
+  @include respond-to(not-mobile) {
+    display: none;
+  }
+}

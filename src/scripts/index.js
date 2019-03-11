@@ -11,6 +11,7 @@ import '../styles/_process.scss';
 import '../styles/_cards.scss';
 import '../styles/_services.scss';
 import '../styles/_contact.scss';
+import '../styles/_vertical-lines.scss';
 
 // JS imports
 import './nav.js';
