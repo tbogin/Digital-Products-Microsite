@@ -6,19 +6,27 @@
   $illustration-width-desktop: 470px;
 
   @include respond-to(not-mobile) {
+
     padding-top: calc(100vh / 12);
     .section-content {
       height: 570px;
     }
+
     .banner-main-text {
       width: $standard-content-width - $illustration-width-desktop;
       height: 100%;
     }
+
     .banner-illustration {
       width: $illustration-width-desktop;
       position: absolute;
       bottom: 0;
       left: $standard-content-width - $illustration-width-desktop;
+    }
+
+    .link-subsection {
+      width: 50%;
+      float: left;
     }
   }
 
@@ -43,16 +51,12 @@
   .link-section {
     margin: 2.5rem 0 0 0;
   }
-
-  .link-subsection {
-    width: 50%;
-    float: left;
-  }
 }
 
 @include respond-to(mobile) {
   .banner-section {
     width: 100%;
+    position: relative;
     
     .link-section,
     .link-subsection {
@@ -60,10 +64,14 @@
     }
 
     .link-section {
-      margin-top: 3.5rem;
+      display: flex;
+      justify-content: space-around;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .link-subsection {
+      width: 8.75rem;
       margin-top: 0.75rem;
     }
 

@@ -23,6 +23,7 @@
   }
 
   @include respond-to(mobile) {
+    height: 940px;
     z-index: 5;
   }
 
@@ -34,7 +35,7 @@
     height: 27.375rem;
     background: $color-gray-background-block;
     @include respond-to(not-mobile) {
-      height: 50%;
+      height: 48%;
     }
     @include respond-to(mobile) {
       z-index: -1;
@@ -54,8 +55,17 @@
     margin-left: 16px;
   }
 
+  .contact-section-headline {
+    margin-bottom: 2.5rem;
+  }
+
   .contact-detail-header {
+    font-size: 1.5rem;
     margin-top: 20px;
+  }
+
+  .email-header {
+    margin-top: 2.5rem;
   }
 
   .contact-icon {
