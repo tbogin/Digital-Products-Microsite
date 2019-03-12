@@ -13,13 +13,17 @@
   overflow-x: hidden;
 
   @include respond-to(not-mobile) {
-    height: $full-panel-height;
     padding: 0;
   }
 
   @include respond-to(mobile) {
     padding: 0 !important;
   }
+
+  .vertical-lines-container {
+    z-index: 0;
+  }
+
   .two-thirds-desktop {
     @include respond-to(not-mobile) {
       height: 100%;

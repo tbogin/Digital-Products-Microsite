@@ -8,6 +8,7 @@
   @include respond-to(not-mobile) {
 
     padding-top: calc(100vh / 12);
+
     .section-content {
       height: 570px;
     }
@@ -24,8 +25,20 @@
       left: $standard-content-width - $illustration-width-desktop;
     }
 
+    .heading-5 {
+      font-size: $font-size-large;
+    }
+
+    .link {
+      font-size: $font-size-med-large;
+    }
+
+    .link-section-mobile {
+      display: none;
+    }
+
     .link-subsection {
-      width: 50%;
+      width: 14rem;
       float: left;
     }
   }
@@ -89,5 +102,17 @@
       height: 295px;
       margin-top: 2.5rem;
     }
+  }
+}
+
+.link-section-desktop {
+  @include respond-to(mobile) {
+    display: none !important;
+  }
+}
+
+.link-section-mobile {
+  @include respond-to(not-mobile) {
+    display: none !important;
   }
 }

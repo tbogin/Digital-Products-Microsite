@@ -35,7 +35,7 @@
     height: 27.375rem;
     background: $color-gray-background-block;
     @include respond-to(not-mobile) {
-      height: 48%;
+      height: 46%;
     }
     @include respond-to(mobile) {
       z-index: -1;
@@ -84,7 +84,7 @@
   .custom-arrow-container {
     position: absolute;
     left: 0.2rem;
-    bottom: 23rem;
+    bottom: 20rem;
     cursor: pointer;
     z-index: 100;
     @include respond-to(mobile) {
