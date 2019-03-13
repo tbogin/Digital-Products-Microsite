@@ -8,6 +8,7 @@
   background-color: $color-brand-primary-dark;
 
   @include respond-to(mobile) {
+    height: 1164px;
     padding: 64px 64px 0 40px;
   }
   

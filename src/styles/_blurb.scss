@@ -3,7 +3,6 @@
 .art-possible-section {
   position: relative;
   height: auto;
-  min-height: 75vh;
   width: 100%;
   background-color: $color-brand-primary-dark;
   display: flex;
@@ -19,8 +18,13 @@
       font-size: 16px;
     }
   }
+  
   @include respond-to(not-mobile) {
     height: 704px;
+  }
+
+  @include respond-to(mobile) {
+    height: 492px;
   }
 
   .vertical-lines-container {

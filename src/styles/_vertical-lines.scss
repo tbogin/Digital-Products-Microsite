@@ -8,7 +8,7 @@
   z-index: 1;
 
   @include respond-to(mobile) {
-    display: none;
+    // display: none;
     z-index: 0;
     width: 100%;
     height: 100%;
@@ -20,6 +20,8 @@
   width: 100%;
   background-repeat: no-repeat;
   @include respond-to(mobile) {
+    top: 3.4rem;
+    left: 6.3rem;
     background-image: url("../assets/vertical-lines/mobile-vertical-lines-banner.svg");
   }
 }
@@ -33,7 +35,16 @@
   }
 
   @include respond-to(mobile) {
+    left: 6.3rem;
     background-image: url("../assets/vertical-lines/mobile-vertical-lines-capabilities.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+.vertical-lines-process,
+.vertical-lines-work {
+  @include respond-to(mobile) {
+    left: 6.3rem;
   }
 }
 
