@@ -30,13 +30,16 @@
       box-shadow: none;
       border-radius: 0;
       background-color: transparent;
+      &:hover {
+        background-color: inherit;
+        font-family: $font-base;
+        color: $color-gray;
+      }
       &.active {
         background-color: inherit;
         border-bottom: 4px solid $color-brand-primary;
         color: $color-brand-primary;
-      }
-      &:hover {
-        background-color: inherit;
+        font-family: $font-base-semibold
       }
       transition: color $transition-duration ease-in-out,
                   border-bottom-width $transition-duration ease-in-out,

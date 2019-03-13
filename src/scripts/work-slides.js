@@ -18,7 +18,7 @@ $(document).ready(function() {
       );
     }
   });
-  $('.work-btn:first').addClass('active');
+  $('.work-btn:first').addClass('active'); 
 
   /* Mobile utility methods */
   function getFirstDevCardIndex() {
