@@ -2,7 +2,8 @@ import anime from 'animejs';
 import ScrollMagic from 'scrollmagic';
 
 $(document).ready(() => {
-    const $slickContainer = $('.slide-wrap'); 
+    const $slickContainer = $('.slide-wrap');
+    const $buttonContainer = $('#work-btn-container');
     let slickEngaged = false;
     let $currSlide = null;
     let $nextSlide = null;
@@ -11,6 +12,16 @@ $(document).ready(() => {
     let $card = $('.card');
     let $slideWrap = $('.slide-wrap');
     let preserveHTML = $slideWrap.html();
+
+    // $buttonContainer.slick({
+    //   arrows: false,
+    //   infinite: false,
+    //   slidesToShow: 1,
+    //   slidesToScroll: 1,
+    //   focusOnSelect: true,
+    //   touchMove: true,
+    //   asNavFor: $('.slide-wrap')
+    // });
 
 
     function runInitialAnimation(){ 
@@ -191,10 +202,23 @@ $(document).ready(() => {
             slidesToShow: 1,          // other slides may be partially visible but only 1 is guaranteed to be in full view whenever the slider "lands"
             slidesToScroll: 1,        
             swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
-            variableWidth: false,      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
+            variableWidth: false      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
         });
+
+        // $buttonContainer.slick({
+        //   arrows: false,
+        //   infinite: false,
+        //   slidesToShow: 3,
+        //   slidesToScroll: 1,
+        //   focusOnSelect: true,
+        //   touchMove: true,
+        //   centerMode: true,
+        //   asNavFor: $('.slide-wrap')
+        // });
+
         slickEngaged = true;
     }
+
     function slickEngageCheck() {
       if(!slickEngaged) {
           engageMobileCarousel();
@@ -203,6 +227,7 @@ $(document).ready(() => {
 
     function highlightSelectedButton(type) {
       const workButtons = $('.work-btn');
+      let $selectedBtn = $(`#button-work-${type}`);
 
       if (! workButtons.length) {
         return;
@@ -213,7 +238,12 @@ $(document).ready(() => {
         $(el).blur();
       });
   
-      $(`#button-work-${type}`).addClass('active');
+      $($selectedBtn).addClass('active');
+      let bounding = $('.work-btn.active')[0].getBoundingClientRect();
+      let rightOffset = bounding.right > (window.innerWidth || document.documentElement.clientWidth);
+      let leftOffset = bounding.left < 0;
+      console.log('R', rightOffset);
+      console.log('L', leftOffset);
     }
 
     function getFirstDevCardIndex() {

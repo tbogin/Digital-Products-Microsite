@@ -9,15 +9,16 @@ $(document).ready(function() {
   const $slickContainer = $('.slide-wrap');
 
   //Dynamically populate a tab button for each slide. No tabs if there is only one slide
-  $.each($slides, (i, el) => {
-    if($slides.length > 1) {
-      $($buttonContainer).append(
-        `<button type='button' class='link button-inset button-tab-mobile main-text-item work-btn' id='button-work-${i + 1}'>
-          Case ${i + 1}
-        </button>`
-      );
-    }
-  });
+  // $.each($slides, (i, el) => {
+  //   if($slides.length > 1) {
+  //     $($buttonContainer).append(
+  //       `<button type="button" class='link button-inset button-tab-mobile main-text-item work-btn' id='button-work-${i + 1}'>
+  //         Case ${i + 1} longer
+  //       </button>`
+  //     );
+  //   }
+  // });
+
   $('.work-btn:first').addClass('active');
 
   /* Mobile utility methods */
