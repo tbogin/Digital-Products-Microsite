@@ -1,0 +1,61 @@
+@import './_base';
+
+.vertical-lines-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 1;
+
+  @include respond-to(mobile) {
+    // display: none;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.vertical-lines-banner {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  @include respond-to(mobile) {
+    top: 3.4rem;
+    left: 6.3rem;
+    background-image: url("../assets/vertical-lines/mobile-vertical-lines-banner.svg");
+  }
+}
+
+.vertical-lines-capabilities {
+  height: 100%;
+  width: 100%;
+
+  @include respond-to(not-mobile) {
+    background-image: url("../assets/vertical-lines/web-vertical-lines-capabilities-3.png");
+  }
+
+  @include respond-to(mobile) {
+    left: 6.3rem;
+    background-image: url("../assets/vertical-lines/mobile-vertical-lines-capabilities.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+.vertical-lines-process,
+.vertical-lines-work {
+  @include respond-to(mobile) {
+    left: 6.3rem;
+  }
+}
+
+.vertical-lines-web {
+  @include respond-to(mobile) {
+    display: none;
+  }
+}
+
+.vertical-lines-mobile {
+  @include respond-to(not-mobile) {
+    display: none;
+  }
+}

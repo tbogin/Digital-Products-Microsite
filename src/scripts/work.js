@@ -229,7 +229,7 @@ $(document).ready(() => {
       const workButtons = $('.work-btn');
       let $selectedBtn = $(`#button-work-${type}`);
 
-      if (! workButtons.length) {
+      if (!workButtons.length) {
         return;
       }
   

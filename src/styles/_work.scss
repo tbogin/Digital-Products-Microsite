@@ -10,16 +10,20 @@
   height: auto;
 
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 
   @include respond-to(not-mobile) {
-    height: $full-panel-height;
     padding: 0;
   }
 
   @include respond-to(mobile) {
     padding: 0 !important;
   }
+
+  .vertical-lines-container {
+    z-index: 0;
+  }
+
   .two-thirds-desktop {
     @include respond-to(not-mobile) {
       height: 100%;
@@ -49,17 +53,25 @@
   }
 
   .work-background-image {
+
     @include respond-to(mobile) {
       background-image: linear-gradient(211deg, rgba(1, 70, 245, 0.8), rgba(0, 44, 155, 0.8)), url(../assets/work.png);
     }
+
     @include respond-to(tablet) {
       background-image: linear-gradient(211deg, rgba(1, 70, 245, 0.8), rgba(0, 44, 155, 0.8)),
         url(../assets/work@2x.png);
     }
+
     @include respond-to(desktop) {
       background-image: linear-gradient(211deg, rgba(1, 70, 245, 0.8), rgba(0, 44, 155, 0.8)),
         url(../assets/work@3x.png);
     }
+
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    height: 489px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
@@ -67,6 +79,7 @@
   }
 
   .caption:first-of-type {
+    margin-top: 64px;
     margin-bottom: 0;
   }
   
@@ -137,6 +150,12 @@
     }
   }
 
+  .link {
+    @include respond-to(mobile) {
+      font-size: 1rem;
+    }
+  }
+
   .work-main-text-col {
     width: $main-text-col-width;
     margin-left: $section-indent;
@@ -144,6 +163,7 @@
     float: left;
     position: relative;
     top: -18px;
+    z-index: 500;
 
     @include respond-to(not-mobile) {
       padding-left: calc(63% - (1010px - 162px) / 2);   // should equal (1/2 (left-background-width - ($main-text-col-width - $section-default-padding-lr)))
@@ -152,7 +172,7 @@
     @include respond-to(mobile) {
       width: 100%;
       min-height: 750px;
-      padding: 0 40px 40px;
+      padding: 40px;
       margin-left: 0;
     }
     .card-wrap {
@@ -306,10 +326,12 @@
             margin: 0 10px 0 0;
 
             &.pdf {
+              width: 204px;
               border-color: #0146f5;
               background: #fff url(../assets/download.png) 10px 50% no-repeat;
               background-size: 8%;
-              padding-left: 35px;
+              padding-left: 25px;
+              padding-right: 0;
 
               @include respond-to(mobile) {
                 display: block;
@@ -334,6 +356,11 @@
         }
       }
     }
+  }
+
+  .slide-btns {
+    display: inline;
+    position: initial
   }
 
   .body-text-2 {

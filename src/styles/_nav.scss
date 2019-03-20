@@ -168,3 +168,9 @@ nav {
     color: $color-brand-primary;
   }
 }
+
+.brand-logo {
+  @include respond-to(mobile) {
+    left: 12.5rem !important;
+  }
+}

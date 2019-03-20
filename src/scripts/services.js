@@ -18,6 +18,29 @@ $(document).ready(function() {
   // initialize timeline state
   const timelineState = new TimelineState();
 
+  //Slider controls
+  const $servicesPager = $('.services-pager');
+
+  $servicesPager.slick({
+    prevArrow: $('.services-pager-prev'),
+    nextArrow: $('.services-pager-next'),     
+    centerMode: true,
+    centerPadding: '0',
+    focusOnSelect: true,  
+    infinite: false,
+    slidesToShow: 1,         
+    slidesToScroll: 1,              
+    variableWidth: false,
+    draggable: false
+  });
+
+  $($servicesPager).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    const firstSlideIdx = 0;
+    const cardType = (nextSlide + 1 > firstSlideIdx) ? nextSlide : nextSlide + 1;
+    console.log(cardType);
+    selectTimelineStop(cardType);
+  });
+
   /* Partial animation functions */
   function animateStartingLabel(animeTimeline) {
     const startingLabel = [...$labels][timelineState.getPreviousIndex()];
@@ -175,6 +198,7 @@ $(document).ready(function() {
     const newIndex = $circles.index($(event.target));
     if (newIndex > -1) {      
       selectTimelineStop(newIndex);
+      $servicesPager.slick('slickGoTo', newIndex);
     }
   });
 
@@ -183,6 +207,7 @@ $(document).ready(function() {
     const newIndex = $labels.index($(event.target));
     if (newIndex > -1) {
       selectTimelineStop(newIndex);
+      $servicesPager.slick('slickGoTo', newIndex);
     }
   });
 

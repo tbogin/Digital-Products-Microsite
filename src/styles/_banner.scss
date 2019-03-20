@@ -6,19 +6,40 @@
   $illustration-width-desktop: 470px;
 
   @include respond-to(not-mobile) {
+
     padding-top: calc(100vh / 12);
+
     .section-content {
       height: 570px;
     }
+
     .banner-main-text {
       width: $standard-content-width - $illustration-width-desktop;
       height: 100%;
     }
+
     .banner-illustration {
       width: $illustration-width-desktop;
       position: absolute;
       bottom: 0;
       left: $standard-content-width - $illustration-width-desktop;
+    }
+
+    .heading-5 {
+      font-size: $font-size-large;
+    }
+
+    .link {
+      font-size: $font-size-med-large;
+    }
+
+    .link-section-mobile {
+      display: none;
+    }
+
+    .link-subsection {
+      width: 14rem;
+      float: left;
     }
   }
 
@@ -43,16 +64,12 @@
   .link-section {
     margin: 2.5rem 0 0 0;
   }
-
-  .link-subsection {
-    width: 50%;
-    float: left;
-  }
 }
 
 @include respond-to(mobile) {
   .banner-section {
     width: 100%;
+    position: relative;
     
     .link-section,
     .link-subsection {
@@ -60,10 +77,14 @@
     }
 
     .link-section {
-      margin-top: 3.5rem;
+      display: flex;
+      justify-content: space-around;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .link-subsection {
+      width: 8.75rem;
       margin-top: 0.75rem;
     }
 
@@ -81,5 +102,17 @@
       height: 295px;
       margin-top: 2.5rem;
     }
+  }
+}
+
+.link-section-desktop {
+  @include respond-to(mobile) {
+    display: none !important;
+  }
+}
+
+.link-section-mobile {
+  @include respond-to(not-mobile) {
+    display: none !important;
   }
 }
