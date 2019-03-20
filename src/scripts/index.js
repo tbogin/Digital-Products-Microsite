@@ -11,6 +11,7 @@ import '../styles/_process.scss';
 import '../styles/_cards.scss';
 import '../styles/_services.scss';
 import '../styles/_contact.scss';
+import '../styles/_vertical-lines.scss';
 
 // JS imports
 import './nav.js';
@@ -20,6 +21,7 @@ import './capabilities.js';
 import './work.js';
 import './constants.js';
 import './services.js';
+import './services-pager.js';
 import './timelineState.js';
 import './contacts.js';
 import './scroll.js';

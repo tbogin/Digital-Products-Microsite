@@ -8,7 +8,7 @@
 
   @include respond-to(mobile) {
     height: auto;
-    min-height: 1340px;
+    min-height: 1216px; //height of Our Team section
   }
 
   @include respond-to(not-mobile) {
@@ -16,7 +16,7 @@
   }
 
   .process-intro-text {
-    text-align: center;
+    text-align: left;
     margin: auto;
     @include respond-to(mobile) {
       width: 100%;
