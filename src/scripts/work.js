@@ -239,13 +239,20 @@ $(document).ready(() => {
       });
   
       $($selectedBtn).addClass('active');
-      let bounding = $('.work-btn.active')[0].getBoundingClientRect();
-      let rightOffset = bounding.right > (window.innerWidth || document.documentElement.clientWidth);
-      let leftOffset = bounding.left < 0;
-      console.log('R', rightOffset);
-      console.log('L', leftOffset);
     }
 
+  //Transition mobile tabs into view when outside viewport
+    function moveSelectedTabIntoViewport() {
+      let $activeBtn = $($buttonContainer).find('.active')[0],
+          bodyRect = document.body.getBoundingClientRect(),
+          elemRect = $activeBtn.getBoundingClientRect(),
+          offsetR  = elemRect.right - bodyRect.right,
+          offsetL = elemRect.left - bodyRect.left;
+  
+      offsetR > 0 ? $($buttonContainer).removeClass('buttons-left-offset').addClass('buttons-right-offset') : null;
+      offsetL < 0 ? $($buttonContainer).removeClass('buttons-right-offset').addClass('buttons-left-offset') : null;
+    }
+ 
     function getFirstDevCardIndex() {
       return 0; // should equal the 0-based index of the first dev card in the list
     }
@@ -253,6 +260,7 @@ $(document).ready(() => {
     $slickContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
       const cardType = (nextSlide < getFirstDevCardIndex()) ? nextSlide : nextSlide + 1;
       highlightSelectedButton(cardType);
+      moveSelectedTabIntoViewport();
     });
 
 

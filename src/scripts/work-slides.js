@@ -8,18 +8,20 @@ $(document).ready(function() {
   const $buttonContainer = $('#work-btn-container');
   const $slickContainer = $('.slide-wrap');
 
-  //Dynamically populate a tab button for each slide. No tabs if there is only one slide
-  // $.each($slides, (i, el) => {
-  //   if($slides.length > 1) {
-  //     $($buttonContainer).append(
-  //       `<button type="button" class='link button-inset button-tab-mobile main-text-item work-btn' id='button-work-${i + 1}'>
-  //         Case ${i + 1} longer
-  //       </button>`
-  //     );
-  //   }
-  // });
-
   $('.work-btn:first').addClass('active');
+
+  //Transition mobile tabs into view when outside viewport
+  $('.work-btn').on('click', (e) => {
+    let $target = $(e.target)[0],
+        $btnContainer = $('#work-btn-container'),
+        bodyRect = document.body.getBoundingClientRect(),
+        elemRect = $target.getBoundingClientRect(),
+        offsetR  = elemRect.right - bodyRect.right,
+        offsetL = elemRect.left - bodyRect.left;
+    
+    offsetR > 0 ? $($btnContainer).removeClass('buttons-left-offset').addClass('buttons-right-offset') : null;
+    offsetL < 0 ? $($btnContainer).removeClass('buttons-right-offset').addClass('buttons-left-offset') : null;
+  });
 
   /* Mobile utility methods */
   function getFirstDevCardIndex() {
