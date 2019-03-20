@@ -22,6 +22,10 @@
     min-height: $upper-section-mobile-height + $lower-section-mobile-height;
   }
 
+  .vertical-lines-container {
+    z-index: 0;
+  }
+
   .parallax-background-wrapper {
     @include respond-to(not-mobile) {
       height: $section-height / 2;  // this should be 1/2 the total desired height, since this element appears twice on the page

@@ -9,7 +9,9 @@ body, html {
 
 section {
   height: auto;
-  min-height: $full-panel-height; 
+  @include respond-to(not-mobile) {
+    height: 820px;
+  }
   clear: both;
   @include section-standard-padding;
   @include respond-to(mobile) { 
