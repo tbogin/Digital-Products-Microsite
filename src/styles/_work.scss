@@ -118,24 +118,34 @@
     }
   }
 
+  .work-mobile-scroll-container {
+    overflow: visible scroll;
+    margin-top: 16px;
+  }
+
   .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     position: absolute;
-    left: 0;
-    right: 0;
+    width: max-content;
+    display: flex;
 
     @include respond-to(not-mobile) {
       display: none;
     }
   }
 
+  .buttons-right-offset {
+    right: 40px;
+  }
+
+  .buttons-left-offset {
+    left: 40px;
+  }
+
   .button-inset {
     @include respond-to(mobile) {
       &:first-of-type {
-        margin-right: 16px;
-        margin-left: 40px;
+        // margin-right: 16px;
+        // margin-left: 40px;
       }
     }
   }
@@ -171,7 +181,7 @@
       height: 456px;
       @include respond-to(mobile) {
         width: 100%;
-        margin-top: 40px;
+        margin-top: 52px;
       }
       .slick-slide {
         min-height: 650px;
