@@ -204,7 +204,7 @@ $(document).ready(() => {
     function highlightSelectedButton(type) {
       const workButtons = $('.work-btn');
 
-      if (! workButtons.length) {
+      if (!workButtons.length) {
         return;
       }
   
