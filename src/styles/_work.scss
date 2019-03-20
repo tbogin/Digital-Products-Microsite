@@ -21,7 +21,7 @@
   }
 
   .vertical-lines-container {
-    z-index: 0;
+    z-index: 1;
   }
 
   .two-thirds-desktop {
@@ -41,7 +41,9 @@
   .one-third-desktop {
     min-height: 400px;
     @include respond-to(not-mobile) {
-      height: 100%;
+      top: 0;
+      right: 0;
+      height: 100% !important;
       width: 37%;
       float: right;
       padding-right: $section-default-padding-lr;
@@ -85,7 +87,7 @@
   
   .heading-block {
     @include respond-to(not-mobile) {
-      padding-left: calc(63% - (1010px - 162px) / 2 + 120px);    // should equal (1/2 (left-background-width - ($main-text-col-width - $section-default-padding-lr)) + $section-indent)
+      padding-left: 120px;
       margin-top: $section-default-padding-tb;
     }
     @include respond-to(mobile) {
@@ -165,10 +167,6 @@
     top: -18px;
     z-index: 500;
 
-    @include respond-to(not-mobile) {
-      padding-left: calc(63% - (1010px - 162px) / 2);   // should equal (1/2 (left-background-width - ($main-text-col-width - $section-default-padding-lr)))
-    }
-
     @include respond-to(mobile) {
       width: 100%;
       min-height: 750px;
@@ -206,7 +204,7 @@
           padding-top: 108px;
         }
         @include respond-to(mobile-small) {
-          margin: 16px 5% 16px 5%;
+          margin: 16px 5% 16px 0 !important;
         }
         @include respond-to(mobile-x-small) {
           margin: 16px 2.5% 16px 2.5%;
