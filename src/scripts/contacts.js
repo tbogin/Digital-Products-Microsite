@@ -13,7 +13,7 @@ $(document).ready(function(){
       nextArrow: $('.next-arrow-custom'),           
       centerMode: false,    
       infinite: false,
-      slidesToShow: 1,         
+      slidesToShow: 3,         
       slidesToScroll: 1,              
       variableWidth: true,
       draggable: false,
@@ -21,6 +21,7 @@ $(document).ready(function(){
         {
           breakpoint: 768,
           settings: {
+            slidesToShow: 1,
             arrows: false,
             draggable: true
           }
