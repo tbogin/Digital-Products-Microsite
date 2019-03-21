@@ -21,7 +21,6 @@ $(document).ready(function() {
     const startingLabel = [...$labels][timelineState.getPreviousIndex()];
     animeTimeline.add({
       targets: startingLabel,
-      fontSize: '1rem',
       duration: labelAnimationDuration,
       easing,
       complete: () => {
@@ -64,12 +63,15 @@ $(document).ready(function() {
   }
 
   function animateLineSegmentsAndCircles(animeTimeline, previousIndex, newIndex, diff) {
-    const newWidth = (diff > 0) ? '100%' : 0;
+    const newHeight = (diff > 0) ? '100%' : 0;
     const oldBorderColor = (diff < 0) ? colors.brandPrimary : colors.grayDark;
     const newBorderColor = (diff < 0) ? colors.grayDark : colors.brandPrimary;
   
     const circlesToModify = getElemsToModify($circles, previousIndex, newIndex, diff);
     const lineSegmentsToModify = getElemsToModify($lineSegmentHighlights, previousIndex, newIndex, diff);
+
+    console.log('diff', diff);
+    console.log('prev index', previousIndex);
 
     // loop through circles & line segments, adding an appropriate animation for each to the timeline
     for (let i = 0; i < circlesToModify.length; i++) {
@@ -78,7 +80,7 @@ $(document).ready(function() {
       if (diff > 0) {
         animeTimeline.add({
           targets: segment,
-          width: newWidth,
+          height: newHeight,
           duration,
           easing
         });
@@ -97,7 +99,7 @@ $(document).ready(function() {
         });
         animeTimeline.add({
           targets: segment,
-          width: newWidth,
+          height: newHeight,
           duration,
           easing
         });
@@ -117,6 +119,7 @@ $(document).ready(function() {
   }
 
   function animateEndingLabel(animeTimeline, newIndex) {
+
     const offset = 0;   // absolute offset in ms w/ ref to beginning of timeline
     const endingLabel = [...$labels][newIndex];
     animeTimeline.add({
@@ -173,7 +176,6 @@ $(document).ready(function() {
     const newIndex = $circles.index($(event.target));
     if (newIndex > -1) {      
       selectTimelineStop(newIndex);
-      $servicesPager.slick('slickGoTo', newIndex);
     }
   });
 
@@ -182,7 +184,6 @@ $(document).ready(function() {
     const newIndex = $labels.index($(event.target));
     if (newIndex > -1) {
       selectTimelineStop(newIndex);
-      $servicesPager.slick('slickGoTo', newIndex);
     }
   });
 
@@ -199,7 +200,6 @@ $(document).ready(function() {
       oldBackgroundColor = colors.brandPrimaryDark;
       newBackgroundColor = colors.white;
     } else {
-      newFontSize = '1rem';
       oldBackgroundColor = colors.white;
       newBackgroundColor = colors.brandPrimaryDark;
     }
