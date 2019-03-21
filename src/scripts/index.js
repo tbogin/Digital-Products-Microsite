@@ -21,7 +21,7 @@ import './capabilities.js';
 import './work.js';
 import './constants.js';
 import './services.js';
-import './services-pager.js';
+import './services-timeline-mobile';
 import './timelineState.js';
 import './contacts.js';
 import './scroll.js';
