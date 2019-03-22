@@ -310,7 +310,6 @@
 
   .timeline-labels-mobile {
     position: relative;
-    left: 26px;
     height: 1036px;
     // height: 952px;
     display: flex;
@@ -359,9 +358,10 @@
       width: 263px;
       height: 84px;
       padding: 16px 0 0 16px;
-      &:nth-child(odd) {
-        margin-top: 16px;
-      }
+    }
+
+    .card-bottom {
+      margin-top: 16px;
     }
 
     .service-card-open,
