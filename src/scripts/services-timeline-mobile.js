@@ -70,8 +70,8 @@ $(document).ready(function() {
     const circlesToModify = getElemsToModify($circles, previousIndex, newIndex, diff);
     const lineSegmentsToModify = getElemsToModify($lineSegmentHighlights, previousIndex, newIndex, diff);
 
-    console.log('diff', diff);
-    console.log('prev index', previousIndex);
+    // console.log('diff', diff);
+    // console.log('prev index', previousIndex);
 
     // loop through circles & line segments, adding an appropriate animation for each to the timeline
     for (let i = 0; i < circlesToModify.length; i++) {
@@ -240,4 +240,39 @@ $(document).ready(function() {
   $circles.on('mouseenter mouseleave', onHover);
 
   $labels.on('mouseenter mouseleave', onHover);
+
+  // // Toggle mobile card content
+  // function toggleMobileCard(toggledBtn, e) {
+  //   let $this = $(e.target),
+  //       $sibling = $this.siblings($(toggledBtn))[0],
+  //       $parent = $this.parent(),
+  //       $content =  $parent.find($('.services-card-description'));
+  
+  //   $($sibling).show();
+  //   toggleCardHeight($parent);
+  //   $content.slideToggle();
+  //   $this.hide();
+  // }
+
+  // function toggleCardHeight(el) {
+  //   //Make conditional for 340px height if element has a download button
+  //   el.css('height') === '84px' ? el.css('height', '286px') : el.css('height', '84px');
+  // }
+
+  // $('.service-card-open').on('click', (e) => {
+  //   toggleMobileCard('.service-card-close', e);
+  //   // let $this = $(e.target),
+  //   //     $sibling = $this.siblings($('.service-card-close'))[0],
+  //   //     $parent = $this.parent(),
+  //   //     $content =  $parent.find($('.services-card-description'));
+  
+  //   // $parent.find($sibling).show();
+  //   // $content.slideToggle();
+  //   // $this.hide();
+  // });
+
+  // $('.service-card-closed').on('click', (e) => {
+  //   toggleMobileCard('.service-card-open', e);
+  // });
+
 });

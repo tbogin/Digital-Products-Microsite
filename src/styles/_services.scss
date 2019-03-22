@@ -276,6 +276,11 @@
       width: calc((100% - 64px) / 5);
       position: relative;
       border-left-color: $color-gray-dark;
+
+      &:nth-child(4) {
+        height: 159px;
+      }
+
       .line-segment-highlight {
         position: absolute;
         top: 0;
@@ -288,7 +293,7 @@
   
     .circle {
       position: relative;
-      right: 7px;
+      right: 6px;
       width: 16px;
       height: 16px;
       border-style: solid;
@@ -305,16 +310,35 @@
 
   .timeline-labels-mobile {
     position: relative;
-    left: 16px;
+    left: 26px;
     height: 1036px;
+    // height: 952px;
     display: flex;
     flex-direction: column;
+
+    .circle {
+      position: absolute;
+      left: -7px;
+      width: 16px;
+      height: 16px;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 100%;
+      box-sizing: border-box;
+      cursor: pointer;
+      background: $color-brand-primary-dark;
+      border-color: $color-gray-dark;
+      &.hover-state {
+        background: $color-white;
+      }
+    }
 
     .timeline-label {
       margin: 0 0 16px 0;
       color: $color-white;
       font-family: $font-base;
       font-size: $font-size-xx-medium;
+
       &.current {
         font-family: $font-base;
       }
@@ -322,7 +346,13 @@
 
     .services-card-container {
       display: inline !important;
-      flex: 1;
+      flex: 2;
+      border-left: 2px solid $color-brand-primary;
+      padding-left: 16px;
+
+      &:nth-child(2) {
+        flex: 1.4;
+      }
     }
 
     .services-card {
@@ -334,6 +364,17 @@
       }
     }
 
+    .service-card-open,
+    .service-card-closed {
+      float: right;
+      padding-right: 25px;
+    }
+    
+    .service-card-closed,
+    .services-card-description {
+      display: none;
+    }
+
     .services-card-title {
       font-family: $font-base-semibold;
       font-size: $font-size-medium;
@@ -342,6 +383,10 @@
 
     .services-card-timespan {
       font-size: $font-size-x-small;
+    }
+
+    .services-card-description {
+      width: auto;
     }
   }
   
