@@ -17,7 +17,6 @@
 
   .process-intro-text {
     text-align: left;
-    margin: auto;
     @include respond-to(mobile) {
       width: 100%;
       padding: 4px 0 48px 0;
@@ -99,6 +98,7 @@
 
       /* flexible margin approach. allows space between cards to vary depending on viewport width. */
       max-width: 307px;
+      z-index: 1;
     }
     @include respond-to(mobile) {
       width: 100%;
