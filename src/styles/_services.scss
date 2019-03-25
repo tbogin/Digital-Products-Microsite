@@ -126,8 +126,7 @@
     .timeline-labels-mobile {
       display: none !important;
     } 
-      z-index: -1;
-    }  
+      // z-index: -1;
   }
 
   .vertical-lines-container {
@@ -162,8 +161,9 @@
   }
 
   .slick-slider {
-    left: 9.5rem;
-    bottom: 23.5rem;
+    // left: 9.5rem;
+    left: 5rem;
+    // bottom: 23.5rem;
     z-index: 100;
   }
 
@@ -236,8 +236,9 @@
     display: inline-block;
     text-indent: -99999999px;
     position: absolute;
-    top: 33.5rem;
-    right: 224px;
+    // top: 33.5rem;
+    top: 454px;
+    // right: 224px;
     width: 48px;
     height: 48px;
     background-color: #0146f5;
@@ -252,13 +253,16 @@
   }
   .prev {
     right: auto;
-    left: 223px;
+    // left: 223px;
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: 'FlipH';
+  }
+  .next {
+    left: 1076px;
   }
 
   .slick-disabled {
@@ -359,13 +363,19 @@
     }
 
     .services-card-container {
+      height: 260px;
       display: inline !important;
-      flex: 2;
+      // flex: 2;
       border-left: 2px solid $color-gray-dark;
-      padding-left: 16px;
+      padding-left: 23px;
 
       &:nth-child(2) {
-        flex: 1.4;
+        height: 156px;
+        // flex: 1.4;
+      }
+
+      &:nth-child(4) {
+        flex: 1;
       }
     }
 
@@ -383,11 +393,27 @@
     .service-card-closed {
       float: right;
       padding-right: 25px;
+      &:before {
+        color: $color-brand-primary;
+      }
+    }
+
+    .service-card-open {
+      &:before {
+        content: "\002303";
+      }
+    }
+
+    .service-card-closed {
+      &:before {
+        content: "\002304";
+      }
     }
     
-    .service-card-closed,
+    // .service-card-open,
     .services-card-description {
       display: none;
+      width: auto;
     }
 
     .services-card-title {
@@ -400,9 +426,9 @@
       font-size: $font-size-x-small;
     }
 
-    .services-card-description {
-      width: auto;
+    .services-card-active {
+      display: block;
     }
   }
-  
+
 }

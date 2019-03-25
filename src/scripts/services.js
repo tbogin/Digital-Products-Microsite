@@ -37,7 +37,6 @@ $(document).ready(function() {
   $($servicesPager).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
     const firstSlideIdx = 0;
     const cardType = (nextSlide + 1 > firstSlideIdx) ? nextSlide : nextSlide + 1;
-    console.log(cardType);
     selectTimelineStop(cardType);
   });
 

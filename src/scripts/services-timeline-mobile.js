@@ -3,7 +3,7 @@ import TimelineState from './timelineState';
 import anime from 'animejs';
 
 // get refs to useful collections RENAME
-const $circles = $('.timeline-mobile .circle');
+const $circles = $('.timeline-labels-mobile .circle');
 const $lineSegmentHighlights = $('.timeline-mobile .line-segment .line-segment-highlight');
 const $labels = $('.timeline-labels-mobile .timeline-label');
 
@@ -69,9 +69,6 @@ $(document).ready(function() {
   
     const circlesToModify = getElemsToModify($circles, previousIndex, newIndex, diff);
     const lineSegmentsToModify = getElemsToModify($lineSegmentHighlights, previousIndex, newIndex, diff);
-
-    // console.log('diff', diff);
-    // console.log('prev index', previousIndex);
 
     // loop through circles & line segments, adding an appropriate animation for each to the timeline
     for (let i = 0; i < circlesToModify.length; i++) {
@@ -242,37 +239,66 @@ $(document).ready(function() {
   $labels.on('mouseenter mouseleave', onHover);
 
   // // Toggle mobile card content
-  // function toggleMobileCard(toggledBtn, e) {
-  //   let $this = $(e.target),
-  //       $sibling = $this.siblings($(toggledBtn))[0],
-  //       $parent = $this.parent(),
-  //       $content =  $parent.find($('.services-card-description'));
+
+  function toggleCardText(text) {
+    $(text).slideToggle(350);
+    $(text).toggleClass('services-card-active');
+  }
+
+  function toggleCardArrow(card) {
+
+  }
+
+  $('.service-card-toggle').on('click', (e) => {
+    e.preventDefault();
+    let $target = $(e.target);
+    let description = $target.parent().find('.services-card-description')[0];
+    let cards = $('.service-card-toggle');
+    toggleCardText(description);
+
+    $.each(cards, (i, el) => {
+      $(el).hasClass('service-card-open') ? $(el).removeClass('service-card-open') : null;
+    });
+
+    if ($($target).hasClass('service-card-closed')) {
+      $($target).removeClass('service-card-closed');
+      $($target).addClass('service-card-open');
+    } else {
+      $($target).removeClass('service-card-open');
+      $($target).addClass('service-card-closed');
+    }
+
+
+
+    // $('.service-card-toggle').addClass('service-card-closed');
+    // $('.service-card-toggle').removeClass('service-card-open');
+    // $target.removeClass('service-card-closed');
+    // if($target.hasClass('service-card-open')) {
+    //   $target.removeClass('service-card-open');
+    //   $target.addClass('service-card-closed');
+    //   $cardText.removeClass('service-card-active');
+    //   $cardText.slideUp(350);
+    // } else {
+    //   $target.addClass('service-card-open');
+    //   $cardText.addClass('.services-card-active');
+    //   $cardText.slideDown(350);
+    // }
+  });
+
+  // $('.toggle').click(function(e) {
+  // 	e.preventDefault();
   
-  //   $($sibling).show();
-  //   toggleCardHeight($parent);
-  //   $content.slideToggle();
-  //   $this.hide();
-  // }
-
-  // function toggleCardHeight(el) {
-  //   //Make conditional for 340px height if element has a download button
-  //   el.css('height') === '84px' ? el.css('height', '286px') : el.css('height', '84px');
-  // }
-
-  // $('.service-card-open').on('click', (e) => {
-  //   toggleMobileCard('.service-card-close', e);
-  //   // let $this = $(e.target),
-  //   //     $sibling = $this.siblings($('.service-card-close'))[0],
-  //   //     $parent = $this.parent(),
-  //   //     $content =  $parent.find($('.services-card-description'));
+  //   var $this = $(this);
   
-  //   // $parent.find($sibling).show();
-  //   // $content.slideToggle();
-  //   // $this.hide();
-  // });
-
-  // $('.service-card-closed').on('click', (e) => {
-  //   toggleMobileCard('.service-card-open', e);
+  //   if ($this.next().hasClass('show')) {
+  //       $this.next().removeClass('show');
+  //       $this.next().slideUp(350);
+  //   } else {
+  //       $this.parent().parent().find('li .inner').removeClass('show');
+  //       $this.parent().parent().find('li .inner').slideUp(350);
+  //       $this.next().toggleClass('show');
+  //       $this.next().slideToggle(350);
+  //     }
   // });
 
 });
