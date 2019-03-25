@@ -6,7 +6,6 @@
   $slider-width: 812px;   // based on zeplin mockups. can be changed if needed.
 
   position: relative;
-  padding-top: 80px;
   background: #fafafa;
   overflow: hidden;
   
@@ -15,6 +14,7 @@
 
     .section-content {
       max-width: $content-max-width;    // section-specific override of standard max-width for .section-content
+      margin-top: 80px;
     }
 
     .main-text-col {
@@ -24,7 +24,12 @@
 
   @include respond-to(mobile) {
     height: 940px;
+    padding-top: 0 !important;
     z-index: 5;
+
+    .caption {
+      margin-top: 64px;
+    }
   }
 
   .lower-portion-background {
@@ -32,12 +37,12 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 27.375rem;
     background: $color-gray-background-block;
     @include respond-to(not-mobile) {
-      height: 46%;
+      height: 409px;
     }
     @include respond-to(mobile) {
+      height: 390px;
       z-index: -1;
     }
   } 
@@ -56,7 +61,7 @@
   }
 
   .contact-section-headline {
-    margin-bottom: 2.5rem;
+    margin-bottom: 40px;
   }
 
   .contact-detail-header {
@@ -65,7 +70,7 @@
   }
 
   .email-header {
-    margin-top: 2.5rem;
+    margin-top: 24px;
   }
 
   .contact-icon {
@@ -83,8 +88,8 @@
   
   .custom-arrow-container {
     position: absolute;
-    left: 0.2rem;
-    bottom: 20rem;
+    left: 3.2px;
+    bottom: 24.825rem;
     cursor: pointer;
     z-index: 100;
     @include respond-to(mobile) {
@@ -128,8 +133,11 @@
     // need to figure out the width of the whole container holding the items
     @include respond-to(not-mobile) {
       z-index: 2;
-      left: 32.7rem;
-      bottom: 10rem;
+      left: 512px;
+      bottom: 212px;
+    }
+    @include respond-to(mobile) {
+      bottom: 25px !important;
     }
   }
 
@@ -151,6 +159,10 @@
     width: 225px;
     height: 336px;
     background-image: linear-gradient(214deg, #0146f5, #002c9b);
+  }
+
+  .body-text-2 {
+    line-height: 0.5;
   }
   
   .boston {

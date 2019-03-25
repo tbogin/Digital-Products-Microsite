@@ -13,16 +13,6 @@ $(document).ready(() => {
     let $slideWrap = $('.slide-wrap');
     let preserveHTML = $slideWrap.html();
 
-    // $buttonContainer.slick({
-    //   arrows: false,
-    //   infinite: false,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1,
-    //   focusOnSelect: true,
-    //   touchMove: true,
-    //   asNavFor: $('.slide-wrap')
-    // });
-
 
     function runInitialAnimation(){ 
         const animationFirst = anime
@@ -204,17 +194,6 @@ $(document).ready(() => {
             swipeToSlide: true,       // allows user the option to "scrub" through visible cards, regardless of the slidesToScroll setting 
             variableWidth: false      // allows slides to maintain fixed width by preventing slick from setting slide width dynamically
         });
-
-        // $buttonContainer.slick({
-        //   arrows: false,
-        //   infinite: false,
-        //   slidesToShow: 3,
-        //   slidesToScroll: 1,
-        //   focusOnSelect: true,
-        //   touchMove: true,
-        //   centerMode: true,
-        //   asNavFor: $('.slide-wrap')
-        // });
 
         slickEngaged = true;
     }
