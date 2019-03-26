@@ -242,13 +242,13 @@ $(document).ready(function() {
 
   function toggleCardText(text) {
     $('.services-card-description').not(text).hasClass('services-card-active') 
-      ? $('.services-card-description').removeClass('services-card-active').slideUp(350) : null;
+      ? $('.services-card-description').slideUp(350).removeClass('services-card-active') : null;
 
-    $(text).slideToggle(350);
+    $(text).slideDown(350);
     $(text).toggleClass('services-card-active');
   }
 
-  function toggleCardIcons(cards, target) {
+  function toggleCardIcons(target) {
     $('.service-card-toggle').not(target).hasClass('service-card-open') 
       ? $('.service-card-toggle').removeClass('service-card-open').addClass('service-card-closed') : null;
 
@@ -261,10 +261,9 @@ $(document).ready(function() {
 
   $('.service-card-toggle').on('click', (e) => {
     let $target = $(e.target);
-    let description = $target.parent().find('.services-card-description')[0];
-    let cards = $('.service-card-toggle');
+    let description = $target.parent().find('.services-card-description');
     toggleCardText(description);
-    toggleCardIcons(cards, $target);
+    toggleCardIcons($target);
   });
 
 });
