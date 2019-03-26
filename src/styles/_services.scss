@@ -363,14 +363,15 @@
     }
 
     .services-card-container {
-      height: 260px;
+      // height: 260px;
       display: inline !important;
       // flex: 2;
       border-left: 2px solid $color-gray-dark;
       padding-left: 23px;
 
       &:nth-child(2) {
-        height: 156px;
+        padding-bottom: 39px;
+        // height: 156px;
         // flex: 1.4;
       }
 
@@ -380,13 +381,19 @@
     }
 
     .services-card {
+      position: relative;
       width: 263px;
-      height: 84px;
+      height: auto;
+      // height: 84px;
       padding: 16px 0 0 16px;
     }
 
     .card-bottom {
-      margin-top: 16px;
+      margin: 16px 0 24px 0;
+    }
+
+    .btn.pdf {
+      margin-top: 24px;
     }
 
     .service-card-open,
@@ -413,7 +420,11 @@
     // .service-card-open,
     .services-card-description {
       display: none;
-      width: auto;
+      width: 216px;
+      // height: 152px;
+      background: $color-white;
+      margin-top: 0;
+      padding-bottom: 24px;
     }
 
     .services-card-title {
@@ -424,6 +435,8 @@
 
     .services-card-timespan {
       font-size: $font-size-x-small;
+      padding-bottom: 16px;
+      margin-bottom: 0;
     }
 
     .services-card-active {

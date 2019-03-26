@@ -245,8 +245,18 @@ $(document).ready(function() {
     $(text).toggleClass('services-card-active');
   }
 
-  function toggleCardArrow(card) {
+  function toggleCardIcons(cards, target) {
+    $.each(cards, (i, el) => {
+      $(el).hasClass('service-card-open') ? $(el).removeClass('service-card-open') : null;
+    });
 
+    if ($(target).hasClass('service-card-closed')) {
+      $(target).removeClass('service-card-closed');
+      $(target).addClass('service-card-open');
+    } else {
+      $(target).removeClass('service-card-open');
+      $(target).addClass('service-card-closed');
+    }
   }
 
   $('.service-card-toggle').on('click', (e) => {
@@ -255,34 +265,7 @@ $(document).ready(function() {
     let description = $target.parent().find('.services-card-description')[0];
     let cards = $('.service-card-toggle');
     toggleCardText(description);
-
-    $.each(cards, (i, el) => {
-      $(el).hasClass('service-card-open') ? $(el).removeClass('service-card-open') : null;
-    });
-
-    if ($($target).hasClass('service-card-closed')) {
-      $($target).removeClass('service-card-closed');
-      $($target).addClass('service-card-open');
-    } else {
-      $($target).removeClass('service-card-open');
-      $($target).addClass('service-card-closed');
-    }
-
-
-
-    // $('.service-card-toggle').addClass('service-card-closed');
-    // $('.service-card-toggle').removeClass('service-card-open');
-    // $target.removeClass('service-card-closed');
-    // if($target.hasClass('service-card-open')) {
-    //   $target.removeClass('service-card-open');
-    //   $target.addClass('service-card-closed');
-    //   $cardText.removeClass('service-card-active');
-    //   $cardText.slideUp(350);
-    // } else {
-    //   $target.addClass('service-card-open');
-    //   $cardText.addClass('.services-card-active');
-    //   $cardText.slideDown(350);
-    // }
+    toggleCardIcons(cards, $target);
   });
 
   // $('.toggle').click(function(e) {
