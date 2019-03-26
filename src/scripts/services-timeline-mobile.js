@@ -238,50 +238,33 @@ $(document).ready(function() {
 
   $labels.on('mouseenter mouseleave', onHover);
 
-  // // Toggle mobile card content
+  // Toggle mobile card content
 
   function toggleCardText(text) {
+    $('.services-card-description').not(text).hasClass('services-card-active') 
+      ? $('.services-card-description').removeClass('services-card-active').slideUp(350) : null;
+
     $(text).slideToggle(350);
     $(text).toggleClass('services-card-active');
   }
 
   function toggleCardIcons(cards, target) {
-    $.each(cards, (i, el) => {
-      $(el).hasClass('service-card-open') ? $(el).removeClass('service-card-open') : null;
-    });
+    $('.service-card-toggle').not(target).hasClass('service-card-open') 
+      ? $('.service-card-toggle').removeClass('service-card-open').addClass('service-card-closed') : null;
 
     if ($(target).hasClass('service-card-closed')) {
-      $(target).removeClass('service-card-closed');
-      $(target).addClass('service-card-open');
+      $(target).removeClass('service-card-closed').addClass('service-card-open');
     } else {
-      $(target).removeClass('service-card-open');
-      $(target).addClass('service-card-closed');
+      $(target).removeClass('service-card-open').addClass('service-card-closed');
     }
   }
 
   $('.service-card-toggle').on('click', (e) => {
-    e.preventDefault();
     let $target = $(e.target);
     let description = $target.parent().find('.services-card-description')[0];
     let cards = $('.service-card-toggle');
     toggleCardText(description);
     toggleCardIcons(cards, $target);
   });
-
-  // $('.toggle').click(function(e) {
-  // 	e.preventDefault();
-  
-  //   var $this = $(this);
-  
-  //   if ($this.next().hasClass('show')) {
-  //       $this.next().removeClass('show');
-  //       $this.next().slideUp(350);
-  //   } else {
-  //       $this.parent().parent().find('li .inner').removeClass('show');
-  //       $this.parent().parent().find('li .inner').slideUp(350);
-  //       $this.next().toggleClass('show');
-  //       $this.next().slideToggle(350);
-  //     }
-  // });
 
 });
