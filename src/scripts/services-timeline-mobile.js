@@ -239,31 +239,29 @@ $(document).ready(function() {
   $labels.on('mouseenter mouseleave', onHover);
 
   // Toggle mobile card content
-
-  function toggleCardText(text) {
-    $('.services-card-description').not(text).hasClass('services-card-active') 
-      ? $('.services-card-description').slideUp(350).removeClass('services-card-active') : null;
-
-    $(text).slideDown(350);
-    $(text).toggleClass('services-card-active');
+  function toggleCardText(targetText) {
+    $.each($('.services-card-description'), (i, el) => {
+      if($(el).not(targetText).hasClass('services-card-active')) {
+        $(el).slideUp(350).removeClass('services-card-active');
+      }
+    });
+    $(targetText).slideToggle(350).toggleClass('services-card-active');
   }
 
-  function toggleCardIcons(target) {
-    $('.service-card-toggle').not(target).hasClass('service-card-open') 
-      ? $('.service-card-toggle').removeClass('service-card-open').addClass('service-card-closed') : null;
+  function toggleCardIcons(targetIcon) {
+    $('.service-card-toggle').not(targetIcon).hasClass('service-card-open') ?
+      $('.service-card-toggle').removeClass('service-card-open').addClass('service-card-closed') : null;
 
-    if ($(target).hasClass('service-card-closed')) {
-      $(target).removeClass('service-card-closed').addClass('service-card-open');
-    } else {
-      $(target).removeClass('service-card-open').addClass('service-card-closed');
-    }
+    $(targetIcon).hasClass('service-card-closed') ?
+      $(targetIcon).removeClass('service-card-closed').addClass('service-card-open') :
+      $(targetIcon).removeClass('service-card-open').addClass('service-card-closed');
   }
 
   $('.service-card-toggle').on('click', (e) => {
-    let $target = $(e.target);
-    let description = $target.parent().find('.services-card-description');
+    let target = $(e.target);
+    let description = target.parent().find('.services-card-description');
     toggleCardText(description);
-    toggleCardIcons($target);
+    toggleCardIcons(target);
   });
 
 });

@@ -8,7 +8,8 @@
   background-color: $color-brand-primary-dark;
 
   @include respond-to(mobile) {
-    height: 1164px;
+    // height: 1164px;
+    height: auto;
     padding: 64px 64px 0 40px;
   }
   
@@ -329,8 +330,8 @@
 
   .timeline-labels-mobile {
     position: relative;
-    height: 1036px;
-    // height: 952px;
+    height: 100%;;
+    // height: 1036px;
     display: flex;
     flex-direction: column;
 
