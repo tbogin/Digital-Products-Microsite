@@ -279,54 +279,6 @@
     }
   }
 
-  .timeline-mobile {
-    width: 0;
-    height: 0;
-
-    .line-segment, 
-    .circle {
-      box-sizing: border-box;
-    }
-
-    .line-segment {
-      height: 243px;
-      border-left-style: solid;
-      border-left-width: 2px;
-      width: calc((100% - 64px) / 5);
-      position: relative;
-      border-left-color: $color-gray-dark;
-
-      &:nth-child(4) {
-        height: 159px;
-      }
-
-      .line-segment-highlight {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 0;
-        border-left: 2px solid $color-brand-primary;
-      }
-    }
-  
-    .circle {
-      position: relative;
-      right: 6px;
-      width: 16px;
-      height: 16px;
-      border-style: solid;
-      border-width: 2px;
-      border-radius: 100%;
-      box-sizing: border-box;
-      background: $color-brand-primary-dark;
-      border-color: $color-gray-dark;
-      &.hover-state {
-        background: $color-white;
-      }
-    }
-  }
-
   .timeline-labels-mobile {
     position: relative;
     height: 100%;;
@@ -417,18 +369,19 @@
     }
 
     .service-card-open {
-      &:before {
-        content: "\002303";
-      }
+      background-image: url(../assets/blue-chevron-up.png);
     }
 
     .service-card-closed {
-      &:before {
-        content: "\002304";
-      }
+      background-image: url(../assets/blue-chevron-down.png);
+    }
+
+    .service-card-open,
+    .service-card-closed {
+      margin-right: 16px;
+      height: 24px;
     }
     
-    // .service-card-open,
     .services-card-description {
       display: none;
       width: 216px;
