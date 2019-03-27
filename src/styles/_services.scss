@@ -335,6 +335,29 @@
     display: flex;
     flex-direction: column;
 
+    .line-segment {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-left: 2px solid $color-gray-dark;
+      // border-left-style: solid;
+      // border-left-width: 2px;
+      width: calc((100% - 64px) / 5);
+      position: relative;
+      // border-left-color: $color-gray-dark;
+    }
+
+    .line-segment-highlight {
+      position: absolute;
+      top: 0;
+      // left: 0;
+      left: -2px;
+      width: 0;
+      height: 0;
+      border-left: 2px solid $color-brand-primary;
+    }
+
     .circle {
       position: absolute;
       left: -7px;
@@ -364,10 +387,11 @@
     }
 
     .services-card-container {
+      position: relative;
       // height: 260px;
       display: inline !important;
       // flex: 2;
-      border-left: 2px solid $color-gray-dark;
+      // border-left: 2px solid $color-gray-dark;
       padding-left: 23px;
 
       &:nth-child(2) {

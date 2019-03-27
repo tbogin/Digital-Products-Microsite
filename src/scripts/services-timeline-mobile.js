@@ -4,7 +4,8 @@ import anime from 'animejs';
 
 // get refs to useful collections RENAME
 const $circles = $('.timeline-labels-mobile .circle');
-const $lineSegmentHighlights = $('.timeline-mobile .line-segment .line-segment-highlight');
+const $lineSegmentHighlights = $('.timeline-labels-mobile .line-segment-highlight');
+// const $lineSegmentHighlights = $('.timeline-mobile .services-card-container');
 const $labels = $('.timeline-labels-mobile .timeline-label');
 
 // set default duration & easing
@@ -238,13 +239,6 @@ $(document).ready(function() {
 
   $labels.on('mouseenter mouseleave', onHover);
 
-  // Sync mobile timeline with opened card
-  function syncCirclesAndCards() {
-    //Get index of card within collection of cards
-    //Call selectTimelineStop(cardIndex)
-    //May not need this extra function 
-  }
-
   // Toggle mobile card content
   function toggleCardText(targetText) {
     $.each($('.services-card-description'), (i, el) => {
@@ -266,7 +260,7 @@ $(document).ready(function() {
 
   $('.service-card-toggle').on('click', (e) => {
     let target = $(e.target);
-    let description = target.parent().find('.services-card-description');
+    let description = target.closest('.services-card').find('.services-card-description');
     let highlightCircle = target.closest('.services-card-container').index();
     toggleCardText(description);
     toggleCardIcons(target);
