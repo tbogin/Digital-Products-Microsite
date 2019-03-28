@@ -33,8 +33,7 @@
     @include respond-to(not-mobile) {
       width: 640px;
       max-width: 640px;
-      padding-bottom: 108px;  // padding will almost certainly need to be adjusted but vertical responsive behavior has not yet been defined
-      height: 44vh;   // somewhat arbitrary but seems to work well on most screen heights
+      // height: 44vh;   // somewhat arbitrary but seems to work well on most screen heights
     }
     .caption:first-of-type {
       margin: 0;
@@ -53,17 +52,6 @@
       }
     }
   }
-
-  // .section-bg-gray {
-  //   height: 820px;
-  //   width: 100%;
-  //   margin: 0 auto;
-  //   position: relative;
-  //   background-color: $color-gray-background-block;
-  //   @include respond-to(not-mobile) {
-  //     padding-top: $section-default-padding-tb;
-  //   }
-  // }
 
   .lower-portion-background {
     @include respond-to(mobile) {
@@ -131,6 +119,36 @@
       padding-left: 24px;
       padding-right: 48px;
     }
+  }
+
+  .team-info-content {
+    position: relative;
+    margin-top: 24px;
+  }
+
+  .team-counter-container {
+    position: absolute;
+    top: 130px;
+    left: 136px;
+  }
+
+  #team-chart {
+    width: 390px !important;
+    height: 390px !important;
+  }
+
+  .counter {
+    color: $color-brand-primary-dark;
+    font-family: $font-base-semibold;
+    font-size: $font-size-xxx-large;
+    animation-duration: 1s;
+    animation-delay: 0s;
+  }
+
+  .counter-text {
+    color: $color-brand-primary-dark;
+    font-family: $font-base;
+    font-size: $font-size-large;
   }
 
 }
