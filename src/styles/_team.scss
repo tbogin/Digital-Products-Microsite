@@ -121,9 +121,92 @@
     }
   }
 
-  .team-info-content {
+  .team-section-title {
+    font-size: $font-size-x-large;
+    font-weight: $font-base-semibold !important;
+    margin-bottom: 24px;
+  }
+
+  .team-section-divider {
+    border-bottom: 2px solid $color-brand-primary;
+    width: 15%;
+  }
+
+  .team-blurb {
+    width: 470px;
+    font-family: $font-base;
+    font-size: $font-size-medium;
+    margin: 24px 0 64px 0;
+    line-height: 2rem;
+  }
+
+  .team-cards-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-info-card {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background: $color-white;
+    border-radius: 4px;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 16px 12px 12px;
+    margin-bottom: 15px;
+  }
+
+  .team-card-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px;
+  }
+
+  .team-card-stat {
+    font-weight: $font-weight-semibold;
+    margin-right: 2px;
+  }
+
+  .card-bg-dark { background-color: $color-brand-primary-dark; }
+  .card-color-dark { color: $color-brand-primary-dark; }
+  .card-bg-blue { background-color: $color-brand-primary; }
+  .card-color-blue { color: $color-brand-primary; }
+  .card-bg-soft-blue { background-color: $color-soft-blue; }
+  .card-color-soft-blue { color: $color-soft-blue; }
+  .card-bg-gray { background-color: $color-gray-light; }
+  .card-color-gray { color: $color-gray-light; }
+
+  .team-card-stat,
+  .team-card-symbol {
+    flex: 1;
+  }
+
+  .team-card-profession {
+    flex: 6;
+  }
+
+  .team-info-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .team-info-panel {
     position: relative;
     margin-top: 24px;
+    flex: 2;
+    &:nth-child(2) {
+      margin-top: -79px;
+    }
+  }
+
+  .doughnut-chart {
+    flex: 1;
+    margin-right: 113px;
   }
 
   .team-counter-container {

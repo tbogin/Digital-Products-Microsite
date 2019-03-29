@@ -9,7 +9,7 @@ const type = 'doughnut';
 const data = {
   datasets: [{
     data: [200, 75, 50, 25],
-    backgroundColor: ["black", "blue", "cyan", "gray"]
+    backgroundColor: ["#001532", "#0146f5", "#bbcdf8", "#8b96a4"]
   }]
 };
 
@@ -33,5 +33,5 @@ counterUp( counter, {
   delay: 10,
 });
 
-$('.counter').addClass('animated fadeInDownBig');
-$('.counter-text').addClass('animated fadeIn');
+// $('.counter').addClass('animated fadeInDownBig');
+// $('.counter-text').addClass('animated fadeIn');
