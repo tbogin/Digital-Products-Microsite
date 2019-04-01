@@ -21,7 +21,7 @@ const options = {
   animation: {
     animateRotate: true,
     render: false,
-    duration: 1000
+    duration: 2000
   }
 };
 
