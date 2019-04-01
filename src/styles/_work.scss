@@ -87,7 +87,7 @@
   
   .heading-block {
     @include respond-to(not-mobile) {
-      padding-left: 120px;
+      margin-left: 120px;
       margin-top: $section-default-padding-tb;
     }
     @include respond-to(mobile) {

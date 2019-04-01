@@ -1,6 +1,8 @@
 @import '/_base';
 
-.process-section {
+.team-section {
+
+  height: 1640px;
 
   $lower-section-height-desktop: 36vh;
 
@@ -13,9 +15,15 @@
 
   @include respond-to(not-mobile) {
     padding-top: $section-default-padding-tb;
+    padding-right: 0;
+
+    .section-content {
+      height: 820px;
+      margin-left: 78px;
+    }
   }
 
-  .process-intro-text {
+  .team-intro-text {
     text-align: left;
     @include respond-to(mobile) {
       width: 100%;
@@ -32,7 +40,7 @@
       margin: 0;
     }
     .heading-2 {
-      margin-top: 26px;
+      margin-top: 16px;
       @include respond-to(mobile) {
         margin-top: 14px;
       }
@@ -46,18 +54,32 @@
     }
   }
 
-  .solid-background {
+  // .section-bg-gray {
+  //   height: 820px;
+  //   width: 100%;
+  //   margin: 0 auto;
+  //   position: relative;
+  //   background-color: $color-gray-background-block;
+  //   @include respond-to(not-mobile) {
+  //     padding-top: $section-default-padding-tb;
+  //   }
+  // }
+
+  .lower-portion-background {
+    @include respond-to(mobile) {
+      display: none;
+    }
+    height: 820px;
     position: absolute;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
     background: $color-gray-background-block;
-    z-index: -1;
-    @include respond-to(not-mobile) {
-      height: $lower-section-height-desktop;
-    }
-    @include respond-to(mobile) {
-      height: calc(100% / 3 * 2);
+
+    .section-content {
+      @include respond-to(not-mobile) {
+        margin: 80px 0 0 240px;
+      }
     }
   }
 

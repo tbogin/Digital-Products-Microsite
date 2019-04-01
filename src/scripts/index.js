@@ -7,7 +7,7 @@ import '../styles/_typography.scss';
 import '../styles/_capabilities.scss';
 import '../styles/_work.scss';
 import '../styles/_buttons.scss';
-import '../styles/_process.scss';
+import '../styles/_team.scss';
 import '../styles/_cards.scss';
 import '../styles/_services.scss';
 import '../styles/_contact.scss';
