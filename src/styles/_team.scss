@@ -25,9 +25,11 @@
 
   .team-intro-text {
     text-align: left;
+
     @include respond-to(mobile) {
       width: 100%;
-      padding: 4px 0 48px 0;
+      // padding: 4px 0 48px 0;
+      padding-top: 4px;
       max-width: 272px;
     }
     @include respond-to(not-mobile) {
@@ -133,11 +135,14 @@
   }
 
   .team-blurb {
-    width: 470px;
     font-family: $font-base;
     font-size: $font-size-medium;
     margin: 24px 0 64px 0;
     line-height: 2rem;
+
+    @include respond-to(mobile) {
+      margin-bottom: 40px;
+    }
   }
 
   .team-cards-container {
@@ -170,6 +175,11 @@
   .team-card-stat {
     font-weight: $font-weight-semibold;
     margin-right: 2px;
+
+    @include respond-to(mobile) {
+      flex: 1;
+      text-align: center;
+    }
   }
 
   .card-bg-dark { background-color: $color-brand-primary-dark; }
@@ -183,23 +193,42 @@
 
   .team-card-stat,
   .team-card-symbol {
-    flex: 1;
+    @include respond-to(not-mobile) {
+      flex: 1;
+    }
   }
 
   .team-card-profession {
     flex: 6;
+
+    @include respond-to(mobile) {
+      flex: 4;
+    }
   }
 
   .team-info-container {
     display: flex;
     flex-direction: row;
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      // margin-top: 48px;
+    }
   }
 
   .team-info-panel {
     position: relative;
     margin-top: 24px;
     flex: 2;
-    &:nth-child(2) {
+    z-index: 1;
+
+    @include respond-to(mobile) {
+      margin-top: 0;
+    }
+  }
+
+  .team-panel-second {
+    @include respond-to(not-mobile) {
       margin-top: -79px;
     }
   }
@@ -213,6 +242,16 @@
     position: absolute;
     top: 130px;
     left: 136px;
+
+    @include respond-to(mobile) {
+      width: 146px;
+    }
+  }
+
+  .canvas-container {
+    // width: 390px;
+    // height: 390px;
+    position: relative;
   }
 
   #team-chart {

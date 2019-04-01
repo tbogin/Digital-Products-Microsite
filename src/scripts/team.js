@@ -1,6 +1,8 @@
 import Chart from 'chart.js';
 import counterUp from 'counterup2';
 
+Chart.defaults.global.animation.duration = 2000;
+
 //Doughnut Chart
 const ctx = $('#team-chart');
 
@@ -15,8 +17,11 @@ const data = {
 
 const options = {
   cutoutPercentage: 85,
+  responsive: true,
   animation: {
-    animateRotate: true
+    animateRotate: true,
+    render: false,
+    duration: 1000
   }
 };
 
