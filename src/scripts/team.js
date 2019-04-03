@@ -18,20 +18,24 @@ const data = {
 };
 
 const options = {
-  cutoutPercentage: 85,
-  responsive: true,
   animation: {
     animateRotate: true,
     render: false,
     duration: 2000
+  },
+  cutoutPercentage: 85,
+  responsive: true,
+  tooltips: {
+    enabled: false
   }
 };
 
-const teamChart = new Chart(ctx, {
-  type,
-  data,
-  options
-});
+// const teamChart = new Chart(ctx, {
+//   type,
+//   data,
+//   options
+// });
+//End chart
 
 //Counter
 const counter = document.querySelector('.counter'); //counterup package implementation demands plain JS here
@@ -42,6 +46,7 @@ const startCounter = counterUp( counter, {
 
 // $('.counter').addClass('animated fadeInDownBig');
 // $('.counter-text').addClass('animated fadeIn');
+//End counter
 
 //Animations
 function animateCollaboratorText() {
@@ -65,7 +70,12 @@ function animateCollaboratorText() {
     },
     '-=2500'
   );
-  collaboratorAnimation.play();
+  const teamChart = new Chart(ctx, { //Initialize doughnut chart
+    type,
+    data,
+    options
+  });
+  setTimeout(function(){ collaboratorAnimation.play(); }, 2500);
 }
 
 function animateGeoText() {
@@ -76,26 +86,28 @@ function animateGeoText() {
     translateY: [100, 0],
     opacity: [0, 1],
     easing: 'easeOutQuart',
-    duration: 2000 
+    duration: 1500 
   });
   geoBlurbAnimation.play();
 }
-
+//End animations
 
 //Scrollmagic
 const teamsController = new ScrollMagic.Controller();
 
+  //Run animation for text in top half of Team Section
 const initialAnimationScene = new ScrollMagic.Scene({
   triggerElement: '.team-section',
   duration: 0,
-  triggerHook: 0.35
+  triggerHook: 0.65
 })
   .addTo(teamsController)
   .on('progress', event => {
     animateCollaboratorText();
   });
 
-const geoSectionAnimationScene = new ScrollMagic.Scene({
+  //Run animation for text in bottom half of Team Section
+const geoSectionAnimationScene = new ScrollMagic.Scene({ 
   triggerElement: '.team-section .lower-portion-background',
   duration: 0,
   triggerHook: 0.9
@@ -105,19 +117,6 @@ const geoSectionAnimationScene = new ScrollMagic.Scene({
     animateGeoText();
   });
 
-// const teamSection = {
-//   animateMainText: function() {
-//     $('.team-section .capabilities-main-text-col .main-text-item').addClass('fade-in-elem');
-//   },
-//   animateTiles: function() {
-//     $('.team-section .dp-card').addClass('first-animation');
-//   },
-//   animateSection: function() {
-//     this.animateMainText();
-//     this.animateTiles();
-//   }
-// };
-
 function getTeamSectionOffset() {
   return $('.team-section').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60); 
 } 
@@ -125,5 +124,6 @@ function getTeamSectionOffset() {
 function getTriggerHook() {
   return getTeamSectionOffset() / $(window).outerHeight();
 }
+//End scrollmagic
 
 //scrollmagic scene for animating active buttons on upper half of Team Section
