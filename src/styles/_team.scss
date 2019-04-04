@@ -25,6 +25,7 @@
 
   .team-intro-text {
     text-align: left;
+    z-index: 500;
 
     @include respond-to(mobile) {
       width: 100%;
@@ -227,8 +228,6 @@
     color: $color-brand-primary-dark;
     font-family: $font-base-semibold;
     font-size: $font-size-xxx-large;
-    animation-duration: 1s;
-    animation-delay: 0s;
   }
 
   .counter-text {
@@ -238,12 +237,12 @@
   }
 
   .map-container {
-    margin: 40px 0 0 105px;
+    margin: 217px 0 0 105px;
   }
 
   .geo-coverage-panel {
     position: absolute;
-    bottom: 70px;
+    bottom: 208px;
     left: 156px;
   }
 

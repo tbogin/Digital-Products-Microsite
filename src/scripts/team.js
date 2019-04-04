@@ -3,9 +3,7 @@ import ScrollMagic from 'scrollmagic';
 import anime from 'animejs';
 import counterUp from 'counterup2';
 
-Chart.defaults.global.animation.duration = 2000;
-
-//Doughnut Chart
+//Doughnut Chart setup
 const ctx = $('#team-chart');
 
 const type = 'doughnut';
@@ -30,26 +28,15 @@ const options = {
   }
 };
 
-// const teamChart = new Chart(ctx, {
-//   type,
-//   data,
-//   options
-// });
-//End chart
+// Chart.defaults.global.animation.duration = 2000;
+//End chart setup
 
-//Counter
+//Counter setup
 const counter = document.querySelector('.counter'); //counterup package implementation demands plain JS here
-const startCounter = counterUp( counter, {
-  duration: 2000,
-  delay: 10,
-});
-
-// $('.counter').addClass('animated fadeInDownBig');
-// $('.counter-text').addClass('animated fadeIn');
-//End counter
+//End counter setup
 
 //Animations
-function animateCollaboratorText() {
+function animateChartAndText() {
   const collaboratorAnimation = anime
   .timeline({loop: false, autoplay: false})
   .add({
@@ -75,7 +62,10 @@ function animateCollaboratorText() {
     data,
     options
   });
-  setTimeout(function(){ collaboratorAnimation.play(); }, 2500);
+  const startCounter = counterUp( counter, { //Initialize counter
+    duration: 2000
+  });
+  setTimeout(function(){ collaboratorAnimation.play(); }, 2500); //Wait for chart to load/counter to finish before animating right side UI
 }
 
 function animateGeoText() {
@@ -95,7 +85,7 @@ function animateGeoText() {
 //Scrollmagic
 const teamsController = new ScrollMagic.Controller();
 
-  //Run animation for text in top half of Team Section
+//Run animation for text in top half of Team Section
 const initialAnimationScene = new ScrollMagic.Scene({
   triggerElement: '.team-section',
   duration: 0,
@@ -103,11 +93,11 @@ const initialAnimationScene = new ScrollMagic.Scene({
 })
   .addTo(teamsController)
   .on('progress', event => {
-    animateCollaboratorText();
+    animateChartAndText();
   });
 
-  //Run animation for text in bottom half of Team Section
-const geoSectionAnimationScene = new ScrollMagic.Scene({ 
+//Run animation for text in bottom half of Team Section
+const geoTextAnimationScene = new ScrollMagic.Scene({ 
   triggerElement: '.team-section .lower-portion-background',
   duration: 0,
   triggerHook: 0.9
@@ -116,14 +106,4 @@ const geoSectionAnimationScene = new ScrollMagic.Scene({
   .on('progress', event => {
     animateGeoText();
   });
-
-function getTeamSectionOffset() {
-  return $('.team-section').outerHeight() - ($('#button-development-capabilities').outerHeight() + 60); 
-} 
-
-function getTriggerHook() {
-  return getTeamSectionOffset() / $(window).outerHeight();
-}
 //End scrollmagic
-
-//scrollmagic scene for animating active buttons on upper half of Team Section
