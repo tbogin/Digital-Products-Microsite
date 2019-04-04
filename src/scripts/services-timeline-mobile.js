@@ -1,51 +1,27 @@
 import { colors } from './constants';
 import TimelineState from './timelineState';
-
 import anime from 'animejs';
 
+// get refs to useful collections RENAME
+const $circles = $('.timeline-labels-mobile .circle');
+const $lineSegmentHighlights = $('.timeline-labels-mobile .line-segment-highlight');
+// const $lineSegmentHighlights = $('.timeline-mobile .services-card-container');
+const $labels = $('.timeline-labels-mobile .timeline-label');
+
+// set default duration & easing
+const duration = 100;
+const labelAnimationDuration = 50;
+const easing = 'linear';
+
+// initialize timeline state
+const timelineState = new TimelineState();
+
 $(document).ready(function() {
-
-  // get refs to useful collections
-  const $circles = $('.timeline .circle');
-  const $lineSegmentHighlights = $('.timeline .line-segment .line-segment-highlight');
-  const $labels = $('.timeline-labels .timeline-label');
-
-  // set default duration & easing
-  const duration = 100;
-  const labelAnimationDuration = 50;
-  const easing = 'linear';
-  
-  // initialize timeline state
-  const timelineState = new TimelineState();
-
-  //Slider controls
-  const $servicesPager = $('.services-pager');
-
-  $servicesPager.slick({
-    prevArrow: $('.services-pager-prev'),
-    nextArrow: $('.services-pager-next'),     
-    centerMode: true,
-    centerPadding: '0',
-    focusOnSelect: true,  
-    infinite: false,
-    slidesToShow: 1,         
-    slidesToScroll: 1,              
-    variableWidth: false,
-    draggable: false
-  });
-
-  $($servicesPager).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-    const firstSlideIdx = 0;
-    const cardType = (nextSlide + 1 > firstSlideIdx) ? nextSlide : nextSlide + 1;
-    selectTimelineStop(cardType);
-  });
-
   /* Partial animation functions */
   function animateStartingLabel(animeTimeline) {
     const startingLabel = [...$labels][timelineState.getPreviousIndex()];
     animeTimeline.add({
       targets: startingLabel,
-      fontSize: '1rem',
       duration: labelAnimationDuration,
       easing,
       complete: () => {
@@ -88,7 +64,7 @@ $(document).ready(function() {
   }
 
   function animateLineSegmentsAndCircles(animeTimeline, previousIndex, newIndex, diff) {
-    const newWidth = (diff > 0) ? '100%' : 0;
+    const newHeight = (diff > 0) ? '100%' : 0;
     const oldBorderColor = (diff < 0) ? colors.brandPrimary : colors.grayDark;
     const newBorderColor = (diff < 0) ? colors.grayDark : colors.brandPrimary;
   
@@ -102,7 +78,7 @@ $(document).ready(function() {
       if (diff > 0) {
         animeTimeline.add({
           targets: segment,
-          width: newWidth,
+          height: newHeight,
           duration,
           easing
         });
@@ -121,7 +97,7 @@ $(document).ready(function() {
         });
         animeTimeline.add({
           targets: segment,
-          width: newWidth,
+          height: newHeight,
           duration,
           easing
         });
@@ -141,6 +117,7 @@ $(document).ready(function() {
   }
 
   function animateEndingLabel(animeTimeline, newIndex) {
+
     const offset = 0;   // absolute offset in ms w/ ref to beginning of timeline
     const endingLabel = [...$labels][newIndex];
     animeTimeline.add({
@@ -197,7 +174,6 @@ $(document).ready(function() {
     const newIndex = $circles.index($(event.target));
     if (newIndex > -1) {      
       selectTimelineStop(newIndex);
-      $servicesPager.slick('slickGoTo', newIndex);
     }
   });
 
@@ -206,7 +182,6 @@ $(document).ready(function() {
     const newIndex = $labels.index($(event.target));
     if (newIndex > -1) {
       selectTimelineStop(newIndex);
-      $servicesPager.slick('slickGoTo', newIndex);
     }
   });
 
@@ -223,7 +198,6 @@ $(document).ready(function() {
       oldBackgroundColor = colors.brandPrimaryDark;
       newBackgroundColor = colors.white;
     } else {
-      newFontSize = '1rem';
       oldBackgroundColor = colors.white;
       newBackgroundColor = colors.brandPrimaryDark;
     }
@@ -264,5 +238,33 @@ $(document).ready(function() {
   $circles.on('mouseenter mouseleave', onHover);
 
   $labels.on('mouseenter mouseleave', onHover);
+
+  // Toggle mobile card content
+  function toggleCardText(targetText) {
+    $.each($('.services-card-description'), (i, el) => {
+      if($(el).not(targetText).hasClass('services-card-active')) {
+        $(el).slideUp(350).removeClass('services-card-active');
+      }
+    });
+    $(targetText).slideToggle(350).toggleClass('services-card-active');
+  }
+
+  function toggleCardIcons(targetIcon) {
+    $('.service-card-toggle').not(targetIcon).hasClass('service-card-open') ?
+      $('.service-card-toggle').removeClass('service-card-open').addClass('service-card-closed') : null;
+
+    $(targetIcon).hasClass('service-card-closed') ?
+      $(targetIcon).removeClass('service-card-closed').addClass('service-card-open') :
+      $(targetIcon).removeClass('service-card-open').addClass('service-card-closed');
+  }
+
+  $('.service-card-toggle').on('click', (e) => {
+    let target = $(e.target);
+    let description = target.closest('.services-card').find('.services-card-description');
+    let highlightCircle = target.closest('.services-card-container').index();
+    toggleCardText(description);
+    toggleCardIcons(target);
+    selectTimelineStop(highlightCircle);
+  });
 
 });

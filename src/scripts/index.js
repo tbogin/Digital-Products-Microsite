@@ -22,6 +22,7 @@ import './contacts.js';
 import './nav.js';
 import './scroll.js';
 import './services.js';
+import './services-timeline-mobile';
 import './team.js';
 import './timelineState.js';
 import './work.js';

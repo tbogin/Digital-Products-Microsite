@@ -7,6 +7,9 @@ $(document).ready(function(){
   const sidenav = $('.sidenav');
   const instance = M.Sidenav.getInstance(sidenav);
 
+  //Scroll to top of page on refresh
+  $("html,body").animate({scrollTop: 0}, 100);
+
   instance.options.draggable = false;  //Disable left-swiping as option to close nav
 
   document.addEventListener("touchmove", function(){}); //for iOS devices
