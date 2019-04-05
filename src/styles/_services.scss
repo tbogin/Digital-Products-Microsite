@@ -168,7 +168,7 @@
   }
 
   .services-card-container {
-    width: 960px;
+    width: 100%;
     display: flex !important;
   }
 
@@ -346,7 +346,8 @@
 
     .services-card {
       position: relative;
-      width: 263px;
+      // width: 263px;
+      width: 100%;
       height: auto;
       padding: 16px 0 0 16px;
     }
@@ -357,6 +358,9 @@
 
     .btn.pdf {
       margin-top: 24px;
+      width: 160px;
+      height: 40px;
+      padding-left: 30px;
     }
 
     .service-card-open,
@@ -384,7 +388,8 @@
     
     .services-card-description {
       display: none;
-      width: 216px;
+      // width: 216px;
+      width: 100%;
       background: $color-white;
       margin-top: 0;
       padding-bottom: 24px;
@@ -404,6 +409,11 @@
 
     .services-card-active {
       display: block;
+
+      &.description-contains-btn {
+        display: flex !important;
+        flex-direction: column;
+      }
     }
   }
 
