@@ -2,6 +2,7 @@ import Chart from 'chart.js';
 import ScrollMagic from 'scrollmagic';
 import anime from 'animejs';
 import counterUp from 'counterup2';
+import { mobileBreakpoint } from './constants';
 
 //Doughnut Chart setup
 const ctx = $('#team-chart');
@@ -66,6 +67,16 @@ function animateChartAndText() {
     duration: 2000
   });
   setTimeout(function(){ collaboratorAnimation.play(); }, 2500); //Wait for chart to load/counter to finish before animating right side UI
+  // collaboratorAnimation.play();
+}
+
+function mapParallaxScroll() {
+  const mapParallaxAnimation = anime({
+    targets: '.doughnut-chart',
+    translateX: -500,
+    translateY: -500
+  });
+  mapParallaxAnimation.play();
 }
 
 function animateGeoText() {
@@ -89,7 +100,7 @@ const teamsController = new ScrollMagic.Controller();
 const initialAnimationScene = new ScrollMagic.Scene({
   triggerElement: '.team-section',
   duration: 0,
-  triggerHook: 0.65
+  triggerHook: 0.35
 })
   .addTo(teamsController)
   .on('progress', event => {
@@ -106,4 +117,22 @@ const geoTextAnimationScene = new ScrollMagic.Scene({
   .on('progress', event => {
     animateGeoText();
   });
+
+//Parallax scrolling
+function isNotMobile() {
+  return $(window).outerWidth() > mobileBreakpoint;
+}
+
+if (isNotMobile()) {
+  const scrollToMap = new ScrollMagic.Scene({
+    triggerElement: '.team-section .lower-portion-background',
+    duration: 0,
+    triggerHook: 0.25
+  })
+  .addTo(teamsController)
+  .on('progress', event => {
+    mapParallaxScroll();
+  })
+}
+
 //End scrollmagic
