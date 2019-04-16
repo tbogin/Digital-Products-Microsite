@@ -1,7 +1,4 @@
 import Chart from 'chart.js';
-// import { TweenLite, TweenMax, TimelineMax, Linear, Back, Sine } from 'gsap';
-// import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
-// import { TweenMax} from "gsap/TweenMax";
 import ScrollMagic from 'scrollmagic';
 import anime from 'animejs';
 import counterUp from 'counterup2';
@@ -73,27 +70,25 @@ function animateChartAndText() {
   // collaboratorAnimation.play();
 };
 
-function mapParallaxScroll() {
-  const mapParallaxAnimation = anime({
-    targets: '.doughnut-chart',
-    translateX: -500,
-    translateY: -500
-  });
-  mapParallaxAnimation.play();
-};
-
 function animateGeoText() {
   const geoBlurbAnimation = anime
   .timeline({loop: false, autoplay: false})
+  .add({
+    targets: '.map-container',
+    translateY: [100, 0],
+    opacity: [0, 1],
+    easing: 'easeOutQuart',
+    duration: 1500
+  })
   .add({
     targets: '.geo-coverage-panel',
     translateY: [100, 0],
     opacity: [0, 1],
     easing: 'easeOutQuart',
-    duration: 1500 
+    duration: 1500
   });
   geoBlurbAnimation.play();
-}
+};
 //End animations
 
 //Scrollmagic
@@ -114,7 +109,7 @@ const initialAnimationScene = new ScrollMagic.Scene({
 const geoTextAnimationScene = new ScrollMagic.Scene({ 
   triggerElement: '.team-section .lower-portion-background',
   duration: 0,
-  triggerHook: 0.9
+  triggerHook: 0.65
 })
   .addTo(teamsController)
   .on('progress', event => {
@@ -122,9 +117,9 @@ const geoTextAnimationScene = new ScrollMagic.Scene({
   });
 
 //Parallax scrolling
-function isNotMobile() {
-  return $(window).outerWidth() > mobileBreakpoint;
-};
+// function isNotMobile() {
+//   return $(window).outerWidth() > mobileBreakpoint;
+// };
 
 // function collaboratorsOutro() {
 //   const collabOutro = anime
@@ -149,17 +144,17 @@ function isNotMobile() {
 
 // let chartTween = TweenMax.to('.doughnut-chart', 0, {left: -500}, {top: -500});
 
-if (isNotMobile()) {
-  const scrollToMap = new ScrollMagic.Scene({
-    triggerElement: '.team-section .lower-portion-background',
-    duration: 0,
-    triggerHook: 0.1,
-    reverse: true
-  })
-  .addTo(teamsController)
-  .on('progress', event => {
-    collaboratorsOutro();
-  });
-};
+// if (isNotMobile()) {
+//   const scrollToMap = new ScrollMagic.Scene({
+//     triggerElement: '.team-section .lower-portion-background',
+//     duration: 0,
+//     triggerHook: 0.1,
+//     reverse: true
+//   })
+//   .addTo(teamsController)
+//   .on('progress', event => {
+//     collaboratorsOutro();
+//   });
+// };
 
 //End scrollmagic
