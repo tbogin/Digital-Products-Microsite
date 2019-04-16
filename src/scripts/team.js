@@ -1,4 +1,7 @@
 import Chart from 'chart.js';
+// import { TweenLite, TweenMax, TimelineMax, Linear, Back, Sine } from 'gsap';
+// import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
+// import { TweenMax} from "gsap/TweenMax";
 import ScrollMagic from 'scrollmagic';
 import anime from 'animejs';
 import counterUp from 'counterup2';
@@ -68,7 +71,7 @@ function animateChartAndText() {
   });
   setTimeout(function(){ collaboratorAnimation.play(); }, 2500); //Wait for chart to load/counter to finish before animating right side UI
   // collaboratorAnimation.play();
-}
+};
 
 function mapParallaxScroll() {
   const mapParallaxAnimation = anime({
@@ -77,7 +80,7 @@ function mapParallaxScroll() {
     translateY: -500
   });
   mapParallaxAnimation.play();
-}
+};
 
 function animateGeoText() {
   const geoBlurbAnimation = anime
@@ -121,18 +124,42 @@ const geoTextAnimationScene = new ScrollMagic.Scene({
 //Parallax scrolling
 function isNotMobile() {
   return $(window).outerWidth() > mobileBreakpoint;
-}
+};
+
+// function collaboratorsOutro() {
+//   const collabOutro = anime
+//   .timeline({loop: false, autoplay: false})
+//   .add({
+//     targets: '.doughnut-chart',
+//     translateX: -500,
+//     translateY: -500 
+//   })
+//   .add({
+//     targets: '.team-panel-collab',
+//     translateX: 500,
+//     translateY: -500
+//   });
+//   collabOutro.play();
+//   $('.doughnut-chart').on('click', () => {
+//     if(collabOutro.began) {
+//       collabOutro.reverse();
+//     }
+//   });
+// };
+
+// let chartTween = TweenMax.to('.doughnut-chart', 0, {left: -500}, {top: -500});
 
 if (isNotMobile()) {
   const scrollToMap = new ScrollMagic.Scene({
     triggerElement: '.team-section .lower-portion-background',
     duration: 0,
-    triggerHook: 0.25
+    triggerHook: 0.1,
+    reverse: true
   })
   .addTo(teamsController)
   .on('progress', event => {
-    mapParallaxScroll();
-  })
-}
+    collaboratorsOutro();
+  });
+};
 
 //End scrollmagic
