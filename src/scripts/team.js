@@ -117,44 +117,95 @@ const geoTextAnimationScene = new ScrollMagic.Scene({
   });
 
 //Parallax scrolling
-// function isNotMobile() {
-//   return $(window).outerWidth() > mobileBreakpoint;
-// };
+function isNotMobile() {
+  return $(window).outerWidth() > mobileBreakpoint;
+};
 
 // function collaboratorsOutro() {
 //   const collabOutro = anime
 //   .timeline({loop: false, autoplay: false})
 //   .add({
 //     targets: '.doughnut-chart',
-//     translateX: -500,
-//     translateY: -500 
+//     translateX: -800,
+//     translateY: -800,
+//     duration: 2000,
+//     easing: 'easeOutQuart' 
 //   })
 //   .add({
 //     targets: '.team-panel-collab',
-//     translateX: 500,
-//     translateY: -500
+//     translateX: 800,
+//     translateY: -800,
+//     duration: 0,
+//     easing: 'easeOutQuart'
 //   });
 //   collabOutro.play();
-//   $('.doughnut-chart').on('click', () => {
-//     if(collabOutro.began) {
-//       collabOutro.reverse();
-//     }
-//   });
+//   // $('.doughnut-chart').on('click', () => {
+//   //   if(collabOutro.began) {
+//   //     collabOutro.reverse();
+//   //   }
+//   // });
 // };
 
-// let chartTween = TweenMax.to('.doughnut-chart', 0, {left: -500}, {top: -500});
+function colorFadeAnimation() {
+  const colorFade = anime({
+    targets: '.team-section .lower-portion-background',
+    duration: 2000,
+    backgroundColor: '#fcfcfc',
+    easing: 'easeInOutQuad'
+  });
+  colorFade.play();
+}
 
-// if (isNotMobile()) {
-//   const scrollToMap = new ScrollMagic.Scene({
-//     triggerElement: '.team-section .lower-portion-background',
-//     duration: 0,
-//     triggerHook: 0.1,
-//     reverse: true
-//   })
-//   .addTo(teamsController)
-//   .on('progress', event => {
-//     collaboratorsOutro();
-//   });
-// };
+function colorFadeOutAnimation() {
+  const colorFadeOut = anime({
+    targets: '.team-section .lower-portion-background',
+    duration: 2000,
+    backgroundColor: '#ffffff',
+    easing: 'easeInOutQuad' 
+  });
+  colorFadeOut.play();
+}
+
+//Emulate how buttons are highlighted in capabilities section
+//Fade in gray bg color if within (or slightly before) lower portion bg of Team Section
+//Fade out gray bg if outside that section
+
+if (isNotMobile()) {
+
+  const teamColorFade = new ScrollMagic.Scene({
+    triggerElement: '.team-section .lower-portion-background',
+    offset: 180,
+    duration: 0,
+    triggerHook: 'onEnter'
+  })
+  .addTo(teamsController)
+  .on('enter', event => {
+    console.log("in");
+    colorFadeAnimation();
+  })
+  .on('leave', event => {
+    console.log("out");
+    colorFadeOutAnimation();
+  });
+
+  // const colorFadeScene = new ScrollMagic.Scene({
+  //   triggerElement: '.team-section',
+  //   duration: 300,
+  //   triggerHook: 0.85
+  // })
+  // .addTo(teamsController)
+  // .setTween(TweenMax.to('.team-section .lower-portion-background', 0.75, {backgroundColor: '#fcfcfc'}));
+
+  // const scrollToMap = new ScrollMagic.Scene({
+  //   triggerElement: '.team-section .lower-portion-background',
+  //   duration: 0,
+  //   triggerHook: 0.5,
+  //   reverse: true
+  // })
+  // .addTo(teamsController)
+  // .on('progress', event => {
+  //   collaboratorsOutro();
+  // });
+};
 
 //End scrollmagic

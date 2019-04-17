@@ -68,7 +68,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    background: $color-gray-background-block;
+    background: $color-white;
 
     @include respond-to(mobile) {
       display: none;

@@ -32,6 +32,7 @@
 
   @include respond-to(not-mobile) {
     background-image: url("../assets/vertical-lines/web-vertical-lines-capabilities-3.png");
+    background-attachment: fixed;
   }
 
   @include respond-to(mobile) {
