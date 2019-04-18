@@ -103,6 +103,9 @@ const initialAnimationScene = new ScrollMagic.Scene({
   .addTo(teamsController)
   .on('progress', event => {
     animateChartAndText();
+  })
+  .on('leave', event => {
+    initialAnimationScene.refresh();
   });
 
 //Run animation for text in bottom half of Team Section
@@ -121,48 +124,69 @@ function isNotMobile() {
   return $(window).outerWidth() > mobileBreakpoint;
 };
 
-// function collaboratorsOutro() {
-//   const collabOutro = anime
-//   .timeline({loop: false, autoplay: false})
-//   .add({
-//     targets: '.doughnut-chart',
-//     translateX: -800,
-//     translateY: -800,
-//     duration: 2000,
-//     easing: 'easeOutQuart' 
-//   })
-//   .add({
-//     targets: '.team-panel-collab',
-//     translateX: 800,
-//     translateY: -800,
-//     duration: 0,
-//     easing: 'easeOutQuart'
-//   });
-//   collabOutro.play();
-//   // $('.doughnut-chart').on('click', () => {
-//   //   if(collabOutro.began) {
-//   //     collabOutro.reverse();
-//   //   }
-//   // });
-// };
+function collaboratorsOutro() {
+  const collabOutro = anime
+  .timeline({loop: false, autoplay: false})
+  .add({
+    targets: '.doughnut-chart',
+    offset: -100,
+    translateX: -800,
+    translateY: -800,
+    duration: 2000,
+    easing: 'easeOutQuart' 
+  })
+  .add({
+    targets: '.team-panel-collab',
+    translateX: 800,
+    translateY: -800,
+    duration: 2000,
+    easing: 'easeOutQuart'
+  });
+  collabOutro.play();
+};
+
+function collaboratorsIntro() {
+  const collabIntro = anime
+  .timeline({loop: false, autoplay: false})
+  .add({
+    targets: '.doughnut-chart',
+    offset: -100,
+    translateX: 0,
+    translateY: 0,
+    duration: 2000,
+    easing: 'easeOutQuart' 
+  })
+  .add({
+    targets: '.team-panel-collab',
+    translateX: 0,
+    translateY: 0,
+    duration: 2000,
+    easing: 'easeOutQuart'
+  });
+  collabIntro.play();
+}
 
 function colorFadeAnimation() {
   const colorFade = anime({
     targets: '.team-section .lower-portion-background',
+    opacity: [0, 1],
     duration: 2000,
     backgroundColor: '#fcfcfc',
     easing: 'easeInOutQuad'
   });
+  console.log("Color fade in");
   colorFade.play();
 }
 
 function colorFadeOutAnimation() {
   const colorFadeOut = anime({
     targets: '.team-section .lower-portion-background',
+    opacity: [1, 0],
     duration: 2000,
     backgroundColor: '#ffffff',
     easing: 'easeInOutQuad' 
   });
+  console.log("Color fade out");
   colorFadeOut.play();
 }
 
@@ -175,7 +199,7 @@ if (isNotMobile()) {
   const teamColorFade = new ScrollMagic.Scene({
     triggerElement: '.team-section .lower-portion-background',
     offset: 180,
-    duration: 0,
+    duration: 1000,
     triggerHook: 'onEnter'
   })
   .addTo(teamsController)
@@ -196,16 +220,19 @@ if (isNotMobile()) {
   // .addTo(teamsController)
   // .setTween(TweenMax.to('.team-section .lower-portion-background', 0.75, {backgroundColor: '#fcfcfc'}));
 
-  // const scrollToMap = new ScrollMagic.Scene({
-  //   triggerElement: '.team-section .lower-portion-background',
-  //   duration: 0,
-  //   triggerHook: 0.5,
-  //   reverse: true
-  // })
-  // .addTo(teamsController)
-  // .on('progress', event => {
-  //   collaboratorsOutro();
-  // });
+  const scrollToMap = new ScrollMagic.Scene({
+    triggerElement: '.team-section .lower-portion-background',
+    duration: 2000,
+    triggerHook: 0.1,
+    reverse: true
+  })
+  .addTo(teamsController)
+  .on('enter', event => {
+    collaboratorsOutro();
+  })
+  .on('leave', event => {
+    collaboratorsIntro();
+  });
 };
 
 //End scrollmagic
