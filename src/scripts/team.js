@@ -70,6 +70,7 @@ function animateChartAndText() {
   // collaboratorAnimation.play();
 };
 
+//Animate map and text when scrolling into lower half of Team section
 function animateGeoText() {
   const geoBlurbAnimation = anime
   .timeline({loop: false, autoplay: false})
@@ -108,6 +109,84 @@ const initialAnimationScene = new ScrollMagic.Scene({
     initialAnimationScene.refresh();
   });
 
+  //Outro animation for top half UI of Team section when scrolling down
+  function collaboratorsOutro() {
+    const collabOutro = anime
+    .timeline({loop: false, autoplay: false})
+    .add({
+      targets: '.doughnut-chart',
+      offset: -100,
+      translateX: -800,
+      translateY: -800,
+      duration: 2000,
+      easing: 'easeOutQuart' 
+    });
+    collabOutro.play();
+  };
+
+  function cardsOutroAnimation() {
+    const cardsOutro = anime({
+      targets: '.team-panel-collab',
+      translateX: 800,
+      translateY: -800,
+      duration: 2000,
+      easing: 'easeOutQuart'
+    });
+    cardsOutro.play();
+  };
+
+  //Intro animation for top half UI of Team section when scrolling up
+  function collaboratorsIntro() {
+    const collabIntro = anime
+    .timeline({loop: false, autoplay: false})
+    .add({
+      targets: '.doughnut-chart',
+      offset: -100,
+      translateX: 0,
+      translateY: 0,
+      duration: 2000,
+      easing: 'easeOutQuart' 
+    });
+    collabIntro.play();
+  };
+
+  function cardsIntroAnimation() {
+    const cardsIntro = anime({
+      targets: '.team-panel-collab',
+      translateX: 0,
+      translateY: 0,
+      duration: 2000,
+      easing: 'easeOutQuart'
+    });
+    cardsIntro.play();
+  };
+
+  //Fade to grey when scrolling into bottom half of Team section
+  function colorFadeAnimation() {
+    const colorFade = anime({
+      targets: '.team-section .lower-portion-background',
+      opacity: [0, 1],
+      duration: 2000,
+      backgroundColor: '#fcfcfc',
+      easing: 'easeInOutQuad'
+    });
+    console.log("Color fade in");
+    colorFade.play();
+  }
+  
+  //Fade back to white when scrolling out of bottom half of Team section
+  function colorFadeOutAnimation() {
+    const colorFadeOut = anime({
+      targets: '.team-section .lower-portion-background',
+      opacity: [1, 0],
+      duration: 2000,
+      backgroundColor: '#ffffff',
+      easing: 'easeInOutQuad' 
+    });
+    console.log("Color fade out");
+    colorFadeOut.play();
+  }
+
 //Run animation for text in bottom half of Team Section
 const geoTextAnimationScene = new ScrollMagic.Scene({ 
   triggerElement: '.team-section .lower-portion-background',
@@ -124,83 +203,19 @@ function isNotMobile() {
   return $(window).outerWidth() > mobileBreakpoint;
 };
 
-function collaboratorsOutro() {
-  const collabOutro = anime
-  .timeline({loop: false, autoplay: false})
-  .add({
-    targets: '.doughnut-chart',
-    offset: -100,
-    translateX: -800,
-    translateY: -800,
-    duration: 2000,
-    easing: 'easeOutQuart' 
-  })
-  .add({
-    targets: '.team-panel-collab',
-    translateX: 800,
-    translateY: -800,
-    duration: 2000,
-    easing: 'easeOutQuart'
-  });
-  collabOutro.play();
-};
-
-function collaboratorsIntro() {
-  const collabIntro = anime
-  .timeline({loop: false, autoplay: false})
-  .add({
-    targets: '.doughnut-chart',
-    offset: -100,
-    translateX: 0,
-    translateY: 0,
-    duration: 2000,
-    easing: 'easeOutQuart' 
-  })
-  .add({
-    targets: '.team-panel-collab',
-    translateX: 0,
-    translateY: 0,
-    duration: 2000,
-    easing: 'easeOutQuart'
-  });
-  collabIntro.play();
-}
-
-function colorFadeAnimation() {
-  const colorFade = anime({
-    targets: '.team-section .lower-portion-background',
-    opacity: [0, 1],
-    duration: 2000,
-    backgroundColor: '#fcfcfc',
-    easing: 'easeInOutQuad'
-  });
-  console.log("Color fade in");
-  colorFade.play();
-}
-
-function colorFadeOutAnimation() {
-  const colorFadeOut = anime({
-    targets: '.team-section .lower-portion-background',
-    opacity: [1, 0],
-    duration: 2000,
-    backgroundColor: '#ffffff',
-    easing: 'easeInOutQuad' 
-  });
-  console.log("Color fade out");
-  colorFadeOut.play();
-}
-
-//Emulate how buttons are highlighted in capabilities section
-//Fade in gray bg color if within (or slightly before) lower portion bg of Team Section
-//Fade out gray bg if outside that section
+//TODO
+//Lower chart/card opacity on outro, reverse opacity fade for intro
+//Change bg color to grey upon scrolling into map section
+//Tweak map and text fade ins
+//Scrolling bugs
 
 if (isNotMobile()) {
 
   const teamColorFade = new ScrollMagic.Scene({
     triggerElement: '.team-section .lower-portion-background',
-    offset: 180,
-    duration: 1000,
-    triggerHook: 'onEnter'
+    offset: -360,
+    duration: 2000,
+    triggerHook: 0
   })
   .addTo(teamsController)
   .on('enter', event => {
@@ -212,6 +227,22 @@ if (isNotMobile()) {
     colorFadeOutAnimation();
   });
 
+  const scrollToMap = new ScrollMagic.Scene({
+    triggerElement: '.team-section .lower-portion-background',
+    duration: 2000,
+    triggerHook: 0.75,
+    reverse: true
+  })
+  .addTo(teamsController)
+  .on('enter', event => {
+    collaboratorsOutro();
+    cardsOutroAnimation();
+  })
+  .on('leave', event => {
+    collaboratorsIntro();
+    cardsIntroAnimation();
+  });
+
   // const colorFadeScene = new ScrollMagic.Scene({
   //   triggerElement: '.team-section',
   //   duration: 300,
@@ -219,20 +250,6 @@ if (isNotMobile()) {
   // })
   // .addTo(teamsController)
   // .setTween(TweenMax.to('.team-section .lower-portion-background', 0.75, {backgroundColor: '#fcfcfc'}));
-
-  const scrollToMap = new ScrollMagic.Scene({
-    triggerElement: '.team-section .lower-portion-background',
-    duration: 2000,
-    triggerHook: 0.1,
-    reverse: true
-  })
-  .addTo(teamsController)
-  .on('enter', event => {
-    collaboratorsOutro();
-  })
-  .on('leave', event => {
-    collaboratorsIntro();
-  });
 };
-
+//End parallax
 //End scrollmagic
