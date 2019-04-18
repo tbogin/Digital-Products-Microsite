@@ -109,7 +109,7 @@ const initialAnimationScene = new ScrollMagic.Scene({
     initialAnimationScene.refresh();
   });
 
-  //Outro animation for top half UI of Team section when scrolling down
+  //Outro animations for top half UI of Team section when scrolling down
   function collaboratorsOutro() {
     const collabOutro = anime
     .timeline({loop: false, autoplay: false})
@@ -118,7 +118,8 @@ const initialAnimationScene = new ScrollMagic.Scene({
       offset: -100,
       translateX: -800,
       translateY: -800,
-      duration: 2000,
+      opacity: [1, 0.8],
+      duration: 3500,
       easing: 'easeOutQuart' 
     });
     collabOutro.play();
@@ -129,13 +130,14 @@ const initialAnimationScene = new ScrollMagic.Scene({
       targets: '.team-panel-collab',
       translateX: 800,
       translateY: -800,
-      duration: 2000,
+      opacity: [1, 0.8],
+      duration: 3500,
       easing: 'easeOutQuart'
     });
     cardsOutro.play();
   };
 
-  //Intro animation for top half UI of Team section when scrolling up
+  //Intro animations for top half UI of Team section when scrolling up
   function collaboratorsIntro() {
     const collabIntro = anime
     .timeline({loop: false, autoplay: false})
@@ -144,7 +146,8 @@ const initialAnimationScene = new ScrollMagic.Scene({
       offset: -100,
       translateX: 0,
       translateY: 0,
-      duration: 2000,
+      opacity: [0.8, 1],
+      duration: 3500,
       easing: 'easeOutQuart' 
     });
     collabIntro.play();
@@ -155,7 +158,8 @@ const initialAnimationScene = new ScrollMagic.Scene({
       targets: '.team-panel-collab',
       translateX: 0,
       translateY: 0,
-      duration: 2000,
+      opacity: [0.8, 1],
+      duration: 3500,
       easing: 'easeOutQuart'
     });
     cardsIntro.play();
@@ -165,12 +169,11 @@ const initialAnimationScene = new ScrollMagic.Scene({
   function colorFadeAnimation() {
     const colorFade = anime({
       targets: '.team-section .lower-portion-background',
-      opacity: [0, 1],
+      opacity: [0.8, 1],
       duration: 2000,
       backgroundColor: '#fcfcfc',
       easing: 'easeInOutQuad'
     });
-    console.log("Color fade in");
     colorFade.play();
   }
   
@@ -178,14 +181,35 @@ const initialAnimationScene = new ScrollMagic.Scene({
   function colorFadeOutAnimation() {
     const colorFadeOut = anime({
       targets: '.team-section .lower-portion-background',
-      opacity: [1, 0],
+      opacity: [1, 0.8],
       duration: 2000,
       backgroundColor: '#ffffff',
       easing: 'easeInOutQuad' 
     });
-    console.log("Color fade out");
     colorFadeOut.play();
   }
+
+  // function topHalfColorFadeInAnimation() {
+  //   const topHalfColorFadeIn = anime({
+  //     targets: '.team-section',
+  //     opacity: [1, 0],
+  //     duration: 2000,
+  //     backgroundColor: '#fcfcfc',
+  //     easing: 'easeInOutQuad' 
+  //   });
+  //   topHalfColorFadeIn.play();
+  // }
+
+  // function topHalfColorFadeOutAnimation() {
+  //   const topHalfColorFadeOut = anime({
+  //     targets: '.team-section',
+  //     opacity: [1, 0],
+  //     duration: 2000,
+  //     backgroundColor: '#ffffff',
+  //     easing: 'easeInOutQuad' 
+  //   });
+  //   topHalfColorFadeOut.play();
+  // }
 
 //Run animation for text in bottom half of Team Section
 const geoTextAnimationScene = new ScrollMagic.Scene({ 
@@ -204,32 +228,44 @@ function isNotMobile() {
 };
 
 //TODO
-//Lower chart/card opacity on outro, reverse opacity fade for intro
+//Tweak: Lower chart/card opacity on outro, reverse opacity fade for intro
 //Change bg color to grey upon scrolling into map section
 //Tweak map and text fade ins
 //Scrolling bugs
+  //staggering: TweenMax.staggerFromTo()
 
 if (isNotMobile()) {
 
+  // const topHalfColorFade = new ScrollMagic.Scene({
+  //   triggerElement: '.team-section',
+  //   duration: 500,
+  //   triggerHook: 0.2
+  // })
+  // .addTo(teamsController)
+  // .on('enter', event => {
+  //   topHalfColorFadeInAnimation();
+  // })
+  // .on('leave', event => {
+  //   topHalfColorFadeOutAnimation();
+  // });
+
   const teamColorFade = new ScrollMagic.Scene({
     triggerElement: '.team-section .lower-portion-background',
-    offset: -360,
-    duration: 2000,
+    offset: -300,
+    duration: 500,
     triggerHook: 0
   })
   .addTo(teamsController)
   .on('enter', event => {
-    console.log("in");
     colorFadeAnimation();
   })
   .on('leave', event => {
-    console.log("out");
     colorFadeOutAnimation();
   });
 
   const scrollToMap = new ScrollMagic.Scene({
     triggerElement: '.team-section .lower-portion-background',
-    duration: 2000,
+    duration: 0,
     triggerHook: 0.75,
     reverse: true
   })
@@ -243,13 +279,6 @@ if (isNotMobile()) {
     cardsIntroAnimation();
   });
 
-  // const colorFadeScene = new ScrollMagic.Scene({
-  //   triggerElement: '.team-section',
-  //   duration: 300,
-  //   triggerHook: 0.85
-  // })
-  // .addTo(teamsController)
-  // .setTween(TweenMax.to('.team-section .lower-portion-background', 0.75, {backgroundColor: '#fcfcfc'}));
 };
 //End parallax
 //End scrollmagic
