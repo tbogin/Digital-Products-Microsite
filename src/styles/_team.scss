@@ -18,7 +18,8 @@
     padding-right: 0;
 
     .section-content {
-      height: 820px;
+      // height: 820px;
+      height: 930px;
       margin-left: 78px;
     }
   }
@@ -36,6 +37,8 @@
     @include respond-to(not-mobile) {
       width: 640px;
       max-width: 640px;
+      position: sticky;
+      top: 80px;
     }
 
     .caption:first-of-type {
@@ -65,7 +68,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    background: $color-gray-background-block;
+    background: $color-white;
 
     @include respond-to(mobile) {
       display: none;
@@ -190,15 +193,20 @@
     }
   }
 
-  .team-panel-second {
+  .team-panel-collab {
     @include respond-to(not-mobile) {
-      margin-top: -79px;
+      // margin-top: -79px;
+      margin-top: -37px;
     }
   }
 
   .doughnut-chart {
     flex: 1;
-    margin-right: 113px;
+    margin-right: 101px;
+
+    @include respond-to(not-mobile) {
+      margin-top: 90px;
+    }
   }
 
   .team-counter-container {
@@ -242,7 +250,8 @@
 
   .geo-coverage-panel {
     position: absolute;
-    bottom: 208px;
+    // bottom: 208px;
+    bottom: 34%;
     left: 156px;
   }
 
