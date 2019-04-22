@@ -234,51 +234,57 @@ function isNotMobile() {
 //Scrolling bugs
   //staggering: TweenMax.staggerFromTo()
 
-if (isNotMobile()) {
+// const topHalfColorFade = new ScrollMagic.Scene({
+//   triggerElement: '.team-section',
+//   duration: 500,
+//   triggerHook: 0.2
+// })
+// .addTo(teamsController)
+// .on('enter', event => {
+//   topHalfColorFadeInAnimation();
+// })
+// .on('leave', event => {
+//   topHalfColorFadeOutAnimation();
+// });
 
-  // const topHalfColorFade = new ScrollMagic.Scene({
-  //   triggerElement: '.team-section',
-  //   duration: 500,
-  //   triggerHook: 0.2
-  // })
-  // .addTo(teamsController)
-  // .on('enter', event => {
-  //   topHalfColorFadeInAnimation();
-  // })
-  // .on('leave', event => {
-  //   topHalfColorFadeOutAnimation();
-  // });
-
-  const teamColorFade = new ScrollMagic.Scene({
-    triggerElement: '.team-section .lower-portion-background',
-    offset: -300,
-    duration: 500,
-    triggerHook: 0
-  })
-  .addTo(teamsController)
-  .on('enter', event => {
+const teamColorFade = new ScrollMagic.Scene({
+  triggerElement: '.team-section .lower-portion-background',
+  offset: -300,
+  duration: 500,
+  triggerHook: 0
+})
+.addTo(teamsController)
+.on('enter', event => {
+  if (isNotMobile()) {
     colorFadeAnimation();
-  })
-  .on('leave', event => {
+  }
+  // colorFadeAnimation();
+})
+.on('leave', event => {
+  if (isNotMobile()) {
     colorFadeOutAnimation();
-  });
+  }
+  // colorFadeOutAnimation();
+});
 
-  const scrollToMap = new ScrollMagic.Scene({
-    triggerElement: '.team-section .lower-portion-background',
-    duration: 0,
-    triggerHook: 0.75,
-    reverse: true
-  })
-  .addTo(teamsController)
-  .on('enter', event => {
+const scrollToMap = new ScrollMagic.Scene({
+  triggerElement: '.team-section .lower-portion-background',
+  duration: 0,
+  triggerHook: 0.75,
+  reverse: true
+})
+.addTo(teamsController)
+.on('enter', event => {
+  if (isNotMobile()) {
     collaboratorsOutro();
     cardsOutroAnimation();
-  })
-  .on('leave', event => {
+  }
+})
+.on('leave', event => {
+  if (isNotMobile()) {
     collaboratorsIntro();
     cardsIntroAnimation();
-  });
-
-};
+  }
+});
 //End parallax
 //End scrollmagic
