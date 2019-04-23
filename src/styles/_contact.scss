@@ -10,10 +10,8 @@
   overflow: hidden;
   
   @include respond-to(not-mobile) {
-    padding-right: 0;       // section-specific override of standard section padding
 
     .section-content {
-      max-width: $content-max-width;    // section-specific override of standard max-width for .section-content
       margin-top: 80px;
     }
 
@@ -133,7 +131,7 @@
     // need to figure out the width of the whole container holding the items
     @include respond-to(not-mobile) {
       z-index: 2;
-      left: 512px;
+      left: 45%;
       bottom: 212px;
     }
     @include respond-to(mobile) {
