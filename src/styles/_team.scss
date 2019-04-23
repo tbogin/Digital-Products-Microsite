@@ -17,7 +17,6 @@
     padding-top: $section-default-padding-tb;
 
     .section-content {
-      // height: 820px;
       height: 930px;
     }
   }
@@ -70,12 +69,6 @@
 
     @include respond-to(mobile) {
       display: none;
-    }
-
-    .section-content {
-      @include respond-to(not-mobile) {
-        margin: 80px 0 0 240px;
-      }
     }
   }
 
@@ -249,13 +242,13 @@
   .geo-coverage-panel {
     position: absolute;
     // bottom: 208px;
-    bottom: 34%;
+    bottom: 35%;
     left: 156px;
   }
 
   .geo-blurb {
     width: 79%;
-    margin-bottom: 56px;
+    margin-bottom: 6%;
   }
 
 }
