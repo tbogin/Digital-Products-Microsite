@@ -15,12 +15,10 @@
 
   @include respond-to(not-mobile) {
     padding-top: $section-default-padding-tb;
-    padding-right: 0;
 
     .section-content {
       // height: 820px;
       height: 930px;
-      margin-left: 78px;
     }
   }
 
