@@ -64,9 +64,9 @@ function animateChartAndText() {
     options
   });
   const startCounter = counterUp( counter, { //Initialize counter
-    duration: 2000
+    duration: 1500
   });
-  setTimeout(function(){ collaboratorAnimation.play(); }, 2500); //Wait for chart to load/counter to finish before animating right side UI
+  setTimeout(function(){ collaboratorAnimation.play(); }, 2000); //Wait for chart to load/counter to finish before animating right side UI
   // collaboratorAnimation.play();
 };
 
@@ -96,6 +96,7 @@ function animateGeoText() {
 const teamsController = new ScrollMagic.Controller();
 
 //Run animation for text in top half of Team Section
+const initialSceneRan = false;
 const initialAnimationScene = new ScrollMagic.Scene({
   triggerElement: '.team-section',
   duration: 0,
@@ -104,9 +105,7 @@ const initialAnimationScene = new ScrollMagic.Scene({
   .addTo(teamsController)
   .on('progress', event => {
     animateChartAndText();
-  })
-  .on('leave', event => {
-    initialAnimationScene.refresh();
+    initialAnimationScene.remove();
   });
 
   //Outro animations for top half UI of Team section when scrolling down
