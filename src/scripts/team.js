@@ -203,13 +203,6 @@ function isNotMobile() {
   return $(window).outerWidth() > mobileBreakpoint;
 };
 
-//TODO
-//Tweak: Lower chart/card opacity on outro, reverse opacity fade for intro
-//Change bg color to grey upon scrolling into map section
-//Tweak map and text fade ins
-//Scrolling bugs
-  //staggering: TweenMax.staggerFromTo()
-
 const teamColorFade = new ScrollMagic.Scene({
   triggerElement: '.team-section .lower-portion-background',
   offset: -300,
@@ -233,33 +226,49 @@ let yAxisChart = 0;
 let xAxisCards = 0;
 let yAxisCards = 0;
 let originalScrollPosition = $(window).scrollTop();
-function startingCoordinates() {
-  return xAxisChart != 0 && yAxisChart != 0 && xAxisCards != 0 && yAxisCards != 0;
+function defaultCoordinates() {
+  return xAxisChart === 0 && yAxisChart === 0 && xAxisCards === 0 && yAxisCards === 0;
+}
+function scrollingDownCoordinates() {
+  return xAxisChart <= 0 && yAxisChart <= 0 && xAxisCards >= 0 && yAxisCards <= 0;
 }
 
 const scrollToMap = new ScrollMagic.Scene({
-  triggerElement: '.team-section .lower-portion-background',
+  triggerElement: '.team-section',
   duration: 0,
-  triggerHook: 0.75
+  triggerHook: 0.95
 })
 .addTo(teamsController)
-.on('progress', event => {
+.on('enter', event => {
   if (isNotMobile()) {
     $(window).on('scroll', () => {
+      console.log('x axis cards', xAxisCards, 'y axis cards', yAxisCards, 'x axis chart', xAxisChart, 'y axis chart', yAxisChart);
       let currentScrollPosition = $(window).scrollTop();
       if(currentScrollPosition > originalScrollPosition) { //scroll down
-        xAxisChart -= 5;
-        yAxisChart -= 5;
-        xAxisCards += 5;
-        yAxisCards -= 5;
+        xAxisChart -= 3;
+        yAxisChart -= 3;
+        xAxisCards += 3;
+        yAxisCards -= 3;
+        // if(defaultCoordinates()) {
+        //   xAxisChart++;
+        //   yAxisChart++;
+        //   xAxisCards--;
+        //   yAxisCards--;           
+        // }
       } 
       else { //scroll up
-        if(xAxisChart < 0 && yAxisChart < 0 && xAxisCards > 0 && yAxisCards < 0) {
-          xAxisChart += 5;
-          yAxisChart += 5;
-          xAxisCards -= 5;
-          yAxisCards += 5;
-        }
+        if(scrollingDownCoordinates()) {
+          xAxisChart += 3;
+          yAxisChart += 3;
+          xAxisCards -= 3;
+          yAxisCards += 3;
+          // if(defaultCoordinates()) {
+          //   xAxisChart--;
+          //   yAxisChart--;
+          //   xAxisCards++;
+          //   yAxisCards++;           
+          // }
+        } 
       }
       originalScrollPosition = currentScrollPosition;
       $('.doughnut-chart').css({"-webkit-transform":"translate(" + xAxisChart + "px," + yAxisChart + "px)"});
@@ -269,10 +278,6 @@ const scrollToMap = new ScrollMagic.Scene({
 })
 .on('leave', event => {
   if (isNotMobile()) {
-    $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
-    $('.team-panel-collab').css({"-webkit-transform":"translate((0px, 0px)"});
-    // collaboratorsIntro();
-    // cardsIntroAnimation();
   }
 });
 //End parallax
