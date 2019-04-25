@@ -221,6 +221,7 @@ const teamColorFade = new ScrollMagic.Scene({
   }
 });
 
+//Chart and cards outro and intro - move with user scrolling
 let xAxisChart = 0;
 let yAxisChart = 0;
 let xAxisCards = 0;
@@ -234,40 +235,27 @@ function scrollingDownCoordinates() {
 }
 
 const scrollToMap = new ScrollMagic.Scene({
-  triggerElement: '.team-section',
+  triggerElement: '.team-section .lower-portion-background',
   duration: 0,
-  triggerHook: 0.95
+  triggerHook: 0.75
 })
 .addTo(teamsController)
 .on('enter', event => {
   if (isNotMobile()) {
     $(window).on('scroll', () => {
-      console.log('x axis cards', xAxisCards, 'y axis cards', yAxisCards, 'x axis chart', xAxisChart, 'y axis chart', yAxisChart);
       let currentScrollPosition = $(window).scrollTop();
       if(currentScrollPosition > originalScrollPosition) { //scroll down
-        xAxisChart -= 3;
-        yAxisChart -= 3;
-        xAxisCards += 3;
-        yAxisCards -= 3;
-        // if(defaultCoordinates()) {
-        //   xAxisChart++;
-        //   yAxisChart++;
-        //   xAxisCards--;
-        //   yAxisCards--;           
-        // }
+        xAxisChart -= 5;
+        yAxisChart -= 5;
+        xAxisCards += 5;
+        yAxisCards -= 5;
       } 
       else { //scroll up
         if(scrollingDownCoordinates()) {
-          xAxisChart += 3;
-          yAxisChart += 3;
-          xAxisCards -= 3;
-          yAxisCards += 3;
-          // if(defaultCoordinates()) {
-          //   xAxisChart--;
-          //   yAxisChart--;
-          //   xAxisCards++;
-          //   yAxisCards++;           
-          // }
+          xAxisChart += 5;
+          yAxisChart += 5;
+          xAxisCards -= 5;
+          yAxisCards += 5;
         } 
       }
       originalScrollPosition = currentScrollPosition;
@@ -278,6 +266,8 @@ const scrollToMap = new ScrollMagic.Scene({
 })
 .on('leave', event => {
   if (isNotMobile()) {
+    $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
+    $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
   }
 });
 //End parallax

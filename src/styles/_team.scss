@@ -71,6 +71,13 @@
     bottom: 0;
     background: $color-white;
 
+    @include respond-to(not-mobile) {
+      
+      .section-content {
+        z-index: 100;
+      }
+    }
+
     @include respond-to(mobile) {
       display: none;
     }
