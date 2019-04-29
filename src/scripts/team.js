@@ -150,7 +150,7 @@ function colorFadeAnimation() {
   const colorFade = anime({
     targets: '.team-section',
     opacity: [0.8, 1],
-    backgroundColor: '#fcfcfc',
+    backgroundColor: '#fafafa',
     easing: 'easeInOutQuad'
   });
   colorFade.play();
@@ -228,12 +228,14 @@ const teamOpacityChange = new ScrollMagic.Scene({
 })
 .addTo(teamsController)
 .on('enter', event => {
-  console.log("enter");
+  console.log('enter');
   colorFadeAnimation();
+  // console.log("refresh");
 })
 .on('leave', event => {
-  console.log("leave");
+  console.log('leave');
   colorFadeOutAnimation();
+  // teamOpacityChange.refresh();
 });
 
 //Chart and cards outro and intro - move with user scrolling

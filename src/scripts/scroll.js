@@ -15,7 +15,6 @@ $(document).ready(function(){
   $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
 
   $('.dp-nav a').on('click', (e) => {
-    // let $navBtn = $(e.target);
     $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
     $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
   });
@@ -36,5 +35,5 @@ $(document).ready(function(){
   $('.sidenav-close').on('click touch', () => {
     enableBodyScroll(nav);
   });
-  
+
 });

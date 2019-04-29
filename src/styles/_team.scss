@@ -1,11 +1,9 @@
 @import '/_base';
 
 .team-section {
-
   height: 1640px;
-
+  background-color: $color-white;
   $lower-section-height-desktop: 36vh;
-
   position: relative;
 
   @include respond-to(mobile) {
@@ -265,6 +263,6 @@
 }
 
 .color-transition {
-  background-color: $color-gray-super-light;
+  background-color: $color-gray-medium;
   transition: 2s;
 }
