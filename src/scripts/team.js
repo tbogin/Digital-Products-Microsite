@@ -150,7 +150,7 @@ function cardsIntroAnimation() {
 //Fade to grey when scrolling into bottom half of Team section
 function colorFadeAnimation() {
   const colorFade = anime({
-    targets: '.team-section .lower-portion-background',
+    targets: '.team-section',
     opacity: [0.8, 1],
     duration: 2000,
     backgroundColor: '#fcfcfc',
@@ -210,14 +210,42 @@ const teamColorFade = new ScrollMagic.Scene({
   triggerHook: 0
 })
 .addTo(teamsController)
-.on('enter', event => {
+.on('progress', event => {
   if (isNotMobile()) {
-    colorFadeAnimation();
+    // colorFadeAnimation();
+    $(window).on('scroll', () => {
+      if($(window).scrollTop() >= 4168) {
+        $('.team-section').addClass('color-transition');
+      }
+    });
   }
 })
 .on('leave', event => {
   if (isNotMobile()) {
-    colorFadeOutAnimation();
+    $('.team-section').hasClass('color-transition') ? $('.team-section').removeClass('color-transition') : null;
+    // colorFadeOutAnimation();
+  }
+});
+
+const teamOpacityChange = new ScrollMagic.Scene({
+  triggerElement: '.team-section .lower-portion-background',
+  duration: 500,
+  triggerHook: 0.5
+})
+.on('enter', event => {
+  if (isNotMobile()) {
+    var scrollTop = $(this).scrollTop();
+    $(window).on('scroll', () => {
+      console.log("Scrolling");
+      if($(window).scrollTop() >= 4168) {
+        $('.team-section').css({
+          opacity: function() {
+            var elementHeight = $(this).height();
+            return 1 - (elementHeight - scrollTop) / elementHeight;
+          }
+        });
+      }
+    });
   }
 });
 
@@ -227,9 +255,11 @@ let yAxisChart = 0;
 let xAxisCards = 0;
 let yAxisCards = 0;
 let originalScrollPosition = $(window).scrollTop();
+
 function defaultCoordinates() {
   return xAxisChart === 0 && yAxisChart === 0 && xAxisCards === 0 && yAxisCards === 0;
 }
+
 function scrollingDownCoordinates() {
   return xAxisChart <= 0 && yAxisChart <= 0 && xAxisCards >= 0 && yAxisCards <= 0;
 }
@@ -237,7 +267,7 @@ function scrollingDownCoordinates() {
 const scrollToMap = new ScrollMagic.Scene({
   triggerElement: '.team-section .lower-portion-background',
   duration: 0,
-  triggerHook: 0.75
+  triggerHook: 0.65
 })
 .addTo(teamsController)
 .on('enter', event => {

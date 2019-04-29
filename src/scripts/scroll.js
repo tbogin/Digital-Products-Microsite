@@ -10,6 +10,16 @@ $(document).ready(function(){
   //Scroll to top of page on refresh
   $("html,body").animate({scrollTop: 0}, 100);
 
+  //Reset coordinates for Team Section chart and cards when scrolled to top
+  $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
+  $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
+
+  $('.dp-nav a').on('click', (e) => {
+    // let $navBtn = $(e.target);
+    $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
+    $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
+  });
+
   instance.options.draggable = false;  //Disable left-swiping as option to close nav
 
   document.addEventListener("touchmove", function(){}); //for iOS devices

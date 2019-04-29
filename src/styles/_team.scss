@@ -69,10 +69,10 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    background: $color-white;
+    // background: $color-white;
 
     @include respond-to(not-mobile) {
-      
+
       .section-content {
         z-index: 100;
       }
@@ -262,4 +262,9 @@
     margin-bottom: 6%;
   }
 
+}
+
+.color-transition {
+  background-color: $color-gray-super-light;
+  transition: 2s;
 }
