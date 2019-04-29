@@ -36,4 +36,5 @@ $(document).ready(function(){
   $('.sidenav-close').on('click touch', () => {
     enableBodyScroll(nav);
   });
+  
 });

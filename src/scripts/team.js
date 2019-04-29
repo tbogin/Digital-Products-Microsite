@@ -28,8 +28,6 @@ const options = {
     enabled: false
   }
 };
-
-// Chart.defaults.global.animation.duration = 2000;
 //End chart setup
 
 //Counter setup
@@ -152,7 +150,6 @@ function colorFadeAnimation() {
   const colorFade = anime({
     targets: '.team-section',
     opacity: [0.8, 1],
-    duration: 2000,
     backgroundColor: '#fcfcfc',
     easing: 'easeInOutQuad'
   });
@@ -162,9 +159,8 @@ function colorFadeAnimation() {
 //Fade back to white when scrolling out of bottom half of Team section
 function colorFadeOutAnimation() {
   const colorFadeOut = anime({
-    targets: '.team-section .lower-portion-background',
+    targets: '.team-section',
     opacity: [1, 0.8],
-    duration: 2000,
     backgroundColor: '#ffffff',
     easing: 'easeInOutQuad' 
   });
@@ -212,7 +208,6 @@ const teamColorFade = new ScrollMagic.Scene({
 .addTo(teamsController)
 .on('progress', event => {
   if (isNotMobile()) {
-    // colorFadeAnimation();
     $(window).on('scroll', () => {
       if($(window).scrollTop() >= 4168) {
         $('.team-section').addClass('color-transition');
@@ -223,30 +218,22 @@ const teamColorFade = new ScrollMagic.Scene({
 .on('leave', event => {
   if (isNotMobile()) {
     $('.team-section').hasClass('color-transition') ? $('.team-section').removeClass('color-transition') : null;
-    // colorFadeOutAnimation();
   }
 });
 
 const teamOpacityChange = new ScrollMagic.Scene({
   triggerElement: '.team-section .lower-portion-background',
-  duration: 500,
+  duration: "100%",
   triggerHook: 0.5
 })
+.addTo(teamsController)
 .on('enter', event => {
-  if (isNotMobile()) {
-    var scrollTop = $(this).scrollTop();
-    $(window).on('scroll', () => {
-      console.log("Scrolling");
-      if($(window).scrollTop() >= 4168) {
-        $('.team-section').css({
-          opacity: function() {
-            var elementHeight = $(this).height();
-            return 1 - (elementHeight - scrollTop) / elementHeight;
-          }
-        });
-      }
-    });
-  }
+  console.log("enter");
+  colorFadeAnimation();
+})
+.on('leave', event => {
+  console.log("leave");
+  colorFadeOutAnimation();
 });
 
 //Chart and cards outro and intro - move with user scrolling
@@ -255,10 +242,6 @@ let yAxisChart = 0;
 let xAxisCards = 0;
 let yAxisCards = 0;
 let originalScrollPosition = $(window).scrollTop();
-
-function defaultCoordinates() {
-  return xAxisChart === 0 && yAxisChart === 0 && xAxisCards === 0 && yAxisCards === 0;
-}
 
 function scrollingDownCoordinates() {
   return xAxisChart <= 0 && yAxisChart <= 0 && xAxisCards >= 0 && yAxisCards <= 0;
