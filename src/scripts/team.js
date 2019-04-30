@@ -65,7 +65,6 @@ function animateChartAndText() {
     duration: 1500
   });
   setTimeout(function(){ collaboratorAnimation.play(); }, 2000); //Wait for chart to load/counter to finish before animating right side UI
-  // collaboratorAnimation.play();
 };
 
 //Animate map and text when scrolling into lower half of Team section
@@ -89,69 +88,14 @@ function animateGeoText() {
   geoBlurbAnimation.play();
 };
 
-//Outro animations for top half UI of Team section when scrolling down
-function collaboratorsOutro() {
-  const collabOutro = anime
-  .timeline({loop: false, autoplay: false})
-  .add({
-    targets: '.doughnut-chart',
-    offset: -100,
-    translateX: -800,
-    translateY: -800,
-    opacity: [1, 0.8],
-    duration: 3500,
-    easing: 'easeOutQuart' 
-  });
-  collabOutro.play();
-};
-
-function cardsOutroAnimation() {
-  const cardsOutro = anime({
-    targets: '.team-panel-collab',
-    translateX: 800,
-    translateY: -800,
-    opacity: [1, 0.8],
-    duration: 3500,
-    easing: 'easeOutQuart'
-  });
-  cardsOutro.play();
-};
-
-//Intro animations for top half UI of Team section when scrolling up
-function collaboratorsIntro() {
-  const collabIntro = anime
-  .timeline({loop: false, autoplay: false})
-  .add({
-    targets: '.doughnut-chart',
-    offset: -100,
-    translateX: 0,
-    translateY: 0,
-    opacity: [0.8, 1],
-    duration: 3500,
-    easing: 'easeOutQuart' 
-  });
-  collabIntro.play();
-};
-
-function cardsIntroAnimation() {
-  const cardsIntro = anime({
-    targets: '.team-panel-collab',
-    translateX: 0,
-    translateY: 0,
-    opacity: [0.8, 1],
-    duration: 3500,
-    easing: 'easeOutQuart'
-  });
-  cardsIntro.play();
-};
-
 //Fade to grey when scrolling into bottom half of Team section
-function colorFadeAnimation() {
+function colorFadeInAnimation() {
   const colorFade = anime({
     targets: '.team-section',
-    opacity: [0.8, 1],
-    backgroundColor: '#fafafa',
-    easing: 'easeInOutQuad'
+    opacity: [0.5, 1],
+    backgroundColor: 'gray',
+    easing: 'easeInOutQuad',
+    duration: 300
   });
   colorFade.play();
 }
@@ -162,7 +106,8 @@ function colorFadeOutAnimation() {
     targets: '.team-section',
     opacity: [1, 0.8],
     backgroundColor: '#ffffff',
-    easing: 'easeInOutQuad' 
+    easing: 'easeInOutQuad',
+    duration: 300 
   });
   colorFadeOut.play();
 }
@@ -200,7 +145,7 @@ function isNotMobile() {
 };
 
 const teamColorFade = new ScrollMagic.Scene({
-  triggerElement: '.team-section .lower-portion-background',
+  triggerElement: '.team-section',
   offset: -300,
   duration: 500,
   triggerHook: 0
@@ -227,15 +172,11 @@ const teamOpacityChange = new ScrollMagic.Scene({
   triggerHook: 0.5
 })
 .addTo(teamsController)
-.on('enter', event => {
-  console.log('enter');
-  colorFadeAnimation();
-  // console.log("refresh");
+.on('progress', event => {
+  colorFadeInAnimation();
 })
 .on('leave', event => {
-  console.log('leave');
   colorFadeOutAnimation();
-  // teamOpacityChange.refresh();
 });
 
 //Chart and cards outro and intro - move with user scrolling
