@@ -49,6 +49,20 @@
   }
 }
 
+.vertical-lines-team {
+
+  @include respond-to(not-mobile) {
+    height: 100%;
+    width: 100%;
+    background-image: url("../assets/vertical-lines/web-vertical-lines-team.svg");
+  }
+
+  @include respond-to(mobile) {
+    background-image: url("../assets/vertical-lines/mobile-vertical-lines-team.svg");
+    background-repeat: no-repeat;
+  }
+}
+
 .vertical-lines-web {
   @include respond-to(mobile) {
     display: none;

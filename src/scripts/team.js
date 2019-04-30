@@ -4,6 +4,10 @@ import anime from 'animejs';
 import counterUp from 'counterup2';
 import { mobileBreakpoint } from './constants';
 
+function isNotMobile() {
+  return $(window).outerWidth() > mobileBreakpoint;
+};
+
 //Doughnut Chart setup
 const ctx = $('#team-chart');
 
@@ -28,8 +32,6 @@ const options = {
     enabled: false
   }
 };
-
-// Chart.defaults.global.animation.duration = 2000;
 //End chart setup
 
 //Counter setup
@@ -64,10 +66,9 @@ function animateChartAndText() {
     options
   });
   const startCounter = counterUp( counter, { //Initialize counter
-    duration: 2000
+    duration: 1500
   });
-  setTimeout(function(){ collaboratorAnimation.play(); }, 2500); //Wait for chart to load/counter to finish before animating right side UI
-  // collaboratorAnimation.play();
+  setTimeout(function(){ collaboratorAnimation.play(); }, 2000); //Wait for chart to load/counter to finish before animating right side UI
 };
 
 //Animate map and text when scrolling into lower half of Team section
@@ -90,6 +91,28 @@ function animateGeoText() {
   });
   geoBlurbAnimation.play();
 };
+
+//Fade to grey when scrolling into bottom half of Team section
+function colorFadeInAnimation() {
+  const colorFade = anime({
+    targets: '.team-section',
+    opacity: [0.8, 1],
+    backgroundColor: 'gray',
+    easing: 'easeInOutQuad'
+  });
+  colorFade.play();
+}
+
+//Fade back to white when scrolling out of bottom half of Team section
+function colorFadeOutAnimation() {
+  const colorFadeOut = anime({
+    targets: '.team-section',
+    opacity: [1, 0.8],
+    easing: 'easeInOutQuad',
+    duration: 300 
+  });
+  colorFadeOut.play();
+}
 //End animations
 
 //Scrollmagic
@@ -104,112 +127,8 @@ const initialAnimationScene = new ScrollMagic.Scene({
   .addTo(teamsController)
   .on('progress', event => {
     animateChartAndText();
-  })
-  .on('leave', event => {
-    initialAnimationScene.refresh();
+    initialAnimationScene.remove();
   });
-
-  //Outro animations for top half UI of Team section when scrolling down
-  function collaboratorsOutro() {
-    const collabOutro = anime
-    .timeline({loop: false, autoplay: false})
-    .add({
-      targets: '.doughnut-chart',
-      offset: -100,
-      translateX: -800,
-      translateY: -800,
-      opacity: [1, 0.8],
-      duration: 3500,
-      easing: 'easeOutQuart' 
-    });
-    collabOutro.play();
-  };
-
-  function cardsOutroAnimation() {
-    const cardsOutro = anime({
-      targets: '.team-panel-collab',
-      translateX: 800,
-      translateY: -800,
-      opacity: [1, 0.8],
-      duration: 3500,
-      easing: 'easeOutQuart'
-    });
-    cardsOutro.play();
-  };
-
-  //Intro animations for top half UI of Team section when scrolling up
-  function collaboratorsIntro() {
-    const collabIntro = anime
-    .timeline({loop: false, autoplay: false})
-    .add({
-      targets: '.doughnut-chart',
-      offset: -100,
-      translateX: 0,
-      translateY: 0,
-      opacity: [0.8, 1],
-      duration: 3500,
-      easing: 'easeOutQuart' 
-    });
-    collabIntro.play();
-  };
-
-  function cardsIntroAnimation() {
-    const cardsIntro = anime({
-      targets: '.team-panel-collab',
-      translateX: 0,
-      translateY: 0,
-      opacity: [0.8, 1],
-      duration: 3500,
-      easing: 'easeOutQuart'
-    });
-    cardsIntro.play();
-  };
-
-  //Fade to grey when scrolling into bottom half of Team section
-  function colorFadeAnimation() {
-    const colorFade = anime({
-      targets: '.team-section .lower-portion-background',
-      opacity: [0.8, 1],
-      duration: 2000,
-      backgroundColor: '#fcfcfc',
-      easing: 'easeInOutQuad'
-    });
-    colorFade.play();
-  }
-  
-  //Fade back to white when scrolling out of bottom half of Team section
-  function colorFadeOutAnimation() {
-    const colorFadeOut = anime({
-      targets: '.team-section .lower-portion-background',
-      opacity: [1, 0.8],
-      duration: 2000,
-      backgroundColor: '#ffffff',
-      easing: 'easeInOutQuad' 
-    });
-    colorFadeOut.play();
-  }
-
-  // function topHalfColorFadeInAnimation() {
-  //   const topHalfColorFadeIn = anime({
-  //     targets: '.team-section',
-  //     opacity: [1, 0],
-  //     duration: 2000,
-  //     backgroundColor: '#fcfcfc',
-  //     easing: 'easeInOutQuad' 
-  //   });
-  //   topHalfColorFadeIn.play();
-  // }
-
-  // function topHalfColorFadeOutAnimation() {
-  //   const topHalfColorFadeOut = anime({
-  //     targets: '.team-section',
-  //     opacity: [1, 0],
-  //     duration: 2000,
-  //     backgroundColor: '#ffffff',
-  //     easing: 'easeInOutQuad' 
-  //   });
-  //   topHalfColorFadeOut.play();
-  // }
 
 //Run animation for text in bottom half of Team Section
 const geoTextAnimationScene = new ScrollMagic.Scene({ 
@@ -223,67 +142,92 @@ const geoTextAnimationScene = new ScrollMagic.Scene({
   });
 
 //Parallax scrolling
-function isNotMobile() {
-  return $(window).outerWidth() > mobileBreakpoint;
-};
-
-//TODO
-//Tweak: Lower chart/card opacity on outro, reverse opacity fade for intro
-//Change bg color to grey upon scrolling into map section
-//Tweak map and text fade ins
-//Scrolling bugs
-  //staggering: TweenMax.staggerFromTo()
-
-// const topHalfColorFade = new ScrollMagic.Scene({
-//   triggerElement: '.team-section',
-//   duration: 500,
-//   triggerHook: 0.2
-// })
-// .addTo(teamsController)
-// .on('enter', event => {
-//   topHalfColorFadeInAnimation();
-// })
-// .on('leave', event => {
-//   topHalfColorFadeOutAnimation();
-// });
 
 const teamColorFade = new ScrollMagic.Scene({
-  triggerElement: '.team-section .lower-portion-background',
+  triggerElement: '.team-section',
   offset: -300,
   duration: 500,
   triggerHook: 0
 })
 .addTo(teamsController)
-.on('enter', event => {
+.on('progress', event => {
   if (isNotMobile()) {
-    colorFadeAnimation();
+    $(window).on('scroll', () => {
+      if($(window).scrollTop() >= 4168) {
+        $('.team-section').addClass('color-transition');
+      }
+    });
   }
-  // colorFadeAnimation();
 })
 .on('leave', event => {
   if (isNotMobile()) {
+    $('.team-section').hasClass('color-transition') ? $('.team-section').removeClass('color-transition') : null;
+  }
+});
+
+const teamOpacityChange = new ScrollMagic.Scene({
+  triggerElement: '.team-section .lower-portion-background',
+  duration: "100%",
+  triggerHook: 0.5
+})
+.addTo(teamsController)
+.on('progress', event => {
+  if(isNotMobile()) {
+    colorFadeInAnimation();
+  }
+})
+.on('leave', event => {
+  if(isNotMobile()) {
     colorFadeOutAnimation();
   }
-  // colorFadeOutAnimation();
 });
+
+
+//Chart and cards outro and intro - move with user scrolling
+let xAxisChart = 0;
+let yAxisChart = 0;
+let xAxisCards = 0;
+let yAxisCards = 0;
+let originalScrollPosition = $(window).scrollTop();
+
+function scrollingDownCoordinates() {
+  return xAxisChart <= 0 && yAxisChart <= 0 && xAxisCards >= 0 && yAxisCards <= 0;
+}
 
 const scrollToMap = new ScrollMagic.Scene({
   triggerElement: '.team-section .lower-portion-background',
   duration: 0,
-  triggerHook: 0.75,
-  reverse: true
+  triggerHook: 0.65
 })
 .addTo(teamsController)
 .on('enter', event => {
   if (isNotMobile()) {
-    collaboratorsOutro();
-    cardsOutroAnimation();
+    $(window).on('scroll', () => {
+      let currentScrollPosition = $(window).scrollTop();
+      if(currentScrollPosition > originalScrollPosition) { //scroll down
+        xAxisChart -= 5;
+        yAxisChart -= 5;
+        xAxisCards += 5;
+        yAxisCards -= 5;
+      } 
+      else { //scroll up
+        if(scrollingDownCoordinates()) {
+          xAxisChart += 5;
+          yAxisChart += 5;
+          xAxisCards -= 5;
+          yAxisCards += 5;
+        } 
+      }
+      originalScrollPosition = currentScrollPosition;
+      $('.doughnut-chart').css({"-webkit-transform":"translate(" + xAxisChart + "px," + yAxisChart + "px)"});
+      $('.team-panel-collab').css({"-webkit-transform":"translate(" + xAxisCards + "px," + yAxisCards + "px)"});
+    });
   }
 })
 .on('leave', event => {
   if (isNotMobile()) {
-    collaboratorsIntro();
-    cardsIntroAnimation();
+    $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
+    $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
   }
 });
 //End parallax

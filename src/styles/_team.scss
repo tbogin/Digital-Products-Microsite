@@ -1,11 +1,9 @@
 @import '/_base';
 
 .team-section {
-
   height: 1640px;
-
+  background-color: $color-white;
   $lower-section-height-desktop: 36vh;
-
   position: relative;
 
   @include respond-to(mobile) {
@@ -35,6 +33,10 @@
       width: 640px;
       max-width: 640px;
       position: sticky;
+      position: -webkit-sticky;
+      position: -moz-sticky;
+      position: -ms-sticky;
+      position: -o-sticky;
       top: 80px;
     }
 
@@ -65,7 +67,13 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    background: $color-white;
+
+    @include respond-to(not-mobile) {
+
+      .section-content {
+        z-index: 100;
+      }
+    }
 
     @include respond-to(mobile) {
       display: none;
@@ -241,7 +249,6 @@
 
   .geo-coverage-panel {
     position: absolute;
-    // bottom: 208px;
     bottom: 35%;
     left: 156px;
   }
@@ -251,4 +258,9 @@
     margin-bottom: 6%;
   }
 
+}
+
+.color-transition {
+  background-color: $color-gray-medium;
+  transition: 0.3s;
 }
