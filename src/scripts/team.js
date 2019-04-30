@@ -4,6 +4,10 @@ import anime from 'animejs';
 import counterUp from 'counterup2';
 import { mobileBreakpoint } from './constants';
 
+function isNotMobile() {
+  return $(window).outerWidth() > mobileBreakpoint;
+};
+
 //Doughnut Chart setup
 const ctx = $('#team-chart');
 
@@ -92,10 +96,9 @@ function animateGeoText() {
 function colorFadeInAnimation() {
   const colorFade = anime({
     targets: '.team-section',
-    opacity: [0.5, 1],
+    opacity: [0.8, 1],
     backgroundColor: 'gray',
-    easing: 'easeInOutQuad',
-    duration: 300
+    easing: 'easeInOutQuad'
   });
   colorFade.play();
 }
@@ -105,7 +108,6 @@ function colorFadeOutAnimation() {
   const colorFadeOut = anime({
     targets: '.team-section',
     opacity: [1, 0.8],
-    backgroundColor: '#ffffff',
     easing: 'easeInOutQuad',
     duration: 300 
   });
@@ -140,9 +142,6 @@ const geoTextAnimationScene = new ScrollMagic.Scene({
   });
 
 //Parallax scrolling
-function isNotMobile() {
-  return $(window).outerWidth() > mobileBreakpoint;
-};
 
 const teamColorFade = new ScrollMagic.Scene({
   triggerElement: '.team-section',
@@ -173,11 +172,16 @@ const teamOpacityChange = new ScrollMagic.Scene({
 })
 .addTo(teamsController)
 .on('progress', event => {
-  colorFadeInAnimation();
+  if(isNotMobile()) {
+    colorFadeInAnimation();
+  }
 })
 .on('leave', event => {
-  colorFadeOutAnimation();
+  if(isNotMobile()) {
+    colorFadeOutAnimation();
+  }
 });
+
 
 //Chart and cards outro and intro - move with user scrolling
 let xAxisChart = 0;
