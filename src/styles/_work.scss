@@ -15,6 +15,7 @@
   @include respond-to(not-mobile) {
     height: 820px;
     padding: 0;
+    padding-left: 162px;
   }
 
   @include respond-to(mobile) {
@@ -27,10 +28,13 @@
 
   .two-thirds-desktop {
     @include respond-to(not-mobile) {
+      width: 100%;
       height: 100%;
-      width: 63%;
-      float: left;
-      padding-left: $section-default-padding-lr;
+      max-width: 1132px;
+      margin: 0 auto;
+      // width: 63%;
+      // float: left;
+      // padding-left: $section-default-padding-lr;
     }
     @include respond-to(mobile) {
       background: $color-gray-super-light;
@@ -88,8 +92,9 @@
   
   .heading-block {
     @include respond-to(not-mobile) {
-      margin-left: 120px;
-      margin-top: $section-default-padding-tb;
+      // margin-left: 120px;
+      // margin-top: $section-default-padding-tb;
+      margin: 0 auto 48px auto;
     }
     @include respond-to(mobile) {
       margin: 0;
