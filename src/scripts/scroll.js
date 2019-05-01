@@ -11,12 +11,12 @@ $(document).ready(function(){
   $("html,body").animate({scrollTop: 0}, 100);
 
   //Reset coordinates for Team Section chart and cards when scrolled to top
-  $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
-  $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
+  $('.doughnut-chart').addClass('transform-reset');
+  $('.team-panel-collab').addClass('transform-reset');
 
   $('.dp-nav a').on('click', (e) => {
-    $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
-    $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
+    $('.doughnut-chart').addClass('transform-reset');
+    $('.team-panel-collab').addClass('transform-reset');
   });
 
   instance.options.draggable = false;  //Disable left-swiping as option to close nav

@@ -195,16 +195,18 @@ function scrollingDownCoordinates() {
 }
 
 const scrollToMap = new ScrollMagic.Scene({
-  triggerElement: '.team-section .lower-portion-background',
+  triggerElement: 'main',
   duration: 0,
   triggerHook: 0.65
 })
 .addTo(teamsController)
-.on('enter', event => {
+.on('progress', event => {
   if (isNotMobile()) {
     $(window).on('scroll', () => {
       let currentScrollPosition = $(window).scrollTop();
-      if(currentScrollPosition > originalScrollPosition) { //scroll down
+      if(currentScrollPosition > originalScrollPosition && currentScrollPosition > 4000) { //scroll down
+        $('.doughnut-chart').removeClass('transform-reset');
+        $('.team-panel-collab').removeClass('transform-reset');
         xAxisChart -= 5;
         yAxisChart -= 5;
         xAxisCards += 5;
@@ -212,11 +214,11 @@ const scrollToMap = new ScrollMagic.Scene({
       } 
       else { //scroll up
         if(scrollingDownCoordinates()) {
-          xAxisChart += 5;
-          yAxisChart += 5;
-          xAxisCards -= 5;
-          yAxisCards += 5;
-        } 
+          xAxisChart += 10;
+          yAxisChart += 10;
+          xAxisCards -= 10;
+          yAxisCards += 10;
+        }
       }
       originalScrollPosition = currentScrollPosition;
       $('.doughnut-chart').css({"-webkit-transform":"translate(" + xAxisChart + "px," + yAxisChart + "px)"});
@@ -226,8 +228,8 @@ const scrollToMap = new ScrollMagic.Scene({
 })
 .on('leave', event => {
   if (isNotMobile()) {
-    $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
-    $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
+    $('.doughnut-chart').addClass('transform-reset');
+    $('.team-panel-collab').addClass('transform-reset');
   }
 });
 //End parallax
