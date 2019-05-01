@@ -205,7 +205,6 @@ const scrollToMap = new ScrollMagic.Scene({
     $(window).on('scroll', () => {
       let currentScrollPosition = $(window).scrollTop();
       if(currentScrollPosition > originalScrollPosition && currentScrollPosition > 4000) { //scroll down
-        // console.log("Current down", currentScrollPosition, "Original down", originalScrollPosition);
         $('.doughnut-chart').removeClass('transform-reset');
         $('.team-panel-collab').removeClass('transform-reset');
         xAxisChart -= 5;
@@ -214,7 +213,6 @@ const scrollToMap = new ScrollMagic.Scene({
         yAxisCards -= 5;
       } 
       else { //scroll up
-        // console.log("Current up", currentScrollPosition, "Original up", originalScrollPosition);
         if(scrollingDownCoordinates()) {
           xAxisChart += 10;
           yAxisChart += 10;
@@ -230,8 +228,6 @@ const scrollToMap = new ScrollMagic.Scene({
 })
 .on('leave', event => {
   if (isNotMobile()) {
-    // $('.doughnut-chart').css({"-webkit-transform":"translate(0px, 0px)"});
-    // $('.team-panel-collab').css({"-webkit-transform":"translate(0px, 0px)"});
     $('.doughnut-chart').addClass('transform-reset');
     $('.team-panel-collab').addClass('transform-reset');
   }
