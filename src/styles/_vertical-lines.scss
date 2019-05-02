@@ -64,6 +64,10 @@
   }
 }
 
+.remove-bg-attachment {
+  background-attachment: initial;
+}
+
 .vertical-lines-web {
   @include respond-to(mobile) {
     display: none;
