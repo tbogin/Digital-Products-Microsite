@@ -232,5 +232,20 @@ const scrollToMap = new ScrollMagic.Scene({
     $('.team-panel-collab').addClass('transform-reset');
   }
 });
+
+const alignTeamBackgroundLines = new ScrollMagic.Scene({
+  triggerElement: '.team-section .lower-portion-background',
+  duration: 0,
+  triggerHook: 0.05
+})
+.addTo(teamsController)
+.on('enter', event => {
+  console.log("Gotcha");
+  $('.vertical-lines-team').addClass('remove-bg-attachment');
+})
+.on('leave', event => {
+  $('.vertical-lines-team').removeClass('remove-bg-attachment');
+});
+
 //End parallax
 //End scrollmagic
