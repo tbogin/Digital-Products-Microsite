@@ -8,7 +8,8 @@
 
   @include respond-to(mobile) {
     height: auto;
-    min-height: 1216px; //height of Our Team section
+    // min-height: 1216px; //height of Our Team section
+    min-height: 1898px;
   }
 
   @include respond-to(not-mobile) {
@@ -76,7 +77,10 @@
     }
 
     @include respond-to(mobile) {
-      display: none;
+      bottom: -137px;
+      background-color: $color-gray-background-block;
+      padding: 3.75rem 2.5rem 0;
+      // padding: 0 2.5rem 3.75rem 2.5rem;
     }
   }
 
@@ -188,7 +192,10 @@
     z-index: 1;
 
     @include respond-to(mobile) {
-      margin-top: 0;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+      margin: 0 auto;
     }
   }
 
@@ -244,18 +251,37 @@
   }
 
   .map-container {
-    margin: 217px 0 0 105px;
+
+    @include respond-to(not-mobile) {
+      margin: 217px 0 0 105px;
+    }
+  }
+
+  .map-img {
+    
+    @include respond-to(mobile) {
+      width: 100%;
+    }
   }
 
   .geo-coverage-panel {
-    position: absolute;
-    bottom: 35%;
-    left: 156px;
+
+    @include respond-to(not-mobile) {
+      position: absolute;
+      bottom: 35%;
+      left: 156px;
+    }
   }
 
   .geo-blurb {
     width: 79%;
     margin-bottom: 6%;
+  }
+
+  .desktop-blurb-text {
+    @include respond-to(mobile) {
+      display: none;
+    }
   }
 
 }
