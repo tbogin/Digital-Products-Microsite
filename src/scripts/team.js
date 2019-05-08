@@ -134,11 +134,12 @@ const initialAnimationScene = new ScrollMagic.Scene({
 const geoTextAnimationScene = new ScrollMagic.Scene({ 
   triggerElement: '.team-section .lower-portion-background',
   duration: 0,
-  triggerHook: 0.65
+  triggerHook: 0.85
 })
   .addTo(teamsController)
   .on('progress', event => {
     animateGeoText();
+    geoTextAnimationScene.remove();
   });
 
 //Parallax scrolling
