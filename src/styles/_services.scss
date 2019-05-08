@@ -9,7 +9,8 @@
 
   @include respond-to(mobile) {
     height: auto;
-    padding: 64px 64px 0 40px;
+    // padding: 64px 64px 0 40px;
+    padding: 64px 64px 23px 40px !important;
   }
   
   @include respond-to(not-mobile) {
@@ -292,6 +293,10 @@
       left: 0;
       height: 100%;
       border-left: 2px solid $color-gray-dark;
+    }
+
+    .final-line-segment {
+      height: 117%;
     }
 
     .line-segment-highlight {
