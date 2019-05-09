@@ -77,10 +77,14 @@
     }
 
     @include respond-to(mobile) {
-      bottom: -137px;
+      // bottom: -137px;
+      bottom: -6.5rem;
       background-color: $color-gray-background-block;
       padding: 3.75rem 2.5rem 0;
-      // padding: 0 2.5rem 3.75rem 2.5rem;
+    }
+
+    @include respond-to(mobile-x-x-small) {
+      bottom: -12rem;
     }
   }
 

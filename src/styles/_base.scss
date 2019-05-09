@@ -84,6 +84,7 @@ $nav-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.05);
 $border-radius: 4px;
 
 // Media Queries
+$break-mobile-x-x-small: 330px;
 $break-mobile-x-small: 490px;
 $break-mobile-small: 575px;
 $break-mobile: 768px;
@@ -91,6 +92,11 @@ $break-tablet: 1024px;
 $break-large: 1440px;
 
 @mixin respond-to($media) {
+  @if $media == mobile-x-x-small {
+    @media only screen and (max-width: $break-mobile-x-x-small) {
+      @content;
+    }
+  }
   @if $media == mobile-x-small {
     @media only screen and (max-width: $break-mobile-x-small) {
       @content;
