@@ -47,7 +47,7 @@
     "body-scroll-lock": "^2.6.1",
     "chart.js": "^2.8.0",
     "counterup2": "^1.0.4",
-    "gsap": "^2.1.2",
+    "gsap": "^3.6.0",
     "jquery": "^3.3.1",
     "materialize-css": "^1.0.0-rc.2",
     "scrollmagic": "^2.0.6"
